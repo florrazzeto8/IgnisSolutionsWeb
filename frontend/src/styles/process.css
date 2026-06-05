@@ -1,0 +1,60 @@
+/* PROCESS */
+.process {
+  background: var(--navy-2);
+  padding: 100px 64px;
+  position: relative;
+  z-index: 10;
+}
+
+.process-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.process-left {
+  position: sticky;
+  top: 110px;
+}
+
+.process-steps {
+  margin-top: 52px;
+}
+
+.step {
+  display: flex;
+  gap: 22px;
+  padding: 26px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: 2px solid transparent;
+  padding-left: 18px;
+  opacity: 0.3;
+  transition: opacity 0.45s, border-color 0.45s;
+}
+
+.step.active {
+  opacity: 1;
+  border-color: var(--cyan);
+}
+
+.step-n {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: 1px;
+  min-width: 28px;
+  padding-top: 3px;
+}
+
+.step-body h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 7px;
+}
+
+.step-body p {
+  font-size: 13.5px;
+  color: var(--gray);
+  line-height: 1.65;
+}

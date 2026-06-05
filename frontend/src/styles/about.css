@@ -1,0 +1,116 @@
+/* ABOUT */
+.about-zone {
+  position: relative;
+  z-index: 10;
+  height: 180vh;
+  margin-top: -95vh;
+  background: transparent;
+}
+
+.about-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  background: transparent;
+}
+
+.about-card {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 44vw;
+  height: 40px;
+  background: var(--navy-3);
+  border-radius: 16px 0 0 0;
+  overflow: hidden;
+  pointer-events: all;
+  will-change: width, height, border-radius;
+}
+
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  padding: 64px;
+  height: 100%;
+}
+
+.about-tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 18px;
+}
+
+.about-card h2 {
+  font-size: clamp(26px, 3vw, 44px);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+  margin-bottom: 20px;
+}
+
+.about-card h2 .acc {
+  color: var(--cyan);
+}
+
+.about-card p {
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.about-stat {
+  background: rgba(0, 200, 255, 0.05);
+  border: 1px solid rgba(0, 200, 255, 0.12);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+.about-stat-num {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--cyan);
+  letter-spacing: -2px;
+  line-height: 1;
+}
+
+.about-stat-lbl {
+  font-size: 10.5px;
+  color: var(--gray);
+  margin-top: 4px;
+}
+
+.about-photo {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background: var(--navy-2);
+}
+
+.about-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 14px;
+  background: linear-gradient(135deg, var(--navy-2), var(--navy-3));
+  min-height: 260px;
+}
