@@ -34,6 +34,11 @@ export const About = () => {
         heroInner.style.opacity = String(Math.max(0, 1 - p * 3));
       }
 
+      const scrollHint = document.querySelector<HTMLElement>('.scroll-hint');
+      if (scrollHint) {
+        scrollHint.style.opacity = String(Math.max(0, 1 - p * 3));
+      }
+
       if (aboutInnerRef.current) {
         const scale = w / 100;
         aboutInnerRef.current.style.transform = `scale(${scale})`;
@@ -52,24 +57,28 @@ export const About = () => {
       <div className="about-sticky">
         <div className="about-card" ref={aboutCardRef}>
           <div className="about-inner" ref={aboutInnerRef}>
-            <div>
-              <div className="about-tag">Sobre Nosotros</div>
-              <h2>
-                Construimos el <span className="acc">futuro</span>
-                <br />
-                digital de tu <span className="acc">empresa</span>
-              </h2>
-              <p>
-                Somos una software factory argentina con ADN tecnológico.
-                Combinamos metodologías ágiles, arquitecturas modernas y un
-                equipo apasionado para entregar soluciones digitales que
-                generan impacto real.
-              </p>
-              <p>
-                Desde startups hasta corporaciones, acompañamos cada etapa del
-                ciclo de vida del producto, desde la ideación hasta el
-                escalamiento en producción.
-              </p>
+            <div className="about-left">
+              <div className="about-block-title">
+                <div className="about-tag">Sobre Nosotros</div>
+                <h2>
+                  Construimos el <span className="acc">futuro</span>
+                  <br />
+                  digital de tu <span className="acc">empresa</span>
+                </h2>
+              </div>
+              <div className="about-block-text">
+                <p>
+                  Somos una software factory argentina con ADN tecnológico.
+                  Combinamos metodologías ágiles, arquitecturas modernas y un
+                  equipo apasionado para entregar soluciones digitales que
+                  generan impacto real.
+                </p>
+                <p>
+                  Desde startups hasta corporaciones, acompañamos cada etapa del
+                  ciclo de vida del producto, desde la ideación hasta el
+                  escalamiento en producción.
+                </p>
+              </div>
               <div className="about-stats">
                 {ABOUT_STATS.map((stat, idx) => (
                   <div key={idx} className="about-stat">
@@ -82,9 +91,11 @@ export const About = () => {
               </div>
             </div>
             <div className="about-photo">
-              <div className="about-photo-placeholder">
-                📷 Foto del equipo
-              </div>
+              <img
+                src="/Gemini_Generated_Image_5l340c5l340c5l34 (1).png"
+                alt="Equipo IGNIS"
+                className="about-photo-img"
+              />
             </div>
           </div>
         </div>

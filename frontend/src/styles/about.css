@@ -22,9 +22,8 @@
   right: 0;
   width: 44vw;
   height: 40px;
-  background: var(--navy-3);
+  background: transparent;
   border-radius: 16px 0 0 0;
-  overflow: hidden;
   pointer-events: all;
   will-change: width, height, border-radius;
 }
@@ -42,6 +41,35 @@
   padding: 64px;
   transform-origin: top right;
   will-change: transform;
+  background: transparent;
+}
+
+.about-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about-block-title,
+.about-block-text {
+  background: rgba(0, 200, 255, 0.04);
+  border: 1px solid rgba(0, 200, 255, 0.14);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 14px;
+  padding: 20px 24px;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  background: rgba(0, 200, 255, 0.04);
+  border: 1px solid rgba(0, 200, 255, 0.14);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 14px;
+  padding: 16px;
 }
 
 .about-tag {
@@ -53,30 +81,27 @@
   margin-bottom: 18px;
 }
 
-.about-card h2 {
+.about-block-title h2 {
   font-size: clamp(26px, 3vw, 44px);
   font-weight: 900;
   line-height: 1.08;
   letter-spacing: -1.5px;
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 
-.about-card h2 .acc {
+.about-block-title h2 .acc {
   color: var(--cyan);
 }
 
-.about-card p {
+.about-block-text p {
   color: var(--gray);
   font-size: 14px;
   line-height: 1.75;
   margin-bottom: 14px;
 }
 
-.about-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 28px;
+.about-block-text p:last-child {
+  margin-bottom: 0;
 }
 
 .about-stat {
@@ -106,17 +131,12 @@
   border-radius: 16px;
   overflow: hidden;
   aspect-ratio: 4/3;
-  background: var(--navy-2);
+  background: transparent;
 }
 
-.about-photo-placeholder {
+.about-photo-img {
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255, 255, 255, 0.2);
-  font-size: 14px;
-  background: linear-gradient(135deg, var(--navy-2), var(--navy-3));
-  min-height: 260px;
+  object-fit: cover;
+  display: block;
 }

@@ -6,6 +6,7 @@ import { Header } from './components/Header';
 import { ParticleSystem } from './components/ParticleSystem';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
+import { TransformSection } from './components/TransformSection';
 import { LogoCarousel } from './components/LogoCarousel';
 import { Services } from './components/Services';
 import { Process } from './components/Process';
@@ -64,6 +65,8 @@ function App() {
       </section>
 
       <About />
+
+      <TransformSection />
 
       <LogoCarousel />
 
