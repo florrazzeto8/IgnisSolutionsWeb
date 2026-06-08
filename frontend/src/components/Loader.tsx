@@ -10,6 +10,7 @@ export const Loader: React.FC<LoaderProps> = ({ onFinish }) => {
   const loaderContentRef = useRef<HTMLDivElement | null>(null);
   const lNumRef = useRef<HTMLDivElement | null>(null);
   const lFillRef = useRef<HTMLDivElement | null>(null);
+  const doneRef = useRef(false);
 
   useEffect(() => {
     const totalTime = 2600;
@@ -31,6 +32,9 @@ export const Loader: React.FC<LoaderProps> = ({ onFinish }) => {
     };
 
     const finishLoader = () => {
+      if (doneRef.current) return;
+      doneRef.current = true;
+
       if (loaderContentRef.current) {
         loaderContentRef.current.classList.add('exit');
       }
@@ -40,6 +44,7 @@ export const Loader: React.FC<LoaderProps> = ({ onFinish }) => {
           loaderBgRef.current.classList.add('exit');
         }
         document.body.style.overflow = '';
+        // notify parent to start hero animations while curtain slides down
         onFinish();
       }, 150);
     };

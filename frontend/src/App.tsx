@@ -33,6 +33,7 @@ function App() {
   }, []);
 
   const handleLoaderFinish = () => {
+    // start hero entrance animations while curtain slides down (1s transition)
     const heEls = Array.from(document.querySelectorAll('.he'));
     const delays = [200, 400, 600, 800, 1000];
     heEls.forEach((el, i) =>
@@ -41,7 +42,8 @@ function App() {
         500 + (delays[i] || i * 150)
       )
     );
-    setIsLoading(false);
+    // unmount loader only after curtain animation completes (150ms delay + 1000ms transition + buffer)
+    setTimeout(() => setIsLoading(false), 1200);
   };
 
   return (
