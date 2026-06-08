@@ -30,12 +30,18 @@
 }
 
 .about-inner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
   align-items: center;
   padding: 64px;
-  height: 100%;
+  transform-origin: top right;
+  will-change: transform;
 }
 
 .about-tag {
