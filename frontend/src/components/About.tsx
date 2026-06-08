@@ -6,6 +6,7 @@ import '../styles/about.css';
 export const About = () => {
   const aboutZoneRef = useRef<HTMLDivElement | null>(null);
   const aboutCardRef = useRef<HTMLDivElement | null>(null);
+  const heroInnerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const updateAbout = () => {
@@ -31,6 +32,11 @@ export const About = () => {
       if (heroInner) {
         heroInner.style.opacity = String(Math.max(0, 1 - p * 3));
       }
+
+      if (aboutInnerRef.current) {
+        const scale = w / 100;
+        aboutInnerRef.current.style.transform = `scale(${scale})`;
+      }
     };
 
     const scrollHandler = () => updateAbout();
@@ -44,7 +50,7 @@ export const About = () => {
     <div className="about-zone" ref={aboutZoneRef} id="about">
       <div className="about-sticky">
         <div className="about-card" ref={aboutCardRef}>
-          <div className="about-inner">
+          <div className="about-inner" ref={aboutInnerRef}>
             <div>
               <div className="about-tag">Sobre Nosotros</div>
               <h2>
