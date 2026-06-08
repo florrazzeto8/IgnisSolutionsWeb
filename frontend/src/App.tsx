@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useMouseTracker } from './hooks/useMouseTracker';
 import { useScrollProgress } from './hooks/useScrollProgress';
 import { Loader } from './components/Loader';
@@ -6,6 +6,7 @@ import { Header } from './components/Header';
 import { ParticleSystem } from './components/ParticleSystem';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
+import { LogoCarousel } from './components/LogoCarousel';
 import { Services } from './components/Services';
 import { Process } from './components/Process';
 import { Skills } from './components/Skills';
@@ -19,6 +20,17 @@ function App() {
 
   useMouseTracker();
   useScrollProgress(progressBarRef);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => e.target.classList.toggle('vis', e.isIntersecting));
+      },
+      { threshold: 0.15 }
+    );
+    document.querySelectorAll('.fu').forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   const handleLoaderFinish = () => {
     const heEls = Array.from(document.querySelectorAll('.he'));
@@ -48,6 +60,8 @@ function App() {
       </section>
 
       <About />
+
+      <LogoCarousel />
 
       <Services />
 

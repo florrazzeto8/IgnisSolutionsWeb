@@ -8,6 +8,7 @@ interface SkillBarProps {
 }
 
 const SkillBar: React.FC<SkillBarProps> = ({ label, percentage }) => {
+  const skillRef = useRef<HTMLDivElement | null>(null);
   const fillRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -21,13 +22,13 @@ const SkillBar: React.FC<SkillBarProps> = ({ label, percentage }) => {
       { threshold: 0.15 }
     );
 
-    if (fillRef.current) observer.observe(fillRef.current);
+    if (skillRef.current) observer.observe(skillRef.current);
 
     return () => observer.disconnect();
   }, [percentage]);
 
   return (
-    <div className="skill">
+    <div className="skill" ref={skillRef}>
       <div className="skill-hdr">
         <span>{label}</span>
         <span>{percentage}%</span>

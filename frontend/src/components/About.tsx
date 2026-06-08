@@ -6,7 +6,6 @@ import '../styles/about.css';
 export const About = () => {
   const aboutZoneRef = useRef<HTMLDivElement | null>(null);
   const aboutCardRef = useRef<HTMLDivElement | null>(null);
-  const heroInnerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const updateAbout = () => {
@@ -28,10 +27,9 @@ export const About = () => {
       aboutCardRef.current.style.borderRadius = `${br}px 0 0 ${br}px`;
       aboutCardRef.current.style.boxShadow = `-8px -8px 40px rgba(0,0,0,${shadowAlpha})`;
 
-      if (heroInnerRef.current) {
-        heroInnerRef.current.style.opacity = String(
-          Math.max(0, 1 - p * 3)
-        );
+      const heroInner = document.querySelector<HTMLElement>('.hero-inner');
+      if (heroInner) {
+        heroInner.style.opacity = String(Math.max(0, 1 - p * 3));
       }
     };
 

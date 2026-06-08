@@ -8,7 +8,7 @@ export const Hero = () => {
   useTypewriter(WORDS_TYPEWRITER, typedRef);
 
   return (
-    <section className="hero">
+    <>
       <div className="orb orb-1"></div>
       <div className="orb orb-2"></div>
 
@@ -36,6 +36,6 @@ export const Hero = () => {
       </div>
 
       <div className="scroll-hint he">scroll</div>
-    </section>
+    </>
   );
 };

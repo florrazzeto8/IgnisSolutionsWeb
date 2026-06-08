@@ -39,6 +39,7 @@ export const Process = () => {
     );
 
     stepElements.forEach((el) => observer.observe(el));
+    stepElements[0]?.classList.add('active');
 
     return () => observer.disconnect();
   }, []);
