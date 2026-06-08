@@ -7,6 +7,7 @@ export const About = () => {
   const aboutZoneRef = useRef<HTMLDivElement | null>(null);
   const aboutCardRef = useRef<HTMLDivElement | null>(null);
   const heroInnerRef = useRef<HTMLDivElement | null>(null);
+  const aboutInnerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const updateAbout = () => {
