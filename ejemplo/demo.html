@@ -35,15 +35,18 @@ body {
   background: var(--cyan); border-radius: 50%;
   pointer-events: none; z-index: 9999;
   transform: translate(-50%,-50%);
-  transition: width .25s, height .25s, background .25s;
+  opacity: 0;
+  transition: width .25s, height .25s, background .25s, opacity .5s ease;
 }
 .cursor-ring {
   position: fixed; width: 38px; height: 38px;
   border: 1.5px solid rgba(0,200,255,.45); border-radius: 50%;
   pointer-events: none; z-index: 9998;
   transform: translate(-50%,-50%);
-  transition: width .3s, height .3s, opacity .3s;
+  opacity: 0;
+  transition: width .3s, height .3s, opacity .5s ease;
 }
+.cursor.visible, .cursor-ring.visible { opacity: 1; }
 body:has(a:hover) .cursor,
 body:has(button:hover) .cursor { width: 18px; height: 18px; background: white; }
 body:has(a:hover) .cursor-ring,
@@ -865,6 +868,10 @@ function finishLoader() {
   setTimeout(() => {
     loaderBg.classList.add('exit');
     document.body.style.overflow = '';
+    cur.style.removeProperty('opacity');
+    ring.style.removeProperty('opacity');
+    cur.classList.add('visible');
+    ring.classList.add('visible');
   }, 150);
   const delays = [200, 400, 600, 800, 1000];
   heEls.forEach((el, i) => setTimeout(() => el.classList.add('in'), 500 + (delays[i] || i * 150)));
@@ -873,11 +880,13 @@ function finishLoader() {
 // ── CURSOR ──
 const cur = document.getElementById('cur');
 const ring = document.getElementById('ring');
+cur.style.opacity = '0';
+ring.style.opacity = '0';
 let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.cssText += `left:${mx}px;top:${my}px`; });
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.left = mx + 'px'; cur.style.top = my + 'px'; });
 (function animRing() {
   rx += (mx - rx) * .14; ry += (my - ry) * .14;
-  ring.style.cssText += `left:${rx}px;top:${ry}px`;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
   requestAnimationFrame(animRing);
 })();
 

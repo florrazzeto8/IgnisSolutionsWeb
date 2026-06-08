@@ -16,6 +16,7 @@ import './styles/global.css';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [cursorVisible, setCursorVisible] = useState(false);
   const progressBarRef = useRef<HTMLDivElement | null>(null);
 
   useMouseTracker();
@@ -42,6 +43,7 @@ function App() {
         500 + (delays[i] || i * 150)
       )
     );
+    setTimeout(() => setCursorVisible(true), 150);
     // unmount loader only after curtain animation completes (150ms delay + 1000ms transition + buffer)
     setTimeout(() => setIsLoading(false), 1200);
   };
@@ -51,8 +53,8 @@ function App() {
       {isLoading && <Loader onFinish={handleLoaderFinish} />}
 
       <div ref={progressBarRef} className="progress-bar"></div>
-      <div className="cursor" id="cur"></div>
-      <div className="cursor-ring" id="ring"></div>
+      <div className={`cursor${cursorVisible ? ' visible' : ''}`} id="cur"></div>
+      <div className={`cursor-ring${cursorVisible ? ' visible' : ''}`} id="ring"></div>
 
       <Header />
 
