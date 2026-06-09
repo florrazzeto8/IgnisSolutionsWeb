@@ -574,6 +574,221 @@ nav.scrolled {
 }
 .he.in { opacity: 1; transform: translateY(0); }
 
+/* ── SERVICES INTRO PHRASE ── */
+.services-intro {
+  min-height: 160vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 42vh;              /* phrase at ~42% down — arrives at top after ~42vh scroll */
+  padding-left: 40px;
+  padding-right: 40px;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  /* card style: different background, rounded top */
+  background: var(--navy-2);
+  border-radius: 28px 28px 0 0;
+  border-top: 1px solid rgba(0,200,255,.12);
+  box-shadow: 0 -8px 40px rgba(0,0,0,.35);
+}
+.intro-phrase {
+  font-size: clamp(32px, 4.8vw, 76px); /* bigger text */
+  font-weight: 900;
+  letter-spacing: -2.5px;
+  line-height: 1.2;
+  color: white;
+  white-space: nowrap;
+}
+.intro-phrase .line { display: inline; }
+
+/* Button in phrase: independent fixed size (doesn't scale with phrase) */
+.escribinos-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--cyan);
+  color: #000;
+  border: none;
+  border-radius: 100px;
+  padding: 9px 22px;
+  font-size: clamp(16px, 1.8vw, 24px); /* stays smaller, independent */
+  font-weight: 800;
+  cursor: none;
+  transition: transform .25s, box-shadow .25s;
+  vertical-align: middle;
+  letter-spacing: -.5px;
+  position: relative;
+}
+.escribinos-btn:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 10px 40px rgba(0,200,255,.55);
+}
+
+/* Floating clone */
+.escribinos-float {
+  position: fixed;
+  z-index: 500;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  background: var(--cyan);
+  color: #000;
+  border: none;
+  border-radius: 100px;
+  padding: 11px 22px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  letter-spacing: -.3px;
+  white-space: nowrap;
+  transition: box-shadow .3s;
+}
+.escribinos-float.landed {
+  pointer-events: all;
+  box-shadow: 0 6px 28px rgba(0,200,255,.45);
+  animation: btn-land-pulse .6s ease-out;
+}
+@keyframes btn-land-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(0,200,255,.6); }
+  50%  { box-shadow: 0 0 0 14px rgba(0,200,255,.15); }
+  100% { box-shadow: 0 6px 28px rgba(0,200,255,.45); }
+}
+.escribinos-float:hover { box-shadow: 0 8px 36px rgba(0,200,255,.65); }
+
+/* ── CONTACT MODAL ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6,13,31,.9);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal-box {
+  background: var(--navy-2);
+  border: 1px solid rgba(0,200,255,.2);
+  border-radius: 20px;
+  padding: 48px;
+  width: min(520px, 92vw);
+  position: relative;
+  box-shadow: 0 40px 80px rgba(0,0,0,.6);
+  transform: translateY(30px) scale(.97);
+  transition: transform .4s cubic-bezier(.16,1,.3,1);
+}
+.modal-overlay.open .modal-box { transform: translateY(0) scale(1); }
+.modal-close {
+  position: absolute; top: 18px; right: 18px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 50%;
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,.5);
+  font-size: 18px; cursor: pointer;
+  transition: all .2s;
+}
+.modal-close:hover { background: rgba(255,255,255,.12); color: white; }
+.modal-box h3 {
+  font-size: 26px; font-weight: 800;
+  letter-spacing: -1px; margin-bottom: 6px;
+}
+.modal-box .modal-sub {
+  color: rgba(255,255,255,.45); font-size: 14px; margin-bottom: 30px;
+}
+.form-group { margin-bottom: 14px; }
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 10px;
+  padding: 13px 16px;
+  color: white; font-size: 14px; font-family: inherit;
+  transition: border-color .2s, box-shadow .2s;
+  outline: none; resize: none; box-sizing: border-box;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: rgba(0,200,255,.4);
+  box-shadow: 0 0 0 3px rgba(0,200,255,.08);
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(255,255,255,.28); }
+.modal-box .btn-primary { width: 100%; justify-content: center; margin-top: 8px; font-size: 15px; }
+
+/* ── CARD LINE ART ── */
+.card-art {
+  width: 100%;
+  height: 130px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background: rgba(0,200,255,.025);
+  border: 1px solid rgba(0,200,255,.08);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.card-art svg { width: 100%; height: 100%; display: block; }
+.card .card-icon { display: none; }
+
+/* ── SERVICES HORIZONTAL SCROLL ── */
+.services-zone {
+  position: relative;
+}
+.services-zone .services {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+.services-zone .cards-grid {
+  display: flex !important;
+  flex-direction: row;
+  gap: 24px;
+  width: max-content;
+  margin-top: 40px;
+  will-change: transform;
+}
+.services-zone .card {
+  width: 340px !important;
+  flex-shrink: 0;
+  clip-path: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: border-color .3s, box-shadow .3s !important;
+}
+
+/* progress indicator dots */
+#hscroll-dots {
+  display: flex;
+  gap: 8px;
+  margin-top: 28px;
+  padding-left: 4px;
+}
+.hscroll-dot {
+  width: 24px; height: 3px;
+  border-radius: 2px;
+  background: rgba(255,255,255,.15);
+  transition: background .3s, width .3s;
+}
+.hscroll-dot.active {
+  background: var(--cyan);
+  width: 40px;
+  box-shadow: 0 0 8px var(--cyan);
+}
+
 </style>
 </head>
 <body>
@@ -683,37 +898,167 @@ nav.scrolled {
   </div>
 </div>
 
+<!-- SERVICES INTRO -->
+<section class="services-intro" id="servicesIntro">
+  <div class="intro-phrase">
+    <span class="line">Lo que construimos</span>
+    <button class="escribinos-btn" id="escribinosBtn">
+      Escribinos&nbsp;↗
+    </button>
+    <span class="line">para vos</span>
+  </div>
+</section>
+
 <!-- SERVICES -->
 <section class="services" id="services">
   <div class="sec-tag">Servicios</div>
-  <h2 class="sec-title fu">Lo que <span class="acc">construimos</span><br>para vos</h2>
-  <p class="sec-sub fu d1">De la idea al producto. Cubrimos todo el espectro del desarrollo con equipos dedicados y procesos probados.</p>
-
   <div class="cards-grid">
+
+    <!-- CARD 1: Software -->
     <div class="card" data-tilt>
-      <div class="card-icon">🚀</div>
+      <div class="card-art">
+        <svg viewBox="0 0 300 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="18" y="10" width="264" height="110" rx="8" stroke="#00c8ff" stroke-opacity=".14" stroke-width="1"/>
+          <rect x="18" y="10" width="264" height="26" rx="8" fill="#00c8ff" fill-opacity=".05"/>
+          <line x1="18" y1="36" x2="282" y2="36" stroke="#00c8ff" stroke-opacity=".1" stroke-width="1"/>
+          <circle cx="34" cy="23" r="4" fill="#00c8ff" fill-opacity=".4"/>
+          <circle cx="48" cy="23" r="4" fill="#00c8ff" fill-opacity=".2"/>
+          <circle cx="62" cy="23" r="4" fill="#00c8ff" fill-opacity=".1"/>
+          <text x="28" y="56" font-family="monospace" font-size="11" fill="#00c8ff" fill-opacity=".85">$ npm run build</text>
+          <text x="28" y="73" font-family="monospace" font-size="11" fill="#00c8ff" fill-opacity=".4">  ✓ Built in 1.2s — ready</text>
+          <text x="28" y="90" font-family="monospace" font-size="11" fill="#00c8ff" fill-opacity=".8">$ git push origin main</text>
+          <text x="28" y="107" font-family="monospace" font-size="11" fill="#00c8ff" fill-opacity=".35">  → Everything up-to-date</text>
+          <rect x="28" y="114" width="7" height="2.5" rx="1" fill="#00c8ff" fill-opacity=".8">
+            <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+          </rect>
+        </svg>
+      </div>
       <h3>Desarrollo de Software a Medida</h3>
       <p>Aplicaciones web y mobile robustas, escalables y pensadas para crecer con tu negocio desde el día uno.</p>
       <div class="tags"><span class="t">Web App</span><span class="t">Mobile</span><span class="t">API REST</span><span class="t">Cloud</span></div>
     </div>
+
+    <!-- CARD 2: UX/UI -->
     <div class="card" data-tilt>
-      <div class="card-icon">🎨</div>
+      <div class="card-art">
+        <svg viewBox="0 0 300 130" fill="none">
+          <rect x="80" y="6" width="140" height="112" rx="7" stroke="#00c8ff" stroke-opacity=".18" stroke-width="1"/>
+          <rect x="86" y="20" width="128" height="88" rx="4" fill="#00c8ff" fill-opacity=".025"/>
+          <rect x="80" y="6" width="140" height="20" rx="7" fill="#00c8ff" fill-opacity=".06"/>
+          <circle cx="93" cy="16" r="3.5" fill="#00c8ff" fill-opacity=".35"/>
+          <line x1="110" y1="118" x2="190" y2="118" stroke="#00c8ff" stroke-opacity=".18" stroke-width="2"/>
+          <!-- Navbar on screen -->
+          <rect x="86" y="20" width="128" height="16" rx="3" fill="#00c8ff" fill-opacity=".06"/>
+          <rect x="94" y="25" width="50" height="5" rx="2" fill="#00c8ff" fill-opacity=".18"/>
+          <rect x="190" y="25" width="18" height="5" rx="2" fill="#00c8ff" fill-opacity=".1"/>
+          <!-- Hero block -->
+          <rect x="94" y="44" width="112" height="28" rx="4" fill="#00c8ff" fill-opacity=".05" stroke="#00c8ff" stroke-opacity=".12" stroke-width=".8"/>
+          <rect x="100" y="50" width="55" height="6" rx="2" fill="#00c8ff" fill-opacity=".22"/>
+          <rect x="100" y="60" width="36" height="5" rx="2" fill="#00c8ff" fill-opacity=".1"/>
+          <!-- Card row -->
+          <rect x="94" y="80" width="32" height="22" rx="3" stroke="#00c8ff" stroke-opacity=".16" stroke-width=".8"/>
+          <rect x="132" y="80" width="32" height="22" rx="3" stroke="#00c8ff" stroke-opacity=".2" stroke-width=".8" fill="#00c8ff" fill-opacity=".04"/>
+          <rect x="170" y="80" width="32" height="22" rx="3" stroke="#00c8ff" stroke-opacity=".16" stroke-width=".8"/>
+          <!-- Cursor -->
+          <path d="M232 55 L240 75 L244 68 L254 74 L247 57Z" fill="#00c8ff" fill-opacity=".45" stroke="#00c8ff" stroke-opacity=".6" stroke-width=".8"/>
+          <!-- Grid guides -->
+          <line x1="20" y1="40" x2="72" y2="40" stroke="#00c8ff" stroke-opacity=".06" stroke-width=".8" stroke-dasharray="3 3"/>
+          <line x1="20" y1="70" x2="72" y2="70" stroke="#00c8ff" stroke-opacity=".06" stroke-width=".8" stroke-dasharray="3 3"/>
+          <line x1="20" y1="100" x2="72" y2="100" stroke="#00c8ff" stroke-opacity=".06" stroke-width=".8" stroke-dasharray="3 3"/>
+        </svg>
+      </div>
       <h3>UX/UI & Product Design</h3>
       <p>Interfaces que convierten visitas en clientes y simplifican flujos complejos en experiencias que la gente ama.</p>
       <div class="tags"><span class="t">Research</span><span class="t">Figma</span><span class="t">Design System</span></div>
     </div>
+
+    <!-- CARD 3: AI/Data -->
     <div class="card" data-tilt>
-      <div class="card-icon">🤖</div>
+      <div class="card-art">
+        <svg viewBox="0 0 300 130" fill="none">
+          <!-- Input nodes -->
+          <circle cx="35" cy="28" r="7" stroke="#00c8ff" stroke-opacity=".4" stroke-width="1.5"/>
+          <circle cx="35" cy="65" r="7" stroke="#00c8ff" stroke-opacity=".4" stroke-width="1.5"/>
+          <circle cx="35" cy="102" r="7" stroke="#00c8ff" stroke-opacity=".3" stroke-width="1.5"/>
+          <!-- Hidden layer -->
+          <circle cx="120" cy="18"  r="7" stroke="#00c8ff" stroke-opacity=".3" stroke-width="1.5"/>
+          <circle cx="120" cy="50"  r="8" stroke="#00c8ff" stroke-opacity=".85" stroke-width="1.5" fill="#00c8ff" fill-opacity=".07"/>
+          <circle cx="120" cy="82"  r="7" stroke="#00c8ff" stroke-opacity=".35" stroke-width="1.5"/>
+          <circle cx="120" cy="112" r="7" stroke="#00c8ff" stroke-opacity=".2" stroke-width="1.5"/>
+          <!-- Output layer -->
+          <circle cx="210" cy="35"  r="7" stroke="#00c8ff" stroke-opacity=".5" stroke-width="1.5"/>
+          <circle cx="210" cy="75"  r="8" stroke="#00c8ff" stroke-opacity=".75" stroke-width="1.5" fill="#00c8ff" fill-opacity=".06"/>
+          <circle cx="210" cy="110" r="7" stroke="#00c8ff" stroke-opacity=".3" stroke-width="1.5"/>
+          <!-- Output -->
+          <circle cx="275" cy="65" r="9" stroke="#00c8ff" stroke-opacity=".8" stroke-width="1.8" fill="#00c8ff" fill-opacity=".1"/>
+          <!-- Connections I→H -->
+          <line x1="42" y1="28"  x2="113" y2="18"  stroke="#00c8ff" stroke-opacity=".1"  stroke-width=".8"/>
+          <line x1="42" y1="28"  x2="113" y2="50"  stroke="#00c8ff" stroke-opacity=".2"  stroke-width=".8"/>
+          <line x1="42" y1="65"  x2="113" y2="50"  stroke="#00c8ff" stroke-opacity=".18" stroke-width=".8"/>
+          <line x1="42" y1="65"  x2="113" y2="82"  stroke="#00c8ff" stroke-opacity=".12" stroke-width=".8"/>
+          <line x1="42" y1="102" x2="113" y2="82"  stroke="#00c8ff" stroke-opacity=".14" stroke-width=".8"/>
+          <line x1="42" y1="102" x2="113" y2="112" stroke="#00c8ff" stroke-opacity=".1"  stroke-width=".8"/>
+          <!-- Connections H→O -->
+          <line x1="127" y1="50"  x2="203" y2="35"  stroke="#00c8ff" stroke-opacity=".14" stroke-width=".8"/>
+          <line x1="127" y1="50"  x2="203" y2="75"  stroke="#00c8ff" stroke-opacity=".32" stroke-width="1.2"/>
+          <line x1="127" y1="82"  x2="203" y2="75"  stroke="#00c8ff" stroke-opacity=".16" stroke-width=".8"/>
+          <line x1="127" y1="18"  x2="203" y2="35"  stroke="#00c8ff" stroke-opacity=".1"  stroke-width=".8"/>
+          <line x1="127" y1="112" x2="203" y2="110" stroke="#00c8ff" stroke-opacity=".1"  stroke-width=".8"/>
+          <!-- Connections O→Out -->
+          <line x1="217" y1="35"  x2="266" y2="65" stroke="#00c8ff" stroke-opacity=".2"  stroke-width=".8"/>
+          <line x1="217" y1="75"  x2="266" y2="65" stroke="#00c8ff" stroke-opacity=".4"  stroke-width="1.2"/>
+          <line x1="217" y1="110" x2="266" y2="65" stroke="#00c8ff" stroke-opacity=".12" stroke-width=".8"/>
+          <!-- Pulse ring -->
+          <circle cx="120" cy="50" r="8" stroke="#00c8ff" stroke-opacity=".5" stroke-width="1">
+            <animate attributeName="r" values="8;18;8" dur="2.5s" repeatCount="indefinite"/>
+            <animate attributeName="stroke-opacity" values=".5;0;.5" dur="2.5s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </div>
       <h3>Inteligencia Artificial & Data</h3>
       <p>Soluciones AI/ML que automatizan procesos, predicen comportamientos y convierten datos en ventaja competitiva.</p>
       <div class="tags"><span class="t">ML</span><span class="t">LLMs</span><span class="t">Data Pipeline</span><span class="t">Analytics</span></div>
     </div>
+
+    <!-- CARD 4: Cloud/DevOps -->
     <div class="card" data-tilt>
-      <div class="card-icon">☁️</div>
+      <div class="card-art">
+        <svg viewBox="0 0 300 130" fill="none">
+          <!-- Pipeline top -->
+          <circle cx="55"  cy="22" r="5" stroke="#00c8ff" stroke-opacity=".3" stroke-width="1.2"/>
+          <line x1="60" y1="22" x2="80" y2="22" stroke="#00c8ff" stroke-opacity=".2" stroke-width="1" stroke-dasharray="3 2"/>
+          <circle cx="86"  cy="22" r="5" stroke="#00c8ff" stroke-opacity=".45" stroke-width="1.2"/>
+          <line x1="91" y1="22" x2="111" y2="22" stroke="#00c8ff" stroke-opacity=".25" stroke-width="1" stroke-dasharray="3 2"/>
+          <circle cx="117" cy="22" r="5" fill="#00c8ff" fill-opacity=".1" stroke="#00c8ff" stroke-opacity=".55" stroke-width="1.2"/>
+          <text x="46"  y="13" font-family="monospace" font-size="7" fill="#00c8ff" fill-opacity=".4">build</text>
+          <text x="78"  y="13" font-family="monospace" font-size="7" fill="#00c8ff" fill-opacity=".4">test</text>
+          <text x="107" y="13" font-family="monospace" font-size="7" fill="#00c8ff" fill-opacity=".55">deploy ✓</text>
+          <!-- Cloud shape -->
+          <path d="M75 88 Q73 100 87 102 L215 102 Q228 102 228 90 Q230 78 218 75 Q220 62 207 58 Q205 43 190 43 Q180 43 175 51 Q168 41 152 46 Q136 46 131 58 Q115 56 111 68 Q97 68 93 80 Q87 84 75 88Z"
+                stroke="#00c8ff" stroke-opacity=".2" stroke-width="1.3" fill="#00c8ff" fill-opacity=".04"/>
+          <!-- Dashed drops -->
+          <line x1="120" y1="102" x2="75"  y2="118" stroke="#00c8ff" stroke-opacity=".18" stroke-width=".8" stroke-dasharray="4 3"/>
+          <line x1="152" y1="102" x2="152" y2="118" stroke="#00c8ff" stroke-opacity=".22" stroke-width=".8" stroke-dasharray="4 3"/>
+          <line x1="184" y1="102" x2="228" y2="118" stroke="#00c8ff" stroke-opacity=".18" stroke-width=".8" stroke-dasharray="4 3"/>
+          <!-- Servers -->
+          <rect x="48"  y="118" width="52" height="8" rx="3" stroke="#00c8ff" stroke-opacity=".22" stroke-width="1"/>
+          <rect x="126" y="118" width="52" height="8" rx="3" stroke="#00c8ff" stroke-opacity=".3"  stroke-width="1" fill="#00c8ff" fill-opacity=".03"/>
+          <rect x="204" y="118" width="52" height="8" rx="3" stroke="#00c8ff" stroke-opacity=".22" stroke-width="1"/>
+          <!-- Status lights -->
+          <circle cx="60"  cy="122" r="2" fill="#00c8ff" fill-opacity=".5">
+            <animate attributeName="fill-opacity" values=".5;1;.5" dur="1.8s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="152" cy="122" r="2" fill="#00c8ff" fill-opacity=".9"/>
+          <circle cx="216" cy="122" r="2" fill="#00c8ff" fill-opacity=".3">
+            <animate attributeName="fill-opacity" values=".3;.9;.3" dur="2.4s" begin=".7s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </div>
       <h3>Cloud & DevOps</h3>
       <p>Infraestructura moderna, CI/CD robusto y arquitecturas con 99.9% de disponibilidad para que no pares nunca.</p>
       <div class="tags"><span class="t">AWS</span><span class="t">Docker</span><span class="t">Kubernetes</span><span class="t">IaC</span></div>
     </div>
+
   </div>
 </section>
 
@@ -835,6 +1180,30 @@ nav.scrolled {
     <a href="#" class="btn-outline">Ver portfolio</a>
   </div>
 </section>
+
+<!-- CONTACT MODAL -->
+<div id="contactModal" class="modal-overlay">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">✕</button>
+    <h3>Hablemos de tu proyecto</h3>
+    <p class="modal-sub">Completá el formulario y te respondemos en menos de 24hs.</p>
+    <form id="contactForm" onsubmit="return false">
+      <div class="form-group">
+        <input type="text" placeholder="Tu nombre completo" required>
+      </div>
+      <div class="form-group">
+        <input type="email" placeholder="Email de contacto" required>
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="Empresa / Proyecto">
+      </div>
+      <div class="form-group">
+        <textarea placeholder="Contanos sobre tu idea..." rows="4"></textarea>
+      </div>
+      <button type="submit" class="btn-primary">Enviar mensaje →</button>
+    </form>
+  </div>
+</div>
 
 <script>
 // ── LOADER ──
@@ -1072,6 +1441,145 @@ const stepsIO = new IntersectionObserver(entries => {
   });
 }, { threshold: .65 });
 document.querySelectorAll('.step').forEach(s => stepsIO.observe(s));
+
+// ── FLOATING ESCRIBINOS BUTTON ──
+;(function() {
+  const introSec    = document.getElementById('servicesIntro');
+  const origBtn     = document.getElementById('escribinosBtn');
+  const introPhrase = introSec ? introSec.querySelector('.intro-phrase') : null;
+  if (!introSec || !origBtn || !introPhrase) return;
+
+  // floating clone
+  const fBtn = document.createElement('button');
+  fBtn.className = 'escribinos-float';
+  fBtn.innerHTML = 'Escribinos&nbsp;↗';
+  document.body.appendChild(fBtn);
+
+  let landed = false;
+  let savedX = 0, savedY = 0, savedFS = 40;
+
+  function updateBtn() {
+    const pr  = introPhrase.getBoundingClientRect(); // actual phrase position
+    const vh  = window.innerHeight;
+    const vw  = window.innerWidth;
+    const obr = origBtn.getBoundingClientRect();
+
+    // Phrase not at top yet — keep button in phrase
+    if (pr.top > 8) {
+      savedX  = obr.left;
+      savedY  = obr.top;
+      savedFS = parseFloat(getComputedStyle(origBtn).fontSize);
+      origBtn.style.opacity = '1';
+      fBtn.style.display = 'none';
+      landed = false;
+      return;
+    }
+
+    // Phrase hit top → float starts
+    origBtn.style.opacity = '0';
+    fBtn.style.display = 'flex';
+
+    const startX = savedX;
+    const startY = savedY;
+    const endX   = vw - 210;
+    const endY   = 90;
+
+    // scrolledPast = how far the phrase has gone past the top
+    const scrolledPast = -pr.top;
+    const range = vh * 1.0;
+    const p  = Math.max(0, Math.min(1, scrolledPast / range));
+    const ep = 1 - Math.pow(1 - p, 3);
+
+    fBtn.style.left     = (startX + (endX - startX) * ep) + 'px';
+    fBtn.style.top      = (startY + (endY - startY) * ep) + 'px';
+    fBtn.style.opacity  = String(0.4 + 0.6 * ep);
+    // shrink progressively: from original size → small
+    const fs  = savedFS + (18 - savedFS) * ep;
+    const padX = 24 + (20 - 24) * ep;
+    const padY = 10 + (10 - 10) * ep;
+    fBtn.style.fontSize = fs + 'px';
+    fBtn.style.padding  = `${padY}px ${padX}px`;
+
+    if (p >= 0.95 && !landed) {
+      landed = true;
+      fBtn.classList.add('landed');
+    } else if (p < 0.95 && landed) {
+      landed = false;
+      fBtn.classList.remove('landed');
+    }
+  }
+
+  window.addEventListener('scroll', updateBtn, { passive: true });
+  updateBtn();
+
+  function openModal() {
+    document.getElementById('contactModal').classList.add('open');
+  }
+  fBtn.addEventListener('click', openModal);
+  origBtn.addEventListener('click', openModal);
+})();
+
+// ── CONTACT MODAL ──
+;(function() {
+  const modal    = document.getElementById('contactModal');
+  const closeBtn = document.getElementById('modalClose');
+  if (!modal) return;
+  const close = () => modal.classList.remove('open');
+  closeBtn.addEventListener('click', close);
+  modal.addEventListener('click', e => { if (e.target === modal) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
+
+// ── SERVICES HORIZONTAL SCROLL ──
+;(function() {
+  const sec = document.getElementById('services');
+  if (!sec) return;
+
+  const grid = sec.querySelector('.cards-grid');
+  const cards = Array.from(grid.querySelectorAll('.card'));
+
+  // Wrap section in scroll zone
+  const zone = document.createElement('div');
+  zone.className = 'services-zone';
+  sec.parentNode.insertBefore(zone, sec);
+  zone.appendChild(sec);
+
+  // Progress dots
+  const dotsWrap = document.createElement('div');
+  dotsWrap.id = 'hscroll-dots';
+  cards.forEach(() => {
+    const d = document.createElement('div');
+    d.className = 'hscroll-dot';
+    dotsWrap.appendChild(d);
+  });
+  sec.appendChild(dotsWrap);
+  const dots = Array.from(dotsWrap.children);
+
+  // Set zone height to create scroll room
+  function setHeight() {
+    const slideW = Math.max(0, grid.scrollWidth - window.innerWidth + 180);
+    zone.style.height = window.innerHeight + slideW * 1.4 + 'px';
+  }
+  setHeight();
+  window.addEventListener('resize', () => { setHeight(); tick(); });
+
+  function tick() {
+    const zr          = zone.getBoundingClientRect();
+    const totalScroll = zone.offsetHeight - window.innerHeight;
+    const p           = Math.max(0, Math.min(1, -zr.top / totalScroll));
+
+    const maxSlide = Math.max(0, grid.scrollWidth - window.innerWidth + 180);
+    grid.style.transform = `translateX(${-p * maxSlide}px)`;
+
+    // active dot = which card is most centered
+    const cardW   = cards[0] ? cards[0].offsetWidth + 24 : 364;
+    const active  = Math.min(cards.length - 1, Math.round(p * (cards.length - 1)));
+    dots.forEach((d, i) => d.classList.toggle('active', i === active));
+  }
+
+  window.addEventListener('scroll', tick, { passive: true });
+  tick();
+})();
 </script>
 </body>
 </html>
