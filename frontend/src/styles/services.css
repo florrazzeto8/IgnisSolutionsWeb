@@ -132,7 +132,6 @@
   padding: 100px 64px;
   position: relative;
   z-index: 10;
-  background: var(--navy);
 }
 
 .sec-tag {
