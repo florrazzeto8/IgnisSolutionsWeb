@@ -6,30 +6,16 @@ body:has(nav a:hover) #ring {
 
 /* NAV */
 nav {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 5;
   padding: 22px 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: padding 0.35s, background 0.35s, border-color 0.35s,
-    transform 0.35s ease;
   border-bottom: 1px solid transparent;
-}
-
-nav.hidden {
-  transform: translateY(-100%) !important;
-}
-
-nav.scrolled {
-  padding: 14px 64px;
-  background: rgba(6, 13, 31, 0.88);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-color: rgba(0, 200, 255, 0.08);
 }
 
 .nav-logo {

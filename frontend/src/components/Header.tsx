@@ -1,13 +1,8 @@
-import { useRef } from 'react';
-import { useScrollNavigation } from '../hooks/useScrollNavigation';
 import '../styles/header.css';
 
 export const Header = () => {
-  const navRef = useRef<HTMLElement | null>(null);
-  useScrollNavigation(navRef);
-
   return (
-    <nav ref={navRef} className="he">
+    <nav className="he">
       <a href="#" className="nav-logo">
         IGNIS <span>Solutions.</span>
       </a>

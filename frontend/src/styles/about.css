@@ -22,7 +22,7 @@
   right: 0;
   width: 44vw;
   height: 40px;
-  background: transparent;
+  background: var(--navy);
   border-radius: 16px 0 0 0;
   pointer-events: all;
   will-change: width, height, border-radius;
