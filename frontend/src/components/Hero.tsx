@@ -29,9 +29,6 @@ export const Hero = () => {
           <a href="#" className="btn-primary">
             Ver casos de éxito <span>→</span>
           </a>
-          <a href="#" className="btn-outline">
-            Hablá con el equipo
-          </a>
         </div>
       </div>
 

@@ -157,7 +157,7 @@
   border: 1px solid rgba(0, 200, 255, 0.2);
   border-radius: 20px;
   padding: 48px;
-  width: min(520px, 92vw);
+  width: min(860px, 92vw);
   position: relative;
   box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
   transform: translateY(30px) scale(0.97);
@@ -255,4 +255,107 @@
 .modal-box .submit-btn:hover {
   opacity: 0.88;
   transform: translateY(-1px);
+}
+
+/* ── MODAL TWO-COLUMN LAYOUT ── */
+.modal-columns {
+  display: flex;
+  gap: 0;
+}
+
+.modal-form-col {
+  flex: 1 1 0;
+  min-width: 0;
+  padding-right: 40px;
+}
+
+.modal-social-col {
+  flex: 0 0 240px;
+  border-left: 1px solid rgba(0, 200, 255, 0.15);
+  padding-left: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.social-heading {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--cyan);
+  margin: 0 0 32px 0;
+  line-height: 1.5;
+}
+
+/* ── SOCIAL ICONS (efecto icono.css) ── */
+.social-icons-list {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-icons-list a {
+  width: 64px;
+  height: 64px;
+  background: #fff;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+}
+
+.social-icons-list a .soc-icon {
+  position: relative;
+  z-index: 3;
+  color: #262626;
+  display: flex;
+  transition: color 0.5s, transform 0.5s;
+}
+
+.social-icons-list a:hover .soc-icon {
+  color: #fff;
+  transform: rotateY(360deg);
+}
+
+.social-icons-list a::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: top 0.5s;
+  z-index: 2;
+}
+
+.social-icons-list a:hover::before {
+  top: 0;
+}
+
+.social-icons-list .whatsapp-link::before { background: #25d366; }
+.social-icons-list .linkedin-link::before { background: #0077b5; }
+
+/* ── RESPONSIVE: apilar columnas en mobile ── */
+@media (max-width: 640px) {
+  .modal-columns {
+    flex-direction: column;
+  }
+
+  .modal-social-col {
+    flex: unset;
+    border-left: none;
+    border-top: 1px solid rgba(0, 200, 255, 0.15);
+    padding-left: 0;
+    padding-top: 32px;
+    margin-top: 32px;
+  }
 }

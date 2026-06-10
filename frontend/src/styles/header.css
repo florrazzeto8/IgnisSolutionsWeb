@@ -1,6 +1,8 @@
 /* hide custom cursor over nav links */
 body:has(nav a:hover) #cur,
-body:has(nav a:hover) #ring {
+body:has(nav a:hover) #ring,
+body:has(nav button:hover) #cur,
+body:has(nav button:hover) #ring {
   opacity: 0 !important;
 }
 
@@ -10,7 +12,7 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 5;
+  z-index: 20;
   padding: 22px 64px;
   display: flex;
   align-items: center;
@@ -24,6 +26,7 @@ nav {
   letter-spacing: -0.5px;
   color: white;
   text-decoration: none;
+  cursor: none;
 }
 
 .nav-logo span {
@@ -46,18 +49,30 @@ nav {
   border: 1px solid transparent;
   border-radius: 6px;
   overflow: hidden;
-  background: linear-gradient(rgba(0, 200, 255, 0.9) 0 0) no-repeat
-    calc(200% - var(--p, 0%)) 100% / 200% var(--p, 0.08em);
-  transition: 0.3s var(--t, 0s),
-    background-position 0.3s calc(0.3s - var(--t, 0s)),
-    color 0.25s, border-color 0.25s;
+  cursor: none;
+  isolation: isolate;
+  transition: color 0.25s, border-color 0.25s;
+}
+
+.nav-links a:not(.btn-cta)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 200, 255, 0.9);
+  border-radius: 6px;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+  z-index: -1;
 }
 
 .nav-links a:not(.btn-cta):hover {
-  --p: 100%;
-  --t: 0.3s;
   color: #060d1f;
   border-color: rgba(0, 200, 255, 0.5);
+}
+
+.nav-links a:not(.btn-cta):hover::before {
+  transform: scaleY(1);
 }
 
 .btn-cta {
@@ -71,15 +86,29 @@ nav {
   letter-spacing: 0.5px;
   text-decoration: none;
   overflow: hidden;
-  background: linear-gradient(var(--cyan) 0 0) no-repeat
-    calc(200% - var(--p, 0%)) 100% / 200% var(--p, 0.2em);
-  transition: 0.3s var(--t, 0s),
-    background-position 0.3s calc(0.3s - var(--t, 0s));
+  background: transparent;
+  font-family: inherit;
+  cursor: none;
+  isolation: isolate;
+  transition: color 0.25s, box-shadow 0.25s;
+}
+
+.btn-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--cyan);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+  z-index: -1;
 }
 
 .btn-cta:hover {
-  --p: 100%;
-  --t: 0.3s;
   color: #060d1f;
   box-shadow: 0 6px 24px rgba(0, 200, 255, 0.35);
+}
+
+.btn-cta:hover::before {
+  transform: scaleY(1);
 }
