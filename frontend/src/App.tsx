@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { useMouseTracker } from './hooks/useMouseTracker';
-import { useScrollProgress } from './hooks/useScrollProgress';
 import { Loader } from './components/Loader';
 import { Header } from './components/Header';
 import { ParticleSystem } from './components/ParticleSystem';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { TransformSection } from './components/TransformSection';
+import { ServicesIntro } from './components/ServicesIntro';
 import { LogoCarousel } from './components/LogoCarousel';
 import { Services } from './components/Services';
 import { Process } from './components/Process';
@@ -18,10 +18,8 @@ import './styles/global.css';
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [cursorVisible, setCursorVisible] = useState(false);
-  const progressBarRef = useRef<HTMLDivElement | null>(null);
 
   useMouseTracker();
-  useScrollProgress(progressBarRef);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -53,7 +51,6 @@ function App() {
     <>
       {isLoading && <Loader onFinish={handleLoaderFinish} />}
 
-      <div ref={progressBarRef} className="progress-bar"></div>
       <div className={`cursor${cursorVisible ? ' visible' : ''}`} id="cur"></div>
       <div className={`cursor-ring${cursorVisible ? ' visible' : ''}`} id="ring"></div>
 
@@ -68,9 +65,11 @@ function App() {
 
       <TransformSection />
 
-      <LogoCarousel />
+      <ServicesIntro />
 
       <Services />
+
+      <LogoCarousel />
 
       <Process />
 

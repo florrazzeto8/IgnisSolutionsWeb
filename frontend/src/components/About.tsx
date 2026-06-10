@@ -45,11 +45,18 @@ export const About = () => {
       }
     };
 
-    const scrollHandler = () => updateAbout();
+    let rafId: number | null = null;
+    const scrollHandler = () => {
+      if (rafId !== null) return;
+      rafId = requestAnimationFrame(() => { updateAbout(); rafId = null; });
+    };
     window.addEventListener('scroll', scrollHandler, { passive: true });
     updateAbout();
 
-    return () => window.removeEventListener('scroll', scrollHandler);
+    return () => {
+      window.removeEventListener('scroll', scrollHandler);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (

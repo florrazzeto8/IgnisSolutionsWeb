@@ -3,18 +3,18 @@ import { useEffect, useRef } from 'react';
 export const useScrollNavigation = (
   navRef: React.RefObject<HTMLElement | null>
 ) => {
-  const lastScrollYRef = useRef(0);
+  const hiddenRef = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (navRef.current) {
-        const scrolled = window.scrollY > 60;
-        const isHidden = window.scrollY > lastScrollYRef.current && window.scrollY > 100;
+      if (!navRef.current || hiddenRef.current) return;
 
-        navRef.current.classList.toggle('scrolled', scrolled);
-        navRef.current.classList.toggle('hidden', isHidden);
+      const scrolled = window.scrollY > 60;
+      navRef.current.classList.toggle('scrolled', scrolled);
 
-        lastScrollYRef.current = window.scrollY;
+      if (window.scrollY >= window.innerHeight) {
+        hiddenRef.current = true;
+        navRef.current.classList.add('hidden');
       }
     };
 

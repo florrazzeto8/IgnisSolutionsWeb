@@ -1,3 +1,78 @@
+/* ── SERVICES HORIZONTAL SCROLL ZONE ── */
+.services-zone {
+  position: relative;
+}
+
+.services-zone .services {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
+.services-zone .cards-grid {
+  display: flex !important;
+  flex-direction: row;
+  gap: 24px;
+  width: max-content;
+  margin-top: 40px;
+  will-change: transform;
+}
+
+.services-zone .card {
+  width: 340px !important;
+  flex-shrink: 0;
+  clip-path: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: border-color 0.3s, box-shadow 0.3s !important;
+}
+
+/* Progress dots */
+#hscroll-dots {
+  display: flex;
+  gap: 8px;
+  margin-top: 28px;
+  padding-left: 4px;
+}
+
+.hscroll-dot {
+  width: 24px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  transition: background 0.3s, width 0.3s;
+}
+
+.hscroll-dot.active {
+  background: #00c8ff;
+  width: 40px;
+  box-shadow: 0 0 8px #00c8ff;
+}
+
+/* Card line art */
+.card-art {
+  width: 100%;
+  height: 130px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background: rgba(0, 200, 255, 0.025);
+  border: 1px solid rgba(0, 200, 255, 0.08);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.card-art svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 /* SERVICES */
 .services {
   padding: 100px 64px;
