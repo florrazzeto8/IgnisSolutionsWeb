@@ -2,148 +2,437 @@ import { useEffect, useRef } from 'react';
 import { SERVICES } from '../utils/constants';
 import '../styles/services.css';
 
-const CARD_ARTS = [
-  // Card 1: Software – terminal SVG
-  <svg viewBox="0 0 300 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="18" y="10" width="264" height="110" rx="8" stroke="#00c8ff" strokeOpacity=".14" strokeWidth="1"/>
-    <rect x="18" y="10" width="264" height="26" rx="8" fill="#00c8ff" fillOpacity=".05"/>
-    <line x1="18" y1="36" x2="282" y2="36" stroke="#00c8ff" strokeOpacity=".1" strokeWidth="1"/>
-    <circle cx="34" cy="23" r="4" fill="#00c8ff" fillOpacity=".4"/>
-    <circle cx="48" cy="23" r="4" fill="#00c8ff" fillOpacity=".2"/>
-    <circle cx="62" cy="23" r="4" fill="#00c8ff" fillOpacity=".1"/>
-    <text x="28" y="56" fontFamily="monospace" fontSize="11" fill="#00c8ff" fillOpacity=".85">$ npm run build</text>
-    <text x="28" y="73" fontFamily="monospace" fontSize="11" fill="#00c8ff" fillOpacity=".4">  ✓ Built in 1.2s — ready</text>
-    <text x="28" y="90" fontFamily="monospace" fontSize="11" fill="#00c8ff" fillOpacity=".8">$ git push origin main</text>
-    <text x="28" y="107" fontFamily="monospace" fontSize="11" fill="#00c8ff" fillOpacity=".35">  → Everything up-to-date</text>
-    <rect x="28" y="114" width="7" height="2.5" rx="1" fill="#00c8ff" fillOpacity=".8">
+const PANEL_ARTS = [
+  // Panel 1: Desarrollo de Software — terminal isométrico + engranajes
+  <svg viewBox="0 0 500 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="sg1" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#00c8ff" stopOpacity="0.18"/>
+        <stop offset="100%" stopColor="#00c8ff" stopOpacity="0"/>
+      </radialGradient>
+      <filter id="glow1">
+        <feGaussianBlur stdDeviation="3" result="blur"/>
+        <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+      </filter>
+    </defs>
+    {/* Glow background */}
+    <ellipse cx="250" cy="190" rx="200" ry="160" fill="url(#sg1)"/>
+    {/* Main terminal window */}
+    <rect x="60" y="60" width="280" height="200" rx="12" fill="#020d18" stroke="#00c8ff" strokeOpacity=".25" strokeWidth="1.2"/>
+    <rect x="60" y="60" width="280" height="32" rx="12" fill="#00c8ff" fillOpacity=".07"/>
+    <rect x="60" y="80" width="280" height="12" fill="#00c8ff" fillOpacity=".03"/>
+    <circle cx="82" cy="76" r="5" fill="#ff5f57" fillOpacity=".7"/>
+    <circle cx="98" cy="76" r="5" fill="#ffbd2e" fillOpacity=".7"/>
+    <circle cx="114" cy="76" r="5" fill="#28ca41" fillOpacity=".7"/>
+    <line x1="60" y1="92" x2="340" y2="92" stroke="#00c8ff" strokeOpacity=".1" strokeWidth="1"/>
+    {/* Code lines */}
+    <text x="80" y="118" fontFamily="monospace" fontSize="11" fill="#00c8ff" fillOpacity=".9">$ git clone repo.git</text>
+    <text x="80" y="136" fontFamily="monospace" fontSize="11" fill="#00c8ff" fillOpacity=".45">  Cloning into 'proyecto'...</text>
+    <text x="80" y="154" fontFamily="monospace" fontSize="11" fill="#00c8ff" fillOpacity=".9">$ npm install</text>
+    <text x="80" y="172" fontFamily="monospace" fontSize="11" fill="#00c8ff" fillOpacity=".4">  added 1243 packages</text>
+    <text x="80" y="190" fontFamily="monospace" fontSize="11" fill="#00c8ff" fillOpacity=".9">$ npm run build</text>
+    <text x="80" y="208" fontFamily="monospace" fontSize="11" fill="#28ca41" fillOpacity=".85">  ✓ Built in 0.8s</text>
+    <text x="80" y="226" fontFamily="monospace" fontSize="11" fill="#00c8ff" fillOpacity=".9">$ _</text>
+    <rect x="80" y="232" width="8" height="3" rx="1" fill="#00c8ff" fillOpacity=".9">
       <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
     </rect>
+    {/* Floating gear large */}
+    <g transform="translate(370,100)" filter="url(#glow1)">
+      <circle cx="0" cy="0" r="28" stroke="#00c8ff" strokeOpacity=".35" strokeWidth="2" fill="#00c8ff" fillOpacity=".04"/>
+      <circle cx="0" cy="0" r="11" stroke="#00c8ff" strokeOpacity=".5" strokeWidth="1.5" fill="none"/>
+      {[0,45,90,135,180,225,270,315].map((a,i)=>(
+        <rect key={i} x="-4" y="-36" width="8" height="12" rx="2"
+          fill="#00c8ff" fillOpacity=".3" stroke="#00c8ff" strokeOpacity=".4" strokeWidth=".8"
+          transform={`rotate(${a})`}/>
+      ))}
+      <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="12s" additive="sum" repeatCount="indefinite"/>
+    </g>
+    {/* Floating gear small */}
+    <g transform="translate(410,170)">
+      <circle cx="0" cy="0" r="16" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1.5" fill="#00c8ff" fillOpacity=".02"/>
+      <circle cx="0" cy="0" r="6" stroke="#00c8ff" strokeOpacity=".3" strokeWidth="1" fill="none"/>
+      {[0,60,120,180,240,300].map((a,i)=>(
+        <rect key={i} x="-2.5" y="-22" width="5" height="8" rx="1.5"
+          fill="#00c8ff" fillOpacity=".2" strokeWidth=".5"
+          transform={`rotate(${a})`}/>
+      ))}
+      <animateTransform attributeName="transform" type="rotate" from="360 0 0" to="0 0 0" dur="8s" additive="sum" repeatCount="indefinite"/>
+    </g>
+    {/* Floating code fragment */}
+    <rect x="360" y="220" width="110" height="60" rx="8" fill="#020d18" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1"/>
+    <text x="372" y="241" fontFamily="monospace" fontSize="9" fill="#00c8ff" fillOpacity=".6">function build()</text>
+    <text x="372" y="256" fontFamily="monospace" fontSize="9" fill="#00c8ff" fillOpacity=".4">  return output</text>
+    <text x="372" y="271" fontFamily="monospace" fontSize="9" fill="#00c8ff" fillOpacity=".6">{'}'}</text>
+    {/* Connector line */}
+    <line x1="340" y1="160" x2="360" y2="160" stroke="#00c8ff" strokeOpacity=".15" strokeWidth="1" strokeDasharray="4 3"/>
+    {/* Bottom dots */}
+    <circle cx="150" cy="310" r="3" fill="#00c8ff" fillOpacity=".4"/>
+    <circle cx="200" cy="320" r="2" fill="#00c8ff" fillOpacity=".2"/>
+    <circle cx="310" cy="300" r="2.5" fill="#00c8ff" fillOpacity=".3"/>
+    <circle cx="370" cy="315" r="2" fill="#00c8ff" fillOpacity=".15"/>
   </svg>,
 
-  // Card 2: UX/UI – wireframe SVG
-  <svg viewBox="0 0 300 130" fill="none">
-    <rect x="80" y="6" width="140" height="112" rx="7" stroke="#00c8ff" strokeOpacity=".18" strokeWidth="1"/>
-    <rect x="86" y="20" width="128" height="88" rx="4" fill="#00c8ff" fillOpacity=".025"/>
-    <rect x="80" y="6" width="140" height="20" rx="7" fill="#00c8ff" fillOpacity=".06"/>
-    <circle cx="93" cy="16" r="3.5" fill="#00c8ff" fillOpacity=".35"/>
-    <line x1="110" y1="118" x2="190" y2="118" stroke="#00c8ff" strokeOpacity=".18" strokeWidth="2"/>
-    <rect x="86" y="20" width="128" height="16" rx="3" fill="#00c8ff" fillOpacity=".06"/>
-    <rect x="94" y="25" width="50" height="5" rx="2" fill="#00c8ff" fillOpacity=".18"/>
-    <rect x="190" y="25" width="18" height="5" rx="2" fill="#00c8ff" fillOpacity=".1"/>
-    <rect x="94" y="44" width="112" height="28" rx="4" fill="#00c8ff" fillOpacity=".05" stroke="#00c8ff" strokeOpacity=".12" strokeWidth=".8"/>
-    <rect x="100" y="50" width="55" height="6" rx="2" fill="#00c8ff" fillOpacity=".22"/>
-    <rect x="100" y="60" width="36" height="5" rx="2" fill="#00c8ff" fillOpacity=".1"/>
-    <rect x="94" y="80" width="32" height="22" rx="3" stroke="#00c8ff" strokeOpacity=".16" strokeWidth=".8"/>
-    <rect x="132" y="80" width="32" height="22" rx="3" stroke="#00c8ff" strokeOpacity=".2" strokeWidth=".8" fill="#00c8ff" fillOpacity=".04"/>
-    <rect x="170" y="80" width="32" height="22" rx="3" stroke="#00c8ff" strokeOpacity=".16" strokeWidth=".8"/>
-    <path d="M232 55 L240 75 L244 68 L254 74 L247 57Z" fill="#00c8ff" fillOpacity=".45" stroke="#00c8ff" strokeOpacity=".6" strokeWidth=".8"/>
+  // Panel 2: Desarrollo Web — monitor 3D + UI elements flotando
+  <svg viewBox="0 0 500 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="sg2" cx="50%" cy="40%" r="50%">
+        <stop offset="0%" stopColor="#00c8ff" stopOpacity="0.15"/>
+        <stop offset="100%" stopColor="#00c8ff" stopOpacity="0"/>
+      </radialGradient>
+      <linearGradient id="screen2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#0a1628"/>
+        <stop offset="100%" stopColor="#040c18"/>
+      </linearGradient>
+    </defs>
+    <ellipse cx="250" cy="180" rx="210" ry="150" fill="url(#sg2)"/>
+    {/* Monitor body */}
+    <rect x="80" y="50" width="300" height="200" rx="10" fill="#060e1e" stroke="#00c8ff" strokeOpacity=".3" strokeWidth="1.5"/>
+    {/* Screen */}
+    <rect x="92" y="62" width="276" height="176" rx="6" fill="url(#screen2)"/>
+    {/* Browser chrome */}
+    <rect x="92" y="62" width="276" height="22" rx="6" fill="#00c8ff" fillOpacity=".07"/>
+    <circle cx="106" cy="73" r="4" fill="#ff5f57" fillOpacity=".6"/>
+    <circle cx="118" cy="73" r="4" fill="#ffbd2e" fillOpacity=".6"/>
+    <circle cx="130" cy="73" r="4" fill="#28ca41" fillOpacity=".6"/>
+    <rect x="145" y="68" width="170" height="10" rx="5" fill="#00c8ff" fillOpacity=".08"/>
+    <text x="180" y="77" fontFamily="monospace" fontSize="7" fill="#00c8ff" fillOpacity=".5">ignis.dev</text>
+    {/* Webpage content */}
+    <rect x="100" y="88" width="260" height="30" rx="4" fill="#00c8ff" fillOpacity=".05"/>
+    <rect x="108" y="94" width="80" height="8" rx="3" fill="#00c8ff" fillOpacity=".4"/>
+    <rect x="108" y="106" width="50" height="6" rx="2" fill="#00c8ff" fillOpacity=".15"/>
+    {/* Hero image placeholder */}
+    <rect x="100" y="124" width="150" height="80" rx="5" fill="#00c8ff" fillOpacity=".04" stroke="#00c8ff" strokeOpacity=".12" strokeWidth=".8"/>
+    <circle cx="175" cy="164" r="20" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1" fill="#00c8ff" fillOpacity=".03"/>
+    <text x="162" y="168" fontSize="14" fill="#00c8ff" fillOpacity=".35">▶</text>
+    {/* Sidebar cards */}
+    <rect x="258" y="124" width="92" height="36" rx="5" fill="#00c8ff" fillOpacity=".06" stroke="#00c8ff" strokeOpacity=".15" strokeWidth=".8"/>
+    <rect x="265" y="131" width="40" height="5" rx="2" fill="#00c8ff" fillOpacity=".3"/>
+    <rect x="265" y="140" width="60" height="4" rx="2" fill="#00c8ff" fillOpacity=".12"/>
+    <rect x="258" y="166" width="92" height="36" rx="5" fill="#00c8ff" fillOpacity=".04" stroke="#00c8ff" strokeOpacity=".12" strokeWidth=".8"/>
+    <rect x="265" y="173" width="35" height="5" rx="2" fill="#00c8ff" fillOpacity=".2"/>
+    <rect x="265" y="182" width="55" height="4" rx="2" fill="#00c8ff" fillOpacity=".1"/>
+    {/* Monitor stand */}
+    <rect x="215" y="250" width="30" height="20" rx="3" fill="#060e1e" stroke="#00c8ff" strokeOpacity=".15" strokeWidth="1"/>
+    <rect x="195" y="268" width="70" height="8" rx="4" fill="#060e1e" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1"/>
+    {/* Floating UI cards */}
+    <rect x="30" y="130" width="80" height="50" rx="8" fill="#020d18" stroke="#00c8ff" strokeOpacity=".25" strokeWidth="1" transform="rotate(-8 30 130)"/>
+    <rect x="38" y="140" width="45" height="6" rx="2" fill="#00c8ff" fillOpacity=".3" transform="rotate(-8 30 130)"/>
+    <rect x="38" y="150" width="55" height="4" rx="2" fill="#00c8ff" fillOpacity=".12" transform="rotate(-8 30 130)"/>
+    <rect x="38" y="158" width="35" height="4" rx="2" fill="#00c8ff" fillOpacity=".08" transform="rotate(-8 30 130)"/>
+    <rect x="390" y="100" width="80" height="50" rx="8" fill="#020d18" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1" transform="rotate(6 390 100)"/>
+    <rect x="398" y="110" width="30" height="6" rx="2" fill="#00c8ff" fillOpacity=".25" transform="rotate(6 390 100)"/>
+    <rect x="398" y="120" width="50" height="4" rx="2" fill="#00c8ff" fillOpacity=".1" transform="rotate(6 390 100)"/>
+    <rect x="398" y="128" width="40" height="4" rx="2" fill="#00c8ff" fillOpacity=".07" transform="rotate(6 390 100)"/>
+    {/* Floating button */}
+    <rect x="380" y="220" width="90" height="28" rx="14" fill="#00c8ff" fillOpacity=".15" stroke="#00c8ff" strokeOpacity=".5" strokeWidth="1"/>
+    <text x="400" y="239" fontSize="10" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".9">Ver sitio →</text>
+    {/* Dots */}
+    <circle cx="250" cy="320" r="2" fill="#00c8ff" fillOpacity=".3"/>
+    <circle cx="270" cy="330" r="1.5" fill="#00c8ff" fillOpacity=".15"/>
+    <circle cx="220" cy="325" r="2" fill="#00c8ff" fillOpacity=".2"/>
   </svg>,
 
-  // Card 3: AI/Data – neural network SVG
-  <svg viewBox="0 0 300 130" fill="none">
-    <circle cx="35" cy="28" r="7" stroke="#00c8ff" strokeOpacity=".4" strokeWidth="1.5"/>
-    <circle cx="35" cy="65" r="7" stroke="#00c8ff" strokeOpacity=".4" strokeWidth="1.5"/>
-    <circle cx="35" cy="102" r="7" stroke="#00c8ff" strokeOpacity=".3" strokeWidth="1.5"/>
-    <circle cx="120" cy="18" r="7" stroke="#00c8ff" strokeOpacity=".3" strokeWidth="1.5"/>
-    <circle cx="120" cy="50" r="8" stroke="#00c8ff" strokeOpacity=".85" strokeWidth="1.5" fill="#00c8ff" fillOpacity=".07"/>
-    <circle cx="120" cy="82" r="7" stroke="#00c8ff" strokeOpacity=".35" strokeWidth="1.5"/>
-    <circle cx="120" cy="112" r="7" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1.5"/>
-    <circle cx="210" cy="35" r="7" stroke="#00c8ff" strokeOpacity=".5" strokeWidth="1.5"/>
-    <circle cx="210" cy="75" r="8" stroke="#00c8ff" strokeOpacity=".75" strokeWidth="1.5" fill="#00c8ff" fillOpacity=".06"/>
-    <circle cx="210" cy="110" r="7" stroke="#00c8ff" strokeOpacity=".3" strokeWidth="1.5"/>
-    <circle cx="275" cy="65" r="9" stroke="#00c8ff" strokeOpacity=".8" strokeWidth="1.8" fill="#00c8ff" fillOpacity=".1"/>
-    <line x1="42" y1="28" x2="113" y2="18" stroke="#00c8ff" strokeOpacity=".1" strokeWidth=".8"/>
-    <line x1="42" y1="28" x2="113" y2="50" stroke="#00c8ff" strokeOpacity=".2" strokeWidth=".8"/>
-    <line x1="42" y1="65" x2="113" y2="50" stroke="#00c8ff" strokeOpacity=".18" strokeWidth=".8"/>
-    <line x1="42" y1="65" x2="113" y2="82" stroke="#00c8ff" strokeOpacity=".12" strokeWidth=".8"/>
-    <line x1="42" y1="102" x2="113" y2="82" stroke="#00c8ff" strokeOpacity=".14" strokeWidth=".8"/>
-    <line x1="42" y1="102" x2="113" y2="112" stroke="#00c8ff" strokeOpacity=".1" strokeWidth=".8"/>
-    <line x1="127" y1="50" x2="203" y2="35" stroke="#00c8ff" strokeOpacity=".14" strokeWidth=".8"/>
-    <line x1="127" y1="50" x2="203" y2="75" stroke="#00c8ff" strokeOpacity=".32" strokeWidth="1.2"/>
-    <line x1="127" y1="82" x2="203" y2="75" stroke="#00c8ff" strokeOpacity=".16" strokeWidth=".8"/>
-    <line x1="217" y1="35" x2="266" y2="65" stroke="#00c8ff" strokeOpacity=".2" strokeWidth=".8"/>
-    <line x1="217" y1="75" x2="266" y2="65" stroke="#00c8ff" strokeOpacity=".4" strokeWidth="1.2"/>
-    <line x1="217" y1="110" x2="266" y2="65" stroke="#00c8ff" strokeOpacity=".12" strokeWidth=".8"/>
-    <circle cx="120" cy="50" r="8" stroke="#00c8ff" strokeOpacity=".5" strokeWidth="1">
-      <animate attributeName="r" values="8;18;8" dur="2.5s" repeatCount="indefinite"/>
-      <animate attributeName="stroke-opacity" values=".5;0;.5" dur="2.5s" repeatCount="indefinite"/>
+  // Panel 3: Desarrollo Mobile — smartphone 3D + app UI
+  <svg viewBox="0 0 500 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="sg3" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#00c8ff" stopOpacity="0.16"/>
+        <stop offset="100%" stopColor="#00c8ff" stopOpacity="0"/>
+      </radialGradient>
+      <linearGradient id="phone3" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stopColor="#0a1628"/>
+        <stop offset="100%" stopColor="#060e1e"/>
+      </linearGradient>
+    </defs>
+    <ellipse cx="250" cy="200" rx="180" ry="160" fill="url(#sg3)"/>
+    {/* Phone body */}
+    <rect x="155" y="30" width="150" height="290" rx="24" fill="url(#phone3)" stroke="#00c8ff" strokeOpacity=".35" strokeWidth="1.8"/>
+    {/* Inner screen area */}
+    <rect x="163" y="50" width="134" height="252" rx="16" fill="#030b14"/>
+    {/* Notch */}
+    <rect x="208" y="50" width="44" height="14" rx="7" fill="#030b14"/>
+    <circle cx="230" cy="57" r="3" fill="#00c8ff" fillOpacity=".2"/>
+    {/* Status bar */}
+    <text x="170" y="75" fontSize="7" fontFamily="monospace" fill="#00c8ff" fillOpacity=".5">9:41</text>
+    <rect x="286" y="69" width="8" height="5" rx="1" stroke="#00c8ff" strokeOpacity=".4" strokeWidth=".8"/>
+    {/* App header */}
+    <rect x="163" y="78" width="134" height="36" fill="#00c8ff" fillOpacity=".07"/>
+    <text x="175" y="101" fontSize="12" fontFamily="sans-serif" fontWeight="bold" fill="#00c8ff" fillOpacity=".9">Dashboard</text>
+    {/* Stats cards */}
+    <rect x="169" y="122" width="57" height="50" rx="8" fill="#00c8ff" fillOpacity=".08" stroke="#00c8ff" strokeOpacity=".2" strokeWidth=".8"/>
+    <text x="178" y="142" fontSize="9" fill="#00c8ff" fillOpacity=".5">Ventas</text>
+    <text x="175" y="158" fontSize="14" fontWeight="bold" fill="#00c8ff" fillOpacity=".9">$24k</text>
+    <text x="175" y="168" fontSize="8" fill="#28ca41" fillOpacity=".8">↑ 12%</text>
+    <rect x="234" y="122" width="57" height="50" rx="8" fill="#00c8ff" fillOpacity=".06" stroke="#00c8ff" strokeOpacity=".15" strokeWidth=".8"/>
+    <text x="242" y="142" fontSize="9" fill="#00c8ff" fillOpacity=".45">Usuarios</text>
+    <text x="240" y="158" fontSize="14" fontWeight="bold" fill="#00c8ff" fillOpacity=".85">1.2k</text>
+    <text x="240" y="168" fontSize="8" fill="#28ca41" fillOpacity=".8">↑ 8%</text>
+    {/* Chart */}
+    <rect x="169" y="180" width="122" height="60" rx="6" fill="#00c8ff" fillOpacity=".04" stroke="#00c8ff" strokeOpacity=".1" strokeWidth=".8"/>
+    <polyline points="175,230 190,215 210,222 228,205 248,210 268,198 285,204" stroke="#00c8ff" strokeOpacity=".7" strokeWidth="1.5" fill="none"/>
+    <circle cx="285" cy="204" r="3" fill="#00c8ff" fillOpacity=".9"/>
+    {/* List items */}
+    <rect x="169" y="250" width="122" height="10" rx="3" fill="#00c8ff" fillOpacity=".06"/>
+    <rect x="169" y="267" width="95" height="10" rx="3" fill="#00c8ff" fillOpacity=".04"/>
+    <rect x="169" y="284" width="110" height="10" rx="3" fill="#00c8ff" fillOpacity=".05"/>
+    {/* Side buttons */}
+    <rect x="150" y="100" width="5" height="30" rx="2.5" fill="#00c8ff" fillOpacity=".15" stroke="#00c8ff" strokeOpacity=".25" strokeWidth=".8"/>
+    <rect x="150" y="140" width="5" height="30" rx="2.5" fill="#00c8ff" fillOpacity=".15" stroke="#00c8ff" strokeOpacity=".25" strokeWidth=".8"/>
+    <rect x="305" y="120" width="5" height="50" rx="2.5" fill="#00c8ff" fillOpacity=".15" stroke="#00c8ff" strokeOpacity=".25" strokeWidth=".8"/>
+    {/* Floating notification */}
+    <rect x="30" y="140" width="120" height="50" rx="10" fill="#020d18" stroke="#00c8ff" strokeOpacity=".3" strokeWidth="1" transform="rotate(-5 30 140)"/>
+    <circle cx="50" cy="158" r="8" fill="#00c8ff" fillOpacity=".15" stroke="#00c8ff" strokeOpacity=".3" strokeWidth=".8" transform="rotate(-5 30 140)"/>
+    <text x="64" y="152" fontSize="9" fill="#00c8ff" fillOpacity=".8" transform="rotate(-5 30 140)">Nuevo pedido</text>
+    <text x="64" y="164" fontSize="8" fill="#00c8ff" fillOpacity=".4" transform="rotate(-5 30 140)">Hace 2 min</text>
+    {/* Floating second notification */}
+    <rect x="355" y="150" width="110" height="46" rx="10" fill="#020d18" stroke="#00c8ff" strokeOpacity=".22" strokeWidth="1" transform="rotate(4 355 150)"/>
+    <text x="368" y="170" fontSize="9" fill="#00c8ff" fillOpacity=".6" transform="rotate(4 355 150)">Pago recibido</text>
+    <text x="368" y="182" fontSize="8" fill="#28ca41" fillOpacity=".8" transform="rotate(4 355 150)">+$450.00</text>
+    {/* Glow dots */}
+    <circle cx="250" cy="340" r="2.5" fill="#00c8ff" fillOpacity=".3"/>
+    <circle cx="300" cy="350" r="2" fill="#00c8ff" fillOpacity=".15"/>
+  </svg>,
+
+  // Panel 4: Soluciones Empresariales — nodos conectados + workflow
+  <svg viewBox="0 0 500 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="sg4" cx="50%" cy="50%" r="55%">
+        <stop offset="0%" stopColor="#00c8ff" stopOpacity="0.14"/>
+        <stop offset="100%" stopColor="#00c8ff" stopOpacity="0"/>
+      </radialGradient>
+    </defs>
+    <ellipse cx="250" cy="200" rx="220" ry="170" fill="url(#sg4)"/>
+    {/* Central hub */}
+    <circle cx="250" cy="190" r="36" fill="#020d18" stroke="#00c8ff" strokeOpacity=".5" strokeWidth="2"/>
+    <circle cx="250" cy="190" r="26" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1" fill="none"/>
+    <circle cx="250" cy="190" r="14" fill="#00c8ff" fillOpacity=".12" stroke="#00c8ff" strokeOpacity=".6" strokeWidth="1.5"/>
+    {/* Hub pulse ring */}
+    <circle cx="250" cy="190" r="36" stroke="#00c8ff" strokeOpacity=".4" strokeWidth="1.5" fill="none">
+      <animate attributeName="r" values="36;52;36" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-opacity" values=".4;0;.4" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    {/* Node: top */}
+    <line x1="250" y1="154" x2="250" y2="90" stroke="#00c8ff" strokeOpacity=".25" strokeWidth="1" strokeDasharray="5 4"/>
+    <rect x="220" y="58" width="60" height="32" rx="8" fill="#020d18" stroke="#00c8ff" strokeOpacity=".35" strokeWidth="1"/>
+    <text x="233" y="78" fontSize="9" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".7">ERP</text>
+    {/* Node: bottom */}
+    <line x1="250" y1="226" x2="250" y2="290" stroke="#00c8ff" strokeOpacity=".25" strokeWidth="1" strokeDasharray="5 4"/>
+    <rect x="220" y="290" width="60" height="32" rx="8" fill="#020d18" stroke="#00c8ff" strokeOpacity=".3" strokeWidth="1"/>
+    <text x="232" y="310" fontSize="9" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".65">CRM</text>
+    {/* Node: left */}
+    <line x1="214" y1="190" x2="130" y2="190" stroke="#00c8ff" strokeOpacity=".25" strokeWidth="1" strokeDasharray="5 4"/>
+    <rect x="68" y="174" width="62" height="32" rx="8" fill="#020d18" stroke="#00c8ff" strokeOpacity=".3" strokeWidth="1"/>
+    <text x="78" y="194" fontSize="9" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".65">Analytics</text>
+    {/* Node: right */}
+    <line x1="286" y1="190" x2="370" y2="190" stroke="#00c8ff" strokeOpacity=".25" strokeWidth="1" strokeDasharray="5 4"/>
+    <rect x="370" y="174" width="62" height="32" rx="8" fill="#020d18" stroke="#00c8ff" strokeOpacity=".35" strokeWidth="1"/>
+    <text x="382" y="194" fontSize="9" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".7">BI</text>
+    {/* Node: top-left */}
+    <line x1="224" y1="165" x2="140" y2="110" stroke="#00c8ff" strokeOpacity=".18" strokeWidth="1" strokeDasharray="4 4"/>
+    <rect x="96" y="88" width="64" height="32" rx="8" fill="#020d18" stroke="#00c8ff" strokeOpacity=".22" strokeWidth="1"/>
+    <text x="105" y="108" fontSize="9" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".55">Integración</text>
+    {/* Node: top-right */}
+    <line x1="276" y1="165" x2="360" y2="110" stroke="#00c8ff" strokeOpacity=".18" strokeWidth="1" strokeDasharray="4 4"/>
+    <rect x="342" y="88" width="72" height="32" rx="8" fill="#020d18" stroke="#00c8ff" strokeOpacity=".22" strokeWidth="1"/>
+    <text x="352" y="108" fontSize="9" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".55">Reporting</text>
+    {/* Node: bottom-right */}
+    <line x1="276" y1="215" x2="360" y2="270" stroke="#00c8ff" strokeOpacity=".18" strokeWidth="1" strokeDasharray="4 4"/>
+    <rect x="342" y="262" width="70" height="32" rx="8" fill="#020d18" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1"/>
+    <text x="354" y="282" fontSize="9" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".5">Cloud</text>
+    {/* Node: bottom-left */}
+    <line x1="224" y1="215" x2="140" y2="270" stroke="#00c8ff" strokeOpacity=".18" strokeWidth="1" strokeDasharray="4 4"/>
+    <rect x="88" y="262" width="70" height="32" rx="8" fill="#020d18" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1"/>
+    <text x="100" y="282" fontSize="9" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".5">Workflow</text>
+    {/* Floating data particles */}
+    <circle cx="175" cy="145" r="2.5" fill="#00c8ff" fillOpacity=".6">
+      <animate attributeName="opacity" values=".6;1;.6" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="325" cy="145" r="2.5" fill="#00c8ff" fillOpacity=".5">
+      <animate attributeName="opacity" values=".5;1;.5" dur="2.4s" begin=".5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="175" cy="240" r="2" fill="#00c8ff" fillOpacity=".4">
+      <animate attributeName="opacity" values=".4;.9;.4" dur="1.8s" begin=".3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="325" cy="240" r="2" fill="#00c8ff" fillOpacity=".4">
+      <animate attributeName="opacity" values=".4;.9;.4" dur="2.2s" begin=".7s" repeatCount="indefinite"/>
     </circle>
   </svg>,
 
-  // Card 4: Cloud/DevOps – CI/CD pipeline SVG
-  <svg viewBox="0 0 300 130" fill="none">
-    <circle cx="55" cy="22" r="5" stroke="#00c8ff" strokeOpacity=".3" strokeWidth="1.2"/>
-    <line x1="60" y1="22" x2="80" y2="22" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1" strokeDasharray="3 2"/>
-    <circle cx="86" cy="22" r="5" stroke="#00c8ff" strokeOpacity=".45" strokeWidth="1.2"/>
-    <line x1="91" y1="22" x2="111" y2="22" stroke="#00c8ff" strokeOpacity=".25" strokeWidth="1" strokeDasharray="3 2"/>
-    <circle cx="117" cy="22" r="5" fill="#00c8ff" fillOpacity=".1" stroke="#00c8ff" strokeOpacity=".55" strokeWidth="1.2"/>
-    <text x="46" y="13" fontFamily="monospace" fontSize="7" fill="#00c8ff" fillOpacity=".4">build</text>
-    <text x="78" y="13" fontFamily="monospace" fontSize="7" fill="#00c8ff" fillOpacity=".4">test</text>
-    <text x="107" y="13" fontFamily="monospace" fontSize="7" fill="#00c8ff" fillOpacity=".55">deploy ✓</text>
-    <path d="M75 88 Q73 100 87 102 L215 102 Q228 102 228 90 Q230 78 218 75 Q220 62 207 58 Q205 43 190 43 Q180 43 175 51 Q168 41 152 46 Q136 46 131 58 Q115 56 111 68 Q97 68 93 80 Q87 84 75 88Z"
-          stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1.3" fill="#00c8ff" fillOpacity=".04"/>
-    <line x1="120" y1="102" x2="75" y2="118" stroke="#00c8ff" strokeOpacity=".18" strokeWidth=".8" strokeDasharray="4 3"/>
-    <line x1="152" y1="102" x2="152" y2="118" stroke="#00c8ff" strokeOpacity=".22" strokeWidth=".8" strokeDasharray="4 3"/>
-    <line x1="184" y1="102" x2="228" y2="118" stroke="#00c8ff" strokeOpacity=".18" strokeWidth=".8" strokeDasharray="4 3"/>
-    <rect x="48" y="118" width="52" height="8" rx="3" stroke="#00c8ff" strokeOpacity=".22" strokeWidth="1"/>
-    <rect x="126" y="118" width="52" height="8" rx="3" stroke="#00c8ff" strokeOpacity=".3" strokeWidth="1" fill="#00c8ff" fillOpacity=".03"/>
-    <rect x="204" y="118" width="52" height="8" rx="3" stroke="#00c8ff" strokeOpacity=".22" strokeWidth="1"/>
-    <circle cx="60" cy="122" r="2" fill="#00c8ff" fillOpacity=".5">
-      <animate attributeName="fill-opacity" values=".5;1;.5" dur="1.8s" repeatCount="indefinite"/>
+  // Panel 5: I+D — átomo + curvas de datos + laboratorio futurista
+  <svg viewBox="0 0 500 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="sg5" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#00c8ff" stopOpacity="0.18"/>
+        <stop offset="100%" stopColor="#00c8ff" stopOpacity="0"/>
+      </radialGradient>
+    </defs>
+    <ellipse cx="250" cy="190" rx="200" ry="160" fill="url(#sg5)"/>
+    {/* Atom nucleus */}
+    <circle cx="250" cy="190" r="14" fill="#00c8ff" fillOpacity=".2" stroke="#00c8ff" strokeOpacity=".8" strokeWidth="2"/>
+    <circle cx="250" cy="190" r="7" fill="#00c8ff" fillOpacity=".6"/>
+    {/* Orbit 1 */}
+    <ellipse cx="250" cy="190" rx="80" ry="30" stroke="#00c8ff" strokeOpacity=".3" strokeWidth="1.2" fill="none">
+      <animateTransform attributeName="transform" type="rotate" from="0 250 190" to="360 250 190" dur="6s" repeatCount="indefinite"/>
+    </ellipse>
+    <circle cx="250" cy="160" r="6" fill="#00c8ff" fillOpacity=".7" stroke="#00c8ff" strokeOpacity=".9" strokeWidth="1">
+      <animateTransform attributeName="transform" type="rotate" from="0 250 190" to="360 250 190" dur="6s" repeatCount="indefinite"/>
     </circle>
-    <circle cx="152" cy="122" r="2" fill="#00c8ff" fillOpacity=".9"/>
-    <circle cx="216" cy="122" r="2" fill="#00c8ff" fillOpacity=".3">
-      <animate attributeName="fill-opacity" values=".3;.9;.3" dur="2.4s" begin=".7s" repeatCount="indefinite"/>
+    {/* Orbit 2 */}
+    <ellipse cx="250" cy="190" rx="80" ry="30" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1.2" fill="none"
+      transform="rotate(60 250 190)">
+      <animateTransform attributeName="transform" type="rotate" from="60 250 190" to="420 250 190" dur="9s" repeatCount="indefinite"/>
+    </ellipse>
+    <circle cx="330" cy="190" r="5" fill="#00c8ff" fillOpacity=".6">
+      <animateTransform attributeName="transform" type="rotate" from="60 250 190" to="420 250 190" dur="9s" repeatCount="indefinite"/>
     </circle>
+    {/* Orbit 3 */}
+    <ellipse cx="250" cy="190" rx="80" ry="30" stroke="#00c8ff" strokeOpacity=".18" strokeWidth="1" fill="none"
+      transform="rotate(-60 250 190)">
+      <animateTransform attributeName="transform" type="rotate" from="-60 250 190" to="300 250 190" dur="7s" repeatCount="indefinite"/>
+    </ellipse>
+    <circle cx="250" cy="220" r="5" fill="#00c8ff" fillOpacity=".5">
+      <animateTransform attributeName="transform" type="rotate" from="-60 250 190" to="300 250 190" dur="7s" repeatCount="indefinite"/>
+    </circle>
+    {/* Data curves */}
+    <path d="M 60 310 Q 120 280 160 295 Q 200 310 230 270 Q 260 230 300 250 Q 340 270 380 220 Q 410 180 440 200" stroke="#00c8ff" strokeOpacity=".5" strokeWidth="1.8" fill="none"/>
+    <path d="M 60 330 Q 130 310 180 320 Q 220 330 260 305 Q 300 280 350 290 Q 390 300 440 270" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1.2" fill="none"/>
+    {/* Data point */}
+    <circle cx="380" cy="220" r="4" fill="#00c8ff" fillOpacity=".9"/>
+    <circle cx="380" cy="220" r="9" stroke="#00c8ff" strokeOpacity=".3" strokeWidth="1" fill="none">
+      <animate attributeName="r" values="9;16;9" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-opacity" values=".3;0;.3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    {/* Left panel — formula */}
+    <rect x="30" y="60" width="120" height="80" rx="10" fill="#020d18" stroke="#00c8ff" strokeOpacity=".22" strokeWidth="1"/>
+    <text x="45" y="85" fontSize="10" fontFamily="monospace" fill="#00c8ff" fillOpacity=".6">E = mc²</text>
+    <text x="45" y="103" fontSize="10" fontFamily="monospace" fill="#00c8ff" fillOpacity=".4">f(x) = Σaₙxⁿ</text>
+    <text x="45" y="121" fontSize="10" fontFamily="monospace" fill="#00c8ff" fillOpacity=".5">∇²φ = ρ/ε₀</text>
+    {/* Right panel — metrics */}
+    <rect x="350" y="60" width="120" height="80" rx="10" fill="#020d18" stroke="#00c8ff" strokeOpacity=".22" strokeWidth="1"/>
+    <text x="362" y="80" fontSize="9" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".5">Accuracy</text>
+    <rect x="362" y="86" width="88" height="6" rx="3" fill="#00c8ff" fillOpacity=".07"/>
+    <rect x="362" y="86" width="80" height="6" rx="3" fill="#00c8ff" fillOpacity=".35"/>
+    <text x="362" y="108" fontSize="9" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".5">F1 Score</text>
+    <rect x="362" y="114" width="88" height="6" rx="3" fill="#00c8ff" fillOpacity=".07"/>
+    <rect x="362" y="114" width="70" height="6" rx="3" fill="#00c8ff" fillOpacity=".3"/>
+    <text x="362" y="132" fontSize="9" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".5">Precision</text>
+    {/* Floating molecule nodes */}
+    <circle cx="90" cy="240" r="6" stroke="#00c8ff" strokeOpacity=".4" strokeWidth="1.2" fill="#00c8ff" fillOpacity=".05"/>
+    <circle cx="120" cy="255" r="5" stroke="#00c8ff" strokeOpacity=".3" strokeWidth="1" fill="none"/>
+    <circle cx="75" cy="262" r="4" stroke="#00c8ff" strokeOpacity=".25" strokeWidth="1" fill="none"/>
+    <line x1="90" y1="246" x2="120" y2="255" stroke="#00c8ff" strokeOpacity=".2" strokeWidth=".8"/>
+    <line x1="90" y1="246" x2="75" y2="262" stroke="#00c8ff" strokeOpacity=".2" strokeWidth=".8"/>
+    <line x1="120" y1="255" x2="75" y2="262" stroke="#00c8ff" strokeOpacity=".15" strokeWidth=".8"/>
+    {/* Floating molecule 2 */}
+    <circle cx="410" cy="280" r="7" stroke="#00c8ff" strokeOpacity=".35" strokeWidth="1.2" fill="#00c8ff" fillOpacity=".04"/>
+    <circle cx="438" cy="268" r="5" stroke="#00c8ff" strokeOpacity=".25" strokeWidth="1" fill="none"/>
+    <circle cx="428" cy="298" r="4" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1" fill="none"/>
+    <line x1="410" y1="280" x2="438" y2="268" stroke="#00c8ff" strokeOpacity=".2" strokeWidth=".8"/>
+    <line x1="410" y1="280" x2="428" y2="298" stroke="#00c8ff" strokeOpacity=".18" strokeWidth=".8"/>
+  </svg>,
+
+  // Panel 6: Consultoría — gráfico ascendente + red de personas + flecha estrategia
+  <svg viewBox="0 0 500 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="sg6" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#00c8ff" stopOpacity="0.15"/>
+        <stop offset="100%" stopColor="#00c8ff" stopOpacity="0"/>
+      </radialGradient>
+      <linearGradient id="bar6a" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#00c8ff" stopOpacity="0.7"/>
+        <stop offset="100%" stopColor="#00c8ff" stopOpacity="0.15"/>
+      </linearGradient>
+      <linearGradient id="bar6b" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#00c8ff" stopOpacity="0.55"/>
+        <stop offset="100%" stopColor="#00c8ff" stopOpacity="0.1"/>
+      </linearGradient>
+      <linearGradient id="bar6c" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#00c8ff" stopOpacity="0.85"/>
+        <stop offset="100%" stopColor="#00c8ff" stopOpacity="0.18"/>
+      </linearGradient>
+    </defs>
+    <ellipse cx="250" cy="190" rx="210" ry="165" fill="url(#sg6)"/>
+    {/* Chart background */}
+    <rect x="60" y="80" width="280" height="180" rx="12" fill="#020d18" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1"/>
+    {/* Grid lines */}
+    <line x1="80" y1="240" x2="320" y2="240" stroke="#00c8ff" strokeOpacity=".08" strokeWidth="1"/>
+    <line x1="80" y1="210" x2="320" y2="210" stroke="#00c8ff" strokeOpacity=".06" strokeWidth="1"/>
+    <line x1="80" y1="180" x2="320" y2="180" stroke="#00c8ff" strokeOpacity=".06" strokeWidth="1"/>
+    <line x1="80" y1="150" x2="320" y2="150" stroke="#00c8ff" strokeOpacity=".06" strokeWidth="1"/>
+    <line x1="80" y1="120" x2="320" y2="120" stroke="#00c8ff" strokeOpacity=".06" strokeWidth="1"/>
+    {/* Bars */}
+    <rect x="92" y="210" width="30" height="30" rx="4" fill="url(#bar6a)"/>
+    <rect x="140" y="190" width="30" height="50" rx="4" fill="url(#bar6b)"/>
+    <rect x="188" y="165" width="30" height="75" rx="4" fill="url(#bar6a)"/>
+    <rect x="236" y="140" width="30" height="100" rx="4" fill="url(#bar6b)"/>
+    <rect x="284" y="108" width="30" height="132" rx="4" fill="url(#bar6c)"/>
+    {/* Trend line */}
+    <polyline points="107,210 155,185 203,158 251,135 299,100" stroke="#00c8ff" strokeOpacity=".8" strokeWidth="1.8" fill="none" strokeDasharray="6 3"/>
+    {/* Arrow at end */}
+    <polygon points="299,100 310,94 307,106" fill="#00c8ff" fillOpacity=".9"/>
+    {/* Chart labels */}
+    <text x="92" y="255" fontSize="8" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".4">Q1</text>
+    <text x="140" y="255" fontSize="8" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".4">Q2</text>
+    <text x="188" y="255" fontSize="8" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".4">Q3</text>
+    <text x="236" y="255" fontSize="8" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".4">Q4</text>
+    <text x="284" y="255" fontSize="8" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".6">Q5</text>
+    {/* Chart title */}
+    <text x="75" y="101" fontSize="9" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".55">Crecimiento del negocio</text>
+    {/* People network — right side */}
+    {/* Person top */}
+    <circle cx="405" cy="110" r="10" stroke="#00c8ff" strokeOpacity=".4" strokeWidth="1.5" fill="#00c8ff" fillOpacity=".06"/>
+    <circle cx="405" cy="107" r="4" fill="#00c8ff" fillOpacity=".4"/>
+    <path d="M396 118 Q405 125 414 118" stroke="#00c8ff" strokeOpacity=".4" strokeWidth="1" fill="none"/>
+    {/* Person left */}
+    <circle cx="375" cy="165" r="10" stroke="#00c8ff" strokeOpacity=".35" strokeWidth="1.5" fill="#00c8ff" fillOpacity=".05"/>
+    <circle cx="375" cy="162" r="4" fill="#00c8ff" fillOpacity=".35"/>
+    <path d="M366 173 Q375 180 384 173" stroke="#00c8ff" strokeOpacity=".35" strokeWidth="1" fill="none"/>
+    {/* Person right */}
+    <circle cx="445" cy="165" r="10" stroke="#00c8ff" strokeOpacity=".35" strokeWidth="1.5" fill="#00c8ff" fillOpacity=".05"/>
+    <circle cx="445" cy="162" r="4" fill="#00c8ff" fillOpacity=".35"/>
+    <path d="M436 173 Q445 180 454 173" stroke="#00c8ff" strokeOpacity=".35" strokeWidth="1" fill="none"/>
+    {/* Person bottom center */}
+    <circle cx="410" cy="220" r="12" stroke="#00c8ff" strokeOpacity=".5" strokeWidth="1.8" fill="#00c8ff" fillOpacity=".08"/>
+    <circle cx="410" cy="217" r="5" fill="#00c8ff" fillOpacity=".5"/>
+    <path d="M399 229 Q410 238 421 229" stroke="#00c8ff" strokeOpacity=".5" strokeWidth="1.2" fill="none"/>
+    {/* Connection lines */}
+    <line x1="405" y1="120" x2="375" y2="155" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1" strokeDasharray="3 3"/>
+    <line x1="405" y1="120" x2="445" y2="155" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1" strokeDasharray="3 3"/>
+    <line x1="375" y1="175" x2="410" y2="208" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1" strokeDasharray="3 3"/>
+    <line x1="445" y1="175" x2="410" y2="208" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1" strokeDasharray="3 3"/>
+    {/* Floating badge */}
+    <rect x="355" y="285" width="110" height="36" rx="10" fill="#020d18" stroke="#00c8ff" strokeOpacity=".3" strokeWidth="1"/>
+    <text x="370" y="303" fontSize="9" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".7">Estrategia Digital</text>
+    <text x="370" y="315" fontSize="8" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".4">Roadmap 2026 →</text>
+    {/* Bottom glow dots */}
+    <circle cx="180" cy="330" r="2" fill="#00c8ff" fillOpacity=".25"/>
+    <circle cx="250" cy="345" r="1.5" fill="#00c8ff" fillOpacity=".15"/>
+    <circle cx="320" cy="335" r="2" fill="#00c8ff" fillOpacity=".2"/>
   </svg>,
 ];
 
-interface ServiceCardProps {
-  icon: string;
+interface ServicePanelProps {
   title: string;
   desc: string;
   tags: string[];
   artIndex: number;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ title, desc, tags, artIndex }) => {
-  const cardRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const card = cardRef.current;
-    if (!card) return;
-
-    const onMove = (e: MouseEvent) => {
-      const r = card.getBoundingClientRect();
-      const x = e.clientX - r.left;
-      const y = e.clientY - r.top;
-      const rx = (y / r.height - 0.5) * -10;
-      const ry = (x / r.width - 0.5) * 10;
-      card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(8px) translateY(0)`;
-      card.style.setProperty('--mx', (x / r.width * 100) + '%');
-      card.style.setProperty('--my', (y / r.height * 100) + '%');
-    };
-    const onLeave = () => {
-      card.style.transform = 'perspective(900px) rotateX(0) rotateY(0) translateZ(0) translateY(0)';
-    };
-
-    card.addEventListener('mousemove', onMove);
-    card.addEventListener('mouseleave', onLeave);
-    return () => {
-      card.removeEventListener('mousemove', onMove);
-      card.removeEventListener('mouseleave', onLeave);
-    };
-  }, []);
-
+const ServicePanel: React.FC<ServicePanelProps> = ({ title, desc, tags, artIndex }) => {
+  const panelRef = useRef<HTMLDivElement | null>(null);
   return (
-    <div className="card" data-tilt ref={cardRef}>
-      <div className="card-art">{CARD_ARTS[artIndex]}</div>
-      <h3>{title}</h3>
-      <p>{desc}</p>
-      <div className="tags">
-        {tags.map((tag, idx) => (
-          <span key={idx} className="t">{tag}</span>
-        ))}
+    <div className="service-panel" ref={panelRef}>
+      <div className="panel-left">
+        <h2 className="panel-title">{title}</h2>
+        <p className="panel-desc">{desc}</p>
+        <div className="tags">
+          {tags.map((tag, idx) => (
+            <span key={idx} className="t">{tag}</span>
+          ))}
+        </div>
+      </div>
+      <div className="panel-right">
+        <div className="panel-art">{PANEL_ARTS[artIndex]}</div>
       </div>
     </div>
   );
@@ -154,20 +443,18 @@ export const Services = () => {
   const gridRef = useRef<HTMLDivElement | null>(null);
   const dotsRef = useRef<HTMLDivElement | null>(null);
 
-  // Intersection observer for card visible state
   useEffect(() => {
-    const cards = gridRef.current?.querySelectorAll('.card') || [];
+    const panels = gridRef.current?.querySelectorAll('.service-panel') || [];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => e.target.classList.toggle('visible', e.isIntersecting));
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
-    cards.forEach((c) => observer.observe(c));
+    panels.forEach((p) => observer.observe(p));
     return () => observer.disconnect();
   }, []);
 
-  // Horizontal scroll driven by page scroll
   useEffect(() => {
     const zone = zoneRef.current;
     const grid = gridRef.current;
@@ -207,7 +494,7 @@ export const Services = () => {
         <div className="sec-tag">Servicios</div>
         <div className="cards-grid" ref={gridRef}>
           {SERVICES.map((service, idx) => (
-            <ServiceCard key={idx} {...service} artIndex={idx} />
+            <ServicePanel key={idx} {...service} artIndex={idx} />
           ))}
         </div>
         <div id="hscroll-dots" ref={dotsRef}>

@@ -4,28 +4,34 @@ export const WORDS_TYPEWRITER = ['expertos.', 'nosotros.', 'IGNIS.'];
 
 export const SERVICES = [
   {
-    icon: '🚀',
-    title: 'Desarrollo de Software a Medida',
-    desc: 'Aplicaciones web y mobile robustas, escalables y pensadas para crecer con tu negocio desde el día uno.',
-    tags: ['Web App', 'Mobile', 'API REST', 'Cloud'],
+    title: 'Desarrollo de Software',
+    desc: 'Soluciones a medida basadas en las necesidades particulares de tu empresa que buscan optimizar y automatizar aquellos procesos clave para tu negocio.',
+    tags: ['Backend', 'Frontend', 'API REST', 'Cloud'],
   },
   {
-    icon: '🎨',
-    title: 'UX/UI & Product Design',
-    desc: 'Interfaces que convierten visitas en clientes y simplifican flujos complejos en experiencias que la gente ama.',
-    tags: ['Research', 'Figma', 'Design System'],
+    title: 'Desarrollo Web',
+    desc: 'Desarrollamos aplicaciones web según tus necesidades y sitios web dinámicos para proyectos corporativos y emprendimientos centrados en Internet.',
+    tags: ['React', 'Next.js', 'Vue', 'TypeScript'],
   },
   {
-    icon: '🤖',
-    title: 'Inteligencia Artificial & Data',
-    desc: 'Soluciones AI/ML que automatizan procesos, predicen comportamientos y convierten datos en ventaja competitiva.',
-    tags: ['ML', 'LLMs', 'Data Pipeline', 'Analytics'],
+    title: 'Desarrollo Mobile',
+    desc: 'Creamos aplicaciones móviles nativas, híbridas y web apps de alta calidad que permiten llevar tu información segura y consolidada en tiempo real.',
+    tags: ['iOS', 'Android', 'React Native', 'Flutter'],
   },
   {
-    icon: '☁️',
-    title: 'Cloud & DevOps',
-    desc: 'Infraestructura moderna, CI/CD robusto y arquitecturas con 99.9% de disponibilidad para que no pares nunca.',
-    tags: ['AWS', 'Docker', 'Kubernetes', 'IaC'],
+    title: 'Soluciones Empresariales',
+    desc: 'Contamos con gran experiencia en el diseño y construcción de soluciones empresariales, lo que nos permite llevar adelante hasta finalizar tu proyecto.',
+    tags: ['ERP', 'CRM', 'BI', 'Integración'],
+  },
+  {
+    title: 'I+D',
+    desc: 'Dominamos las tecnologías necesarias para generar soluciones avanzadas y escalables que requieran procesos de Investigación y Desarrollo (I+D).',
+    tags: ['AI/ML', 'Investigación', 'Prototipos', 'Innovación'],
+  },
+  {
+    title: 'Consultoría',
+    desc: 'Nuestro servicio de asesoramiento permite identificar y priorizar necesidades para elegir las tecnologías que mejor se adapten a tu empresa.',
+    tags: ['Estrategia', 'Arquitectura', 'Asesoría', 'Roadmap'],
   },
 ];
 

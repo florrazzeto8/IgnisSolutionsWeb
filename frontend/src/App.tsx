@@ -9,7 +9,6 @@ import { TransformSection } from './components/TransformSection';
 import { ServicesIntro } from './components/ServicesIntro';
 import { LogoCarousel } from './components/LogoCarousel';
 import { Services } from './components/Services';
-import { Process } from './components/Process';
 import { Skills } from './components/Skills';
 import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
@@ -70,9 +69,7 @@ function App() {
 
       <LogoCarousel />
 
-      <Process />
-
-      <Skills />
+<Skills />
 
       <CTA />
 

@@ -1,0 +1,27 @@
+[     222ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=1beb4dbd:14336
+[     335ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIkAAABQCAIAAACid8F5...:0
+[     336ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABQCAIAAAASpCUO...:0
+[     336ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGIAAABQCAIAAABtdTf/...:0
+[     336ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAIAAAABc2X6...:0
+[     336ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABQCAIAAAB6V6c2...:0
+[  251320ms] ReferenceError: Process is not defined
+    at App (http://localhost:5173/src/App.tsx?t=1781102589871:117:27)
+    at Object.react_stack_bottom_frame (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=1beb4dbd:12867:12)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=1beb4dbd:4212:19)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=1beb4dbd:5568:16)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=1beb4dbd:6139:20)
+    at runWithFiberInDEV (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=1beb4dbd:850:66)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=1beb4dbd:8428:92)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=1beb4dbd:8324:37)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=1beb4dbd:8308:6)
+    at performWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=1beb4dbd:7993:27)
+[  251318ms] [WARNING] %s
+
+%s
+ An error occurred in the <App> component. Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/@vite/client:524
+[  265283ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIkAAABQCAIAAACid8F5...:0
+[  265283ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABQCAIAAAASpCUO...:0
+[  265283ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGIAAABQCAIAAABtdTf/...:0
+[  265283ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAIAAAABc2X6...:0
+[  265283ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABQCAIAAAB6V6c2...:0

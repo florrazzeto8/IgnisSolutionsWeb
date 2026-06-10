@@ -1,0 +1,330 @@
+- generic [ref=e2]:
+  - generic:
+    - generic: "2"
+    - generic: Cargando
+  - generic [ref=e4]:
+    - navigation [ref=e5]:
+      - link "IGNIS Solutions." [ref=e6] [cursor=pointer]:
+        - /url: "#"
+      - generic [ref=e7]:
+        - link "Nosotros" [ref=e8] [cursor=pointer]:
+          - /url: "#about"
+        - link "Servicios" [ref=e9] [cursor=pointer]:
+          - /url: "#services"
+        - link "Stack" [ref=e10] [cursor=pointer]:
+          - /url: "#stack"
+        - link "Trabaja con nosotros" [ref=e11] [cursor=pointer]:
+          - /url: "#"
+        - link "CONTACTO" [ref=e12] [cursor=pointer]:
+          - /url: "#"
+    - generic [ref=e14]:
+      - heading "Tu próximo producto digital, construido por" [level=1] [ref=e15]:
+        - text: Tu próximo producto
+        - text: digital, construido por
+      - paragraph [ref=e18]: Transformamos ideas en productos digitales que escalan. Metodologías ágiles, arquitecturas modernas y un equipo que domina cada línea de código.
+      - generic [ref=e19]:
+        - link "Ver casos de éxito →" [ref=e20] [cursor=pointer]:
+          - /url: "#"
+          - text: Ver casos de éxito
+          - generic [ref=e21]: →
+        - link "Hablá con el equipo" [ref=e22] [cursor=pointer]:
+          - /url: "#"
+    - generic [ref=e23]: scroll
+  - generic [ref=e26]:
+    - generic [ref=e27]:
+      - generic [ref=e28]:
+        - generic [ref=e29]: Sobre Nosotros
+        - heading "Construimos el futuro digital de tu empresa" [level=2] [ref=e30]:
+          - text: Construimos el futuro
+          - text: digital de tu empresa
+      - generic [ref=e31]:
+        - paragraph [ref=e32]: Somos una software factory argentina con ADN tecnológico. Combinamos metodologías ágiles, arquitecturas modernas y un equipo apasionado para entregar soluciones digitales que generan impacto real.
+        - paragraph [ref=e33]: Desde startups hasta corporaciones, acompañamos cada etapa del ciclo de vida del producto, desde la ideación hasta el escalamiento en producción.
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - generic [ref=e36]: 0+
+          - generic [ref=e37]: Años de experiencia
+        - generic [ref=e38]:
+          - generic [ref=e39]: 0+
+          - generic [ref=e40]: Proyectos entregados
+        - generic [ref=e41]:
+          - generic [ref=e42]: 0+
+          - generic [ref=e43]: Clientes activos
+    - img "Equipo IGNIS" [ref=e45]
+  - generic [ref=e46]:
+    - heading "Impulsando la transformación digital" [level=2] [ref=e47]:
+      - generic [ref=e49]: Impulsando la
+      - generic [ref=e51]: transformación digital
+    - generic [ref=e53]:
+      - generic [ref=e54]:
+        - generic [ref=e55]: Keep Scrolling
+        - img [ref=e56]
+      - generic [ref=e58]:
+        - generic [ref=e59]: Keep Scrolling
+        - img [ref=e60]
+      - generic [ref=e62]:
+        - generic [ref=e63]: Keep Scrolling
+        - img [ref=e64]
+      - generic [ref=e66]:
+        - generic [ref=e67]: Keep Scrolling
+        - img [ref=e68]
+      - generic [ref=e70]:
+        - generic [ref=e71]: Keep Scrolling
+        - img [ref=e72]
+      - generic [ref=e74]:
+        - generic [ref=e75]: Keep Scrolling
+        - img [ref=e76]
+      - generic [ref=e78]:
+        - generic [ref=e79]: Keep Scrolling
+        - img [ref=e80]
+      - generic [ref=e82]:
+        - generic [ref=e83]: Keep Scrolling
+        - img [ref=e84]
+      - generic [ref=e86]:
+        - generic [ref=e87]: Keep Scrolling
+        - img [ref=e88]
+      - generic [ref=e90]:
+        - generic [ref=e91]: Keep Scrolling
+        - img [ref=e92]
+      - generic [ref=e94]:
+        - generic [ref=e95]: Keep Scrolling
+        - img [ref=e96]
+      - generic [ref=e98]:
+        - generic [ref=e99]: Keep Scrolling
+        - img [ref=e100]
+  - generic [ref=e105]:
+    - text: Lo que construimos
+    - button "Escribinos ↗" [ref=e106] [cursor=pointer]
+    - text: para vos
+  - generic:
+    - generic:
+      - button "✕"
+      - heading "Hablemos de tu proyecto" [level=3]
+      - paragraph: Completá el formulario y te respondemos en menos de 24hs.
+      - generic:
+        - generic:
+          - textbox "Tu nombre completo"
+        - generic:
+          - textbox "Email de contacto"
+        - generic:
+          - textbox "Empresa / Proyecto"
+        - generic:
+          - textbox "Contanos sobre tu idea..."
+        - button "Enviar mensaje →"
+  - generic [ref=e108]:
+    - generic [ref=e109]: Servicios
+    - generic [ref=e110]:
+      - generic [ref=e111]:
+        - generic [ref=e112]:
+          - heading "Desarrollo de Software" [level=2] [ref=e113]
+          - paragraph [ref=e114]: Soluciones a medida basadas en las necesidades particulares de tu empresa que buscan optimizar y automatizar aquellos procesos clave para tu negocio.
+          - generic [ref=e115]:
+            - generic [ref=e116]: Backend
+            - generic [ref=e117]: Frontend
+            - generic [ref=e118]: API REST
+            - generic [ref=e119]: Cloud
+        - img [ref=e122]:
+          - generic [ref=e130]: $ git clone repo.git
+          - generic [ref=e131]: Cloning into 'proyecto'...
+          - generic [ref=e132]: $ npm install
+          - generic [ref=e133]: added 1243 packages
+          - generic [ref=e134]: $ npm run build
+          - generic [ref=e135]: ✓ Built in 0.8s
+          - generic [ref=e136]: $ _
+          - generic [ref=e159]: function build()
+          - generic [ref=e160]: return output
+          - generic [ref=e161]: "}"
+      - generic [ref=e166]:
+        - generic [ref=e167]:
+          - heading "Desarrollo Web" [level=2] [ref=e168]
+          - paragraph [ref=e169]: Desarrollamos aplicaciones web según tus necesidades y sitios web dinámicos para proyectos corporativos y emprendimientos centrados en Internet.
+          - generic [ref=e170]:
+            - generic [ref=e171]: React
+            - generic [ref=e172]: Next.js
+            - generic [ref=e173]: Vue
+            - generic [ref=e174]: TypeScript
+        - img [ref=e177]:
+          - generic [ref=e186]: ignis.dev
+          - generic [ref=e192]: ▶
+          - generic [ref=e210]: Ver sitio →
+      - generic [ref=e214]:
+        - generic [ref=e215]:
+          - heading "Desarrollo Mobile" [level=2] [ref=e216]
+          - paragraph [ref=e217]: Creamos aplicaciones móviles nativas, híbridas y web apps de alta calidad que permiten llevar tu información segura y consolidada en tiempo real.
+          - generic [ref=e218]:
+            - generic [ref=e219]: iOS
+            - generic [ref=e220]: Android
+            - generic [ref=e221]: React Native
+            - generic [ref=e222]: Flutter
+        - img [ref=e225]:
+          - generic [ref=e231]: 9:41
+          - generic [ref=e234]: Dashboard
+          - generic [ref=e236]: Ventas
+          - generic [ref=e237]: $24k
+          - generic [ref=e238]: ↑ 12%
+          - generic [ref=e240]: Usuarios
+          - generic [ref=e241]: 1.2k
+          - generic [ref=e242]: ↑ 8%
+          - generic [ref=e254]: Nuevo pedido
+          - generic [ref=e255]: Hace 2 min
+          - generic [ref=e257]: Pago recibido
+          - generic [ref=e258]: +$450.00
+      - generic [ref=e261]:
+        - generic [ref=e262]:
+          - heading "Soluciones Empresariales" [level=2] [ref=e263]
+          - paragraph [ref=e264]: Contamos con gran experiencia en el diseño y construcción de soluciones empresariales, lo que nos permite llevar adelante hasta finalizar tu proyecto.
+          - generic [ref=e265]:
+            - generic [ref=e266]: ERP
+            - generic [ref=e267]: CRM
+            - generic [ref=e268]: BI
+            - generic [ref=e269]: Integración
+        - img [ref=e272]:
+          - generic [ref=e279]: ERP
+          - generic [ref=e281]: CRM
+          - generic [ref=e283]: Analytics
+          - generic [ref=e285]: BI
+          - generic [ref=e288]: Integración
+          - generic [ref=e291]: Reporting
+          - generic [ref=e294]: Cloud
+          - generic [ref=e297]: Workflow
+      - generic [ref=e302]:
+        - generic [ref=e303]:
+          - heading "I+D" [level=2] [ref=e304]
+          - paragraph [ref=e305]: Dominamos las tecnologías necesarias para generar soluciones avanzadas y escalables que requieran procesos de Investigación y Desarrollo (I+D).
+          - generic [ref=e306]:
+            - generic [ref=e307]: AI/ML
+            - generic [ref=e308]: Investigación
+            - generic [ref=e309]: Prototipos
+            - generic [ref=e310]: Innovación
+        - img [ref=e313]:
+          - generic [ref=e328]: E = mc²
+          - generic [ref=e329]: f(x) = Σaₙxⁿ
+          - generic [ref=e330]: ∇²φ = ρ/ε₀
+          - generic [ref=e332]: Accuracy
+          - generic [ref=e335]: F1 Score
+          - generic [ref=e338]: Precision
+      - generic [ref=e350]:
+        - generic [ref=e351]:
+          - heading "Consultoría" [level=2] [ref=e352]
+          - paragraph [ref=e353]: Nuestro servicio de asesoramiento permite identificar y priorizar necesidades para elegir las tecnologías que mejor se adapten a tu empresa.
+          - generic [ref=e354]:
+            - generic [ref=e355]: Estrategia
+            - generic [ref=e356]: Arquitectura
+            - generic [ref=e357]: Asesoría
+            - generic [ref=e358]: Roadmap
+        - img [ref=e361]:
+          - generic [ref=e371]: Q1
+          - generic [ref=e372]: Q2
+          - generic [ref=e373]: Q3
+          - generic [ref=e374]: Q4
+          - generic [ref=e375]: Q5
+          - generic [ref=e376]: Crecimiento del negocio
+          - generic [ref=e394]: Estrategia Digital
+          - generic [ref=e395]: Roadmap 2026 →
+  - generic [ref=e407]:
+    - img "MercadoLibre" [ref=e409]
+    - img "El Delfín" [ref=e411]
+    - img "Santander" [ref=e413]
+    - img "ABNET" [ref=e415]
+    - img "AVNET" [ref=e417]
+    - img "MercadoLibre" [ref=e419]
+    - img "El Delfín" [ref=e421]
+    - img "Santander" [ref=e423]
+    - img "ABNET" [ref=e425]
+    - img "AVNET" [ref=e427]
+  - generic [ref=e429]:
+    - generic [ref=e430]:
+      - generic [ref=e431]: Cómo trabajamos
+      - heading "Del concepto al producto en producción" [level=2] [ref=e432]:
+        - text: Del concepto
+        - text: al producto
+        - text: en producción
+      - paragraph [ref=e433]: Un proceso claro, sin sorpresas. Sabés en todo momento en qué etapa está tu proyecto.
+    - generic [ref=e434]:
+      - generic [ref=e435]:
+        - generic [ref=e436]: "01"
+        - generic [ref=e437]:
+          - heading "Descubrimiento & Estrategia" [level=4] [ref=e438]
+          - paragraph [ref=e439]: Analizamos tu negocio, usuarios y competencia para definir la hoja de ruta técnica antes de escribir la primera línea de código.
+      - generic [ref=e440]:
+        - generic [ref=e441]: "02"
+        - generic [ref=e442]:
+          - heading "Diseño & Arquitectura" [level=4] [ref=e443]
+          - paragraph [ref=e444]: Prototipamos rápido, validamos con usuarios reales y diseñamos la arquitectura que va a sostener tu producto a escala.
+      - generic [ref=e445]:
+        - generic [ref=e446]: "03"
+        - generic [ref=e447]:
+          - heading "Desarrollo Iterativo" [level=4] [ref=e448]
+          - paragraph [ref=e449]: Sprints de 2 semanas con entregables concretos. Ves el progreso real en cada iteración y podés ajustar en tiempo real.
+      - generic [ref=e450]:
+        - generic [ref=e451]: "04"
+        - generic [ref=e452]:
+          - heading "QA & Testing" [level=4] [ref=e453]
+          - paragraph [ref=e454]: Testing automatizado, revisiones de seguridad y performance benchmarking antes de cada release. Cero sorpresas en producción.
+      - generic [ref=e455]:
+        - generic [ref=e456]: "05"
+        - generic [ref=e457]:
+          - heading "Deploy & Escalamiento" [level=4] [ref=e458]
+          - paragraph [ref=e459]: Lanzamiento con cero downtime, monitoreo 24/7 y un equipo listo para escalar cuando tu producto explote.
+  - generic [ref=e461]:
+    - generic [ref=e462]:
+      - generic [ref=e463]: Stack Tecnológico
+      - heading "Tecnologías que dominamos" [level=2] [ref=e464]:
+        - text: Tecnologías que
+        - text: dominamos
+      - paragraph [ref=e465]: Elegimos la herramienta correcta para cada problema, no la de moda.
+      - generic [ref=e466]:
+        - generic [ref=e467]:
+          - generic [ref=e468]: Frontend
+          - generic [ref=e469]:
+            - generic [ref=e470] [cursor=pointer]: React
+            - generic [ref=e471] [cursor=pointer]: Next.js
+            - generic [ref=e472] [cursor=pointer]: Vue
+            - generic [ref=e473] [cursor=pointer]: TypeScript
+            - generic [ref=e474] [cursor=pointer]: React Native
+        - generic [ref=e475]:
+          - generic [ref=e476]: Backend
+          - generic [ref=e477]:
+            - generic [ref=e478] [cursor=pointer]: Node.js
+            - generic [ref=e479] [cursor=pointer]: Python
+            - generic [ref=e480] [cursor=pointer]: Go
+            - generic [ref=e481] [cursor=pointer]: Java
+            - generic [ref=e482] [cursor=pointer]: GraphQL
+        - generic [ref=e483]:
+          - generic [ref=e484]: Infrastructure
+          - generic [ref=e485]:
+            - generic [ref=e486] [cursor=pointer]: Docker
+            - generic [ref=e487] [cursor=pointer]: Kubernetes
+            - generic [ref=e488] [cursor=pointer]: Terraform
+            - generic [ref=e489] [cursor=pointer]: GitHub Actions
+    - generic [ref=e490]:
+      - generic [ref=e492]:
+        - generic [ref=e493]: Desarrollo Web & Mobile
+        - generic [ref=e494]: 95%
+      - generic [ref=e497]:
+        - generic [ref=e498]: Cloud & DevOps
+        - generic [ref=e499]: 90%
+      - generic [ref=e502]:
+        - generic [ref=e503]: Inteligencia Artificial
+        - generic [ref=e504]: 82%
+      - generic [ref=e507]:
+        - generic [ref=e508]: Data Engineering
+        - generic [ref=e509]: 78%
+      - generic [ref=e512]:
+        - generic [ref=e513]: UX/UI Design
+        - generic [ref=e514]: 88%
+      - generic [ref=e517]:
+        - generic [ref=e518]: QA & Testing
+        - generic [ref=e519]: 92%
+  - generic [ref=e521]:
+    - heading "¿Listo para construir algo grande?" [level=2] [ref=e522]:
+      - text: ¿Listo para construir
+      - text: algo grande?
+    - paragraph [ref=e523]: Contanos tu idea. Te respondemos en menos de 24 horas con un plan de acción concreto.
+    - generic [ref=e524]:
+      - link "Empezar mi proyecto →" [ref=e525] [cursor=pointer]:
+        - /url: "#"
+      - link "Ver portfolio" [ref=e526] [cursor=pointer]:
+        - /url: "#"
+  - contentinfo [ref=e527]:
+    - paragraph [ref=e528]: © 2024 IGNIS Solutions. Todos los derechos reservados.
