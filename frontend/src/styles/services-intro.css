@@ -76,22 +76,32 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--cyan);
   color: #000;
   border: none;
   border-radius: 100px;
   padding: 9px 22px;
   font-size: clamp(16px, 1.8vw, 24px);
   font-weight: 800;
-  cursor: pointer;
-  transition: transform 0.25s, box-shadow 0.25s;
+  cursor: none;
   vertical-align: middle;
   letter-spacing: -0.5px;
   position: relative;
+  pointer-events: all;
+  background:
+    var(--cyan)
+    linear-gradient(rgba(255, 255, 255, 0.28) 0 0)
+    no-repeat
+    calc(200% - var(--p, 0%)) 100% /
+    200% var(--p, 0.2em);
+  transition:
+    0.3s var(--t, 0s),
+    background-position 0.3s calc(0.3s - var(--t, 0s)),
+    box-shadow 0.25s;
 }
 
 .escribinos-btn:hover {
-  transform: scale(1.05) translateY(-2px);
+  --p: 100%;
+  --t: 0.3s;
   box-shadow: 0 10px 40px rgba(0, 200, 255, 0.55);
 }
 
@@ -109,7 +119,7 @@
   padding: 11px 22px;
   font-size: 14px;
   font-weight: 800;
-  cursor: pointer;
+  cursor: none;
   letter-spacing: -0.3px;
   white-space: nowrap;
   transition: box-shadow 0.3s;
@@ -343,6 +353,15 @@
 
 .social-icons-list .whatsapp-link::before { background: #25d366; }
 .social-icons-list .linkedin-link::before { background: #0077b5; }
+
+/* ── HIDE CURSOR RING ON ESCRIBINOS BUTTONS ── */
+body:has(.escribinos-btn:hover) .cursor,
+body:has(.escribinos-btn:hover) .cursor-ring,
+body:has(.escribinos-float:hover) .cursor,
+body:has(.escribinos-float:hover) .cursor-ring {
+  opacity: 0 !important;
+  transition-duration: 0.1s !important;
+}
 
 /* ── RESPONSIVE: apilar columnas en mobile ── */
 @media (max-width: 640px) {

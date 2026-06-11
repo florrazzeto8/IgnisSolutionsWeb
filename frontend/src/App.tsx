@@ -53,8 +53,9 @@ function App() {
       <div className={`cursor${cursorVisible ? ' visible' : ''}`} id="cur"></div>
       <div className={`cursor-ring${cursorVisible ? ' visible' : ''}`} id="ring"></div>
 
+      <Header />
+
       <section className="hero">
-        <Header />
         <ParticleSystem />
         <Hero />
       </section>
