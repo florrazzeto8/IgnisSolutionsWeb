@@ -1,0 +1,63 @@
+<h2>Enfoques técnicos</h2>
+<p class="subtitle">3 formas de construir la card animada. Cada una tiene trade-offs distintos.</p>
+
+<div class="options">
+
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A ⭐</div>
+    <div class="content">
+      <h3>Zona de scroll sticky — igual que Services (recomendado)</h3>
+      <p>Un div alto (~500vh) que contiene la card sticky. El scroll se divide en 2 fases:
+        <br>• Fase 1 (0%–20%): card sube desde translateY(100vh) hasta 0
+        <br>• Fase 2 (20%–100%): las 3 frases animan con --local-scroll (igual al ejemplo)
+      </p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>Mismo patrón que Services — código coherente</li>
+          <li>Control total sobre timing de cada frase</li>
+          <li>Funciona en todos los browsers</li>
+        </ul></div>
+        <div class="cons"><h4>Contras</h4><ul>
+          <li>~100 líneas JS para manejar el scroll</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>CSS Scroll-driven animations (nativo)</h3>
+      <p>Usa <code>animation-timeline: scroll()</code> y <code>animation-range</code> — sin JS para la animación. Solo CSS puro.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>Código CSS mínimo y limpio</li>
+          <li>Performance nativa del browser</li>
+        </ul></div>
+        <div class="cons"><h4>Contras</h4><ul>
+          <li>No funciona en Safari antiguo (~15% usuarios)</li>
+          <li>El ejemplo usa JS — hay que reescribir el approach</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Intersection Observer + animación time-based</h3>
+      <p>Cuando la card llega al top del viewport, dispara las animaciones con delay/duración (como el ejemplo original, basado en tiempo, no en scroll).</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>Más simple de implementar</li>
+          <li>Compatible con todos los browsers</li>
+        </ul></div>
+        <div class="cons"><h4>Contras</h4><ul>
+          <li>NO es scroll-driven — el usuario específicamente pidió eso</li>
+          <li>No se puede "scrubear" hacia atrás</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+</div>
