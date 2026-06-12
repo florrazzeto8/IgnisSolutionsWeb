@@ -1,0 +1,403 @@
+/* ── Portfolio Section ── */
+.portfolio-section {
+  background: transparent; /* wrapper .cta-portfolio-zone owns the background */
+  position: relative;
+}
+
+/* ── Title block ── */
+.pf-eyebrow {
+  text-align: center;
+  padding: 52px 24px 40px;
+  margin: 0;
+}
+
+/* Curtain reveal */
+.pf-mask-line {
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+
+.pf-mask-inner {
+  display: block;
+  transform: translateY(105%);
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pf-eyebrow.revealed .pf-mask-inner {
+  transform: translateY(0);
+}
+
+.pf-eyebrow span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 14px;
+}
+
+.pf-eyebrow h2 {
+  font-size: clamp(44px, 6vw, 80px);
+  font-weight: 900;
+  letter-spacing: -3px;
+  line-height: 1;
+  color: #fff;
+  margin: 0;
+}
+
+/* ── Stack ── */
+.portfolio-stack {
+  position: relative;
+}
+
+.pf-card-wrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* ── Card ── */
+.pf-card {
+  width: 100%;
+  max-width: 1080px;
+  height: 500px;
+  border-radius: 24px;
+  display: flex;
+  overflow: hidden;
+  will-change: transform, filter;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  transform-origin: top center;
+}
+
+/* ── Left panel ── */
+.pf-card-left {
+  flex: 1.1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Right panel ── */
+.pf-card-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px 44px;
+  background: #0b1528;
+}
+
+.pf-category {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid;
+  margin-bottom: 22px;
+  width: fit-content;
+}
+
+.pf-title {
+  font-size: clamp(30px, 3.2vw, 50px);
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  line-height: 1.05;
+  color: #fff;
+  margin: 0 0 16px;
+}
+
+.pf-desc {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.7;
+  margin: 0 0 28px;
+  max-width: 340px;
+}
+
+.pf-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.pf-tag {
+  font-size: 12px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.pf-link {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s ease;
+}
+
+.pf-link:hover {
+  color: var(--accent, #00c8ff);
+}
+
+.pf-private {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ── Laptop Mockup ── */
+.laptop-mockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.laptop-screen {
+  width: 300px;
+  height: 188px;
+  border: 2px solid;
+  border-radius: 8px 8px 0 0;
+  background: #050d1c;
+  overflow: hidden;
+  position: relative;
+}
+
+.laptop-topbar {
+  height: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.lm-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  display: inline-block;
+}
+
+.laptop-content {
+  display: flex;
+  height: calc(100% - 18px);
+}
+
+.lc-sidebar {
+  width: 44px;
+  background: rgba(255, 255, 255, 0.025);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 10px 7px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lc-bar {
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lc-main {
+  flex: 1;
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lc-header-row {
+  display: flex;
+  gap: 6px;
+}
+
+.lc-chip {
+  height: 18px;
+  width: 54px;
+  border-radius: 4px;
+}
+
+.lc-chart-area {
+  flex: 1;
+  border: 1px solid;
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+  min-height: 64px;
+}
+
+.lc-row-group {
+  display: flex;
+  gap: 4px;
+}
+
+.lc-row-item {
+  height: 12px;
+  flex: 1;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.laptop-hinge {
+  width: 310px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.laptop-base {
+  width: 340px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 0 0 8px 8px;
+  position: relative;
+}
+
+.laptop-base::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 72px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 0 0 5px 5px;
+}
+
+/* ── Phones Mockup ── */
+.phones-mockup {
+  position: relative;
+  width: 280px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phone-frame {
+  position: absolute;
+  width: 86px;
+  height: 172px;
+  border: 2px solid;
+  border-radius: 14px;
+  background: #060d1f;
+  overflow: hidden;
+}
+
+.phone-notch {
+  width: 26px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+  margin: 7px auto 0;
+}
+
+.phone-screen {
+  padding: 5px 5px 0;
+  height: calc(100% - 18px);
+  overflow: hidden;
+}
+
+.ph-header {
+  height: 18px;
+  border-radius: 4px;
+  margin-bottom: 7px;
+}
+
+.ph-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ph-bar {
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ph-bar-short {
+  width: 55%;
+}
+
+.ph-card-item {
+  border: 1px solid;
+  border-radius: 6px;
+  padding: 6px 5px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.ph-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ph-lines {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .pf-card {
+    flex-direction: column;
+    height: auto;
+    min-height: 580px;
+  }
+
+  .pf-card-left {
+    height: 280px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    flex: none;
+  }
+
+  .pf-card-right {
+    padding: 32px 28px;
+    flex: none;
+  }
+
+  .laptop-screen { width: 220px; height: 138px; }
+  .laptop-hinge { width: 228px; }
+  .laptop-base { width: 250px; }
+
+  .pf-card-wrapper {
+    padding: 12px;
+    align-items: flex-start;
+    padding-top: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-title { font-size: 44px; letter-spacing: -2px; }
+  .pf-title { font-size: 28px; }
+  .pf-card-right { padding: 24px 20px; }
+}

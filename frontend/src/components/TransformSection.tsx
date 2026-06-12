@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import '../styles/transform-section.css';
 
-const HEADLINE_LINES = ['Impulsando la', 'transformación digital'];
+const HEADLINE_LINES = ['Impulsamos la', 'transformación digital'];
 
 const PulseSVG = () => (
   <svg
@@ -52,25 +52,27 @@ export const TransformSection = () => {
   }, []);
 
   return (
-    <section className="transform-section">
-      <h2 ref={headlineRef} className="transform-headline">
-        {HEADLINE_LINES.map((line, i) => (
-          <div key={i} className="mask-line">
-            <span
-              className="mask-line-inner"
-              style={{ transitionDelay: `${i * 0.12}s` }}
-            >
-              {line}
-            </span>
+    <div className="transform-zone">
+      <section className="transform-section">
+        <h2 ref={headlineRef} className="transform-headline">
+          {HEADLINE_LINES.map((line, i) => (
+            <div key={i} className="mask-line">
+              <span
+                className="mask-line-inner"
+                style={{ transitionDelay: `${i * 0.12}s` }}
+              >
+                {line}
+              </span>
+            </div>
+          ))}
+        </h2>
+        <div className="transform-pill" aria-hidden="true">
+          <div className="transform-marquee-track">
+            <MarqueeSet />
+            <MarqueeSet />
           </div>
-        ))}
-      </h2>
-      <div className="transform-pill" aria-hidden="true">
-        <div className="transform-marquee-track">
-          <MarqueeSet />
-          <MarqueeSet />
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };

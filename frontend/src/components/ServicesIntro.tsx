@@ -26,6 +26,8 @@ export const ServicesIntro = () => {
     const fBtn = floatBtnRef.current;
     if (!zone || !card || !phrase || !origBtn || !fBtn) return;
 
+    const servicesZone = document.querySelector('.services-zone') as HTMLElement | null;
+
     const updateAll = () => {
       const rect = zone.getBoundingClientRect();
       const total = zone.offsetHeight - window.innerHeight;
@@ -36,7 +38,7 @@ export const ServicesIntro = () => {
       // ── Phase 1 (raw 0→0.35): card reveals bottom→top ──
       const p1 = Math.min(1, raw / 0.35);
       const e1 = 1 - Math.pow(1 - p1, 2); // quadratic: card at ~65% when raw=0.15
-      card.style.clipPath = `inset(${(1 - e1) * 100}% 0 0 0 round 28px 28px 0 0)`;
+      card.style.clipPath = `inset(${(1 - e1) * 100}% 0 0 0 round 28px)`;
 
       // ── Phase 2 (raw 0.15→0.45): phrase enters from below to center ──
       // starts when card is ~65% revealed (screenshot height)
@@ -57,6 +59,29 @@ export const ServicesIntro = () => {
       const pr = phrase.getBoundingClientRect();
       const obr = origBtn.getBoundingClientRect();
       const vw = window.innerWidth;
+      const endX = vw - 210;
+      const endY = 90;
+
+      // Once landed, lock position and stop recalculating
+      if (landed) {
+        origBtn.style.opacity = '0';
+        fBtn.style.display = 'flex';
+        fBtn.style.left = endX + 'px';
+        fBtn.style.top = endY + 'px';
+        fBtn.style.fontSize = '18px';
+        fBtn.style.padding = '10px 20px';
+        // Hide when services-zone starts exiting (all panels shown)
+        const zb = servicesZone ? servicesZone.getBoundingClientRect().bottom : window.innerHeight;
+        const hidden = zb < window.innerHeight;
+        fBtn.style.opacity = hidden ? '0' : '1';
+        fBtn.style.pointerEvents = hidden ? 'none' : 'all';
+        // Un-land only if user scrolls clearly back up
+        if (pr.top > 8 && raw < 0.5) {
+          landed = false;
+          fBtn.classList.remove('landed');
+        }
+        return;
+      }
 
       if (pr.top > 8) {
         savedX = obr.left;
@@ -64,13 +89,10 @@ export const ServicesIntro = () => {
         savedFS = parseFloat(getComputedStyle(origBtn).fontSize);
         origBtn.style.opacity = '1';
         fBtn.style.display = 'none';
-        landed = false;
       } else {
         origBtn.style.opacity = '0';
         fBtn.style.display = 'flex';
 
-        const endX = vw - 210;
-        const endY = 90;
         const scrolledPast = -pr.top;
         const bp = Math.max(0, Math.min(1, scrolledPast / (vh * 1.0)));
         const ep = 1 - Math.pow(1 - bp, 3);
@@ -81,12 +103,9 @@ export const ServicesIntro = () => {
         fBtn.style.fontSize = savedFS + (18 - savedFS) * ep + 'px';
         fBtn.style.padding = `10px ${(24 + (20 - 24) * ep).toFixed(1)}px`;
 
-        if (bp >= 0.95 && !landed) {
+        if (bp >= 0.95) {
           landed = true;
           fBtn.classList.add('landed');
-        } else if (bp < 0.95 && landed) {
-          landed = false;
-          fBtn.classList.remove('landed');
         }
       }
     };

@@ -169,6 +169,21 @@ body:has(button:hover) .cursor-ring {
   pointer-events: none;
 }
 
+/* ── CTAReveal + Portfolio zone (above fixed particles) ── */
+.cta-portfolio-zone {
+  position: relative;
+  z-index: 2;
+  background: #002f6c;
+}
+
+.cta-portfolio-zone::after {
+  content: '';
+  display: block;
+  height: 140px;
+  background: linear-gradient(to bottom, #002f6c, #060d1f);
+  pointer-events: none;
+}
+
 /* ── ORBS ── */
 .orb {
   position: absolute;

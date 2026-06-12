@@ -10,6 +10,7 @@ import { ServicesIntro } from './components/ServicesIntro';
 import { LogoCarousel } from './components/LogoCarousel';
 import { Services } from './components/Services';
 import { CTAReveal } from './components/CTAReveal';
+import { Portfolio } from './components/Portfolio';
 import { Skills } from './components/Skills';
 import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
@@ -69,7 +70,11 @@ function App() {
 
       <Services />
 
-      <CTAReveal />
+      <div className="cta-portfolio-zone">
+        <CTAReveal>
+          <Portfolio />
+        </CTAReveal>
+      </div>
 
       <LogoCarousel />
 

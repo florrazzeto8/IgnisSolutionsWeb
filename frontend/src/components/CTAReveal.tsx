@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import '../styles/cta-reveal.css';
 
-export const CTAReveal = () => {
+export const CTAReveal = ({ children }: { children?: React.ReactNode }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -85,6 +85,7 @@ export const CTAReveal = () => {
           <span className="scroll-arrow">↓</span>
         </div>
       </div>
+      {children}
     </div>
   );
 };

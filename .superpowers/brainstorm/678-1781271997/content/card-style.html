@@ -1,0 +1,138 @@
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #060d1f; color: #fff; font-family: 'Inter', sans-serif; padding: 24px; }
+  h2 { color: #fff; margin-bottom: 8px; font-size: 22px; }
+  .subtitle { color: rgba(255,255,255,0.6); margin-bottom: 28px; font-size: 14px; }
+  .options { display: flex; gap: 20px; flex-wrap: wrap; }
+  .option {
+    flex: 1; min-width: 280px; border: 2px solid rgba(0,200,255,0.12);
+    border-radius: 16px; padding: 16px; cursor: pointer; transition: all 0.2s;
+    background: #0b1528;
+  }
+  .option:hover, .option.selected { border-color: #00c8ff; box-shadow: 0 0 24px rgba(0,200,255,0.18); }
+  .option .letter { font-size: 10px; font-weight: 700; color: #00c8ff; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+  .option > h3 { margin: 0 0 6px; font-size: 15px; color: #fff; }
+  .option > p { margin: 0 0 14px; font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+  /* ── Mini card preview ── */
+  .card-preview {
+    border-radius: 12px; overflow: hidden; display: flex; height: 140px;
+    position: relative;
+  }
+
+  /* LEFT: device mockup placeholder */
+  .card-left {
+    flex: 1.1; display: flex; align-items: center; justify-content: center;
+    position: relative; padding: 10px;
+  }
+  .laptop-frame {
+    width: 90px; height: 58px; border: 2px solid rgba(255,255,255,0.25);
+    border-radius: 5px 5px 0 0; background: #0a0a1a;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; font-size: 8px; color: rgba(255,255,255,0.3);
+  }
+  .laptop-base {
+    width: 96px; height: 4px; background: rgba(255,255,255,0.15);
+    border-radius: 0 0 4px 4px; position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%);
+  }
+
+  /* RIGHT: project info */
+  .card-right {
+    flex: 1; display: flex; flex-direction: column; justify-content: center;
+    padding: 12px 14px;
+  }
+  .badge {
+    display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 3px 8px; border-radius: 20px;
+    margin-bottom: 8px; width: fit-content;
+  }
+  .card-title { font-size: 14px; font-weight: 800; margin-bottom: 4px; line-height: 1.2; }
+  .card-desc { font-size: 10px; color: rgba(255,255,255,0.55); line-height: 1.4; margin-bottom: 8px; }
+  .tags { display: flex; gap: 4px; flex-wrap: wrap; }
+  .tag {
+    font-size: 9px; padding: 2px 7px; border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.6);
+  }
+
+  /* Style A: Dark navy cards (IGNIS brand dark) */
+  .style-a .card-preview { background: #0b1528; }
+  .style-a .card-left { background: #0f1d36; border-right: 1px solid rgba(255,255,255,0.06); }
+  .style-a .badge { background: rgba(0,200,255,0.12); color: #00c8ff; border: 1px solid rgba(0,200,255,0.3); }
+
+  /* Style B: Dark card with blue accent left strip */
+  .style-b .card-preview { background: #0b1528; }
+  .style-b .card-left { background: linear-gradient(135deg, #002f6c 0%, #0b1528 100%); }
+  .style-b .badge { background: rgba(0,168,214,0.2); color: #00a8d6; border: 1px solid rgba(0,168,214,0.4); }
+
+  /* Style C: True dark (close to black) like the reference screenshots */
+  .style-c .card-preview { background: #111118; }
+  .style-c .card-left { background: #0d0d14; border-right: 1px solid rgba(255,255,255,0.05); }
+  .style-c .badge { background: rgba(0,200,255,0.08); color: #00c8ff; border: 1px solid rgba(0,200,255,0.25); }
+</style>
+
+<h2>¿Color de fondo de las tarjetas?</h2>
+<p class="subtitle">El portfolio sigue sobre el fondo azul oscuro del CTAReveal (#002f6c)</p>
+
+<div class="options">
+
+  <div class="option style-a" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">Opción A</div>
+    <h3>Navy IGNIS</h3>
+    <p>Tarjeta navy-2 (#0b1528) — coherente con el resto del sitio</p>
+    <div class="card-preview">
+      <div class="card-left">
+        <div>
+          <div class="laptop-frame">pantalla</div>
+          <div class="laptop-base"></div>
+        </div>
+      </div>
+      <div class="card-right">
+        <span class="badge">Software</span>
+        <div class="card-title">Sistema de Stock</div>
+        <div class="card-desc">Control total en tiempo real. Gestión de inventario.</div>
+        <div class="tags"><span class="tag">React</span><span class="tag">Node.js</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option style-b" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">Opción B — Recomendada</div>
+    <h3>Gradiente azul</h3>
+    <p>Lado izquierdo con gradiente del CTAReveal, derecho navy. Conecta visualmente con la sección anterior.</p>
+    <div class="card-preview">
+      <div class="card-left">
+        <div>
+          <div class="laptop-frame">pantalla</div>
+          <div class="laptop-base"></div>
+        </div>
+      </div>
+      <div class="card-right">
+        <span class="badge">Software</span>
+        <div class="card-title">Sistema de Stock</div>
+        <div class="card-desc">Control total en tiempo real. Gestión de inventario.</div>
+        <div class="tags"><span class="tag">React</span><span class="tag">Node.js</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option style-c" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">Opción C</div>
+    <h3>Negro profundo</h3>
+    <p>Como las imágenes de referencia — casi negro (#111118). Contraste máximo con los mockups.</p>
+    <div class="card-preview">
+      <div class="card-left">
+        <div>
+          <div class="laptop-frame" style="background:#050510;">pantalla</div>
+          <div class="laptop-base"></div>
+        </div>
+      </div>
+      <div class="card-right">
+        <span class="badge">Software</span>
+        <div class="card-title">Sistema de Stock</div>
+        <div class="card-desc">Control total en tiempo real. Gestión de inventario.</div>
+        <div class="tags"><span class="tag">React</span><span class="tag">Node.js</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>

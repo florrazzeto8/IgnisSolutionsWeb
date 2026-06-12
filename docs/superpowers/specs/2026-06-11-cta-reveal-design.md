@@ -35,13 +35,13 @@ A new `CTAReveal` component inserted between `<Services />` and `<LogoCarousel /
 
 ## 3 Slide Panels
 
-Each slide: `height: 65vh`, `overflow: hidden`, `background-color: #060d1f` initially (animates to target color via scroll).
+Each slide: `height: 100vh`, `overflow: hidden`, `background-color: #060d1f` initially (animates to target color via scroll).
 
 | Slide | Background | Text color | Em color | Text enters from |
 |-------|-----------|------------|----------|-----------------|
-| 1 | `#00a8d6` | `rgba(255,255,255,0.92)` | `#ffffff` + glow | Left (off-screen) |
-| 2 | `#0052a3` | `rgba(255,255,255,0.92)` | — | Right (off-screen) |
-| 3 | `#002f6c` | `rgba(255,255,255,0.92)` | `#00c8ff` | Top (within block) |
+| 1 | `#00c8ff` (cyan) | `#060d1f` (navy) | `#1a3aff` (blue) | Left (off-screen) |
+| 2 | `#1a3aff` (royal blue) | `#ffffff` | — | Right (off-screen) |
+| 3 | `#ffffff` (white) | `#060d1f` (navy) | `#1a3aff` (blue) | Top (off-screen) |
 
 **Phrases:**
 1. *"No solo creamos código, diseñamos tu **futuro**"* — `<em>futuro</em>` highlighted
@@ -54,16 +54,7 @@ Each slide: `height: 65vh`, `overflow: hidden`, `background-color: #060d1f` init
 
 Each slide independently calculates `--slide-scroll` (0→1) via `getBoundingClientRect()`:
 
-```js
-// Slide 1: completes when card.top reaches 0 (card fully at viewport top)
-s1 = clamp(0, 1, (vh * 1.5 - cardTop) / (vh * 1.5))
-
-// Slide 2: starts when card.top = 0, ends when slide 2 center = viewport center
-s2 = clamp(0, 1, (vh * 0.65 - s2top) / (vh * 0.475))
-
-// Slide 3: starts when slide 3 top is at 65% of viewport
-s3 = clamp(0, 1, (vh * 0.65 - s3top) / (vh * 0.57))
-```
+Each slide tracks its own `--slide-scroll` (0→1) via `getBoundingClientRect()` on the scroll event. Progress is `clamp(0, 1, (triggerY - slideTop) / range)` where `triggerY` and `range` are tuned per slide so the animation completes while the slide fills the viewport.
 
 CSS animations are **paused** and driven by negative `animation-delay`:
 ```css
@@ -72,17 +63,6 @@ CSS animations are **paused** and driven by negative `animation-delay`:
 ```
 
 Both the background color (`bgFade`) and the content wrapper (`slideInLeft/Right/Down`) use `animation: ... 1 normal both paused` (full shorthand to prevent fill-mode reset).
-
----
-
-## Scroll Arrow
-
-- Rendered as `<span class="scroll-arrow">↓</span>` inside each `.cr-content` wrapper
-- Enters **together with the text** (same `.cr-content` wrapper, same animation)
-- Font size: `36px`
-- `bounce-arrow` keyframe loops (`translateY 0→12px→0`, 1.1s ease-in-out)
-- Bounce starts only when slide gets `.done` class (`--slide-scroll >= 0.95`)
-- Bounce paused by default, running on `.cr-slide.done .scroll-arrow`
 
 ---
 
@@ -105,8 +85,7 @@ Both the background color (`bgFade`) and the content wrapper (`slideInLeft/Right
 }
 @keyframes slideInLeft  { from { opacity:0; transform:translateX(-110vw); } to { opacity:1; transform:translateX(0); } }
 @keyframes slideInRight { from { opacity:0; transform:translateX(110vw);  } to { opacity:1; transform:translateX(0); } }
-@keyframes slideInDown  { from { opacity:0; transform:translateY(-100%);  } to { opacity:1; transform:translateY(0); } }
-@keyframes bounce-arrow { 0%,100% { transform:translateY(0); } 50% { transform:translateY(12px); } }
+@keyframes slideInDown  { from { opacity:0; transform:translateY(-80vh);  } to { opacity:1; transform:translateY(0); } }
 ```
 
 ---

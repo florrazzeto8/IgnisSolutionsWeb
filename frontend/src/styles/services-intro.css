@@ -3,7 +3,7 @@
   position: relative;
   z-index: 15;
   height: 300vh;
-  margin-top: -100vh;
+  margin-top: -200vh;
   background: transparent;
 }
 
@@ -30,23 +30,6 @@
   box-shadow: 0 -12px 60px rgba(0, 0, 0, 0.4);
 }
 
-.si-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 45%;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(6, 13, 31, 0.15) 35%,
-    rgba(6, 13, 31, 0.6) 65%,
-    #060d1f 100%
-  );
-  pointer-events: none;
-  z-index: 2;
-}
 
 .si-inner {
   width: 100%;
@@ -122,7 +105,7 @@
   cursor: none;
   letter-spacing: -0.3px;
   white-space: nowrap;
-  transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s, opacity 0.4s;
 }
 
 .escribinos-float.landed {

@@ -1,0 +1,20 @@
+[      95ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=a7b448a7:14336
+[     177ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIkAAABQCAIAAACid8F5...:0
+[     178ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABQCAIAAAASpCUO...:0
+[     178ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGIAAABQCAIAAABtdTf/...:0
+[     178ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAIAAAABc2X6...:0
+[     178ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABQCAIAAAB6V6c2...:0
+[18488132ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5173/@vite/client:992
+[18490439ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=a7b448a7:14336
+[18490680ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIkAAABQCAIAAACid8F5...:0
+[18490681ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABQCAIAAAASpCUO...:0
+[18490681ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGIAAABQCAIAAABtdTf/...:0
+[18490682ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAIAAAABc2X6...:0
+[18490682ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABQCAIAAAB6V6c2...:0
+[19773504ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5173/@vite/client:992
+[21053567ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=a7b448a7:14336
+[21053884ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIkAAABQCAIAAACid8F5...:0
+[21053887ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABQCAIAAAASpCUO...:0
+[21053888ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGIAAABQCAIAAABtdTf/...:0
+[21053888ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAIAAAABc2X6...:0
+[21053888ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABQCAIAAAB6V6c2...:0

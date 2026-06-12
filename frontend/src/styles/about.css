@@ -5,6 +5,7 @@
   height: 180vh;
   margin-top: -95vh;
   background: transparent;
+  pointer-events: none;
 }
 
 .about-sticky {
@@ -42,6 +43,7 @@
   transform-origin: top right;
   will-change: transform;
   background: transparent;
+  pointer-events: none;
 }
 
 .about-left {

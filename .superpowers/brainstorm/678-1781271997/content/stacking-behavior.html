@@ -1,0 +1,87 @@
+<style>
+  body { background: #060d1f; color: #fff; font-family: 'Inter', sans-serif; }
+  h2 { color: #fff; }
+  .subtitle { color: rgba(255,255,255,0.6); }
+  .options { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 24px; }
+  .option {
+    flex: 1; min-width: 260px; background: #0b1528; border: 2px solid rgba(0,200,255,0.15);
+    border-radius: 16px; padding: 24px; cursor: pointer; transition: all 0.2s;
+  }
+  .option:hover, .option.selected { border-color: #00c8ff; box-shadow: 0 0 20px rgba(0,200,255,0.2); }
+  .option .letter { font-size: 11px; font-weight: 700; color: #00c8ff; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  .option h3 { margin: 0 0 8px; font-size: 16px; color: #fff; }
+  .option p { margin: 0 0 16px; font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+  /* Mini animations to show the stacking effect */
+  .mini-demo {
+    height: 120px; position: relative; border-radius: 8px; overflow: hidden;
+    background: #0f1d36; margin-top: 12px;
+  }
+  .mini-card {
+    position: absolute; width: calc(100% - 24px); height: 55px; border-radius: 8px;
+    left: 12px; display: flex; align-items: center; padding: 0 12px;
+    font-size: 11px; font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+
+  /* Option A: Stack with scale — previous cards shrink and peek */
+  .demo-a .c1 { background: #002f6c; top: 8px; transform: scale(0.88) translateY(0); opacity: 0.5; }
+  .demo-a .c2 { background: #0052a3; top: 28px; transform: scale(0.94) translateY(0); opacity: 0.75; }
+  .demo-a .c3 { background: #00a8d6; top: 48px; transform: scale(1); opacity: 1; color: #fff; }
+  .demo-a .label-a { font-size: 10px; color: rgba(255,255,255,0.4); text-align: center; margin-top: 4px; }
+
+  /* Option B: Full cover — each card slides up and covers fully */
+  .demo-b { display: flex; flex-direction: column; gap: 4px; padding: 12px; height: auto; }
+  .demo-b .step {
+    display: flex; align-items: center; gap: 8px; font-size: 11px;
+    color: rgba(255,255,255,0.6);
+  }
+  .demo-b .mini-card-b {
+    width: 40px; height: 20px; border-radius: 4px; flex-shrink: 0;
+  }
+  .arrow-down { font-size: 14px; color: #00c8ff; margin: 0 0 0 8px; }
+
+  /* Option C: Partial overlay — new card slides up but previous still slightly visible at top */
+  .demo-c .c1 { background: #002f6c; top: 6px; z-index: 1; }
+  .demo-c .c2 { background: #0052a3; top: 18px; z-index: 2; }
+  .demo-c .c3 { background: #00a8d6; top: 36px; z-index: 3; }
+  .demo-c .c1, .demo-c .c2, .demo-c .c3 { height: 78px; }
+</style>
+
+<h2>¿Cómo se apilan las tarjetas?</h2>
+<p class="subtitle">Elegí el comportamiento de scroll para el portfolio</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">Opción A — Recomendada</div>
+    <h3>Stack con efecto profundidad</h3>
+    <p>Las tarjetas anteriores se achican y quedan visibles al fondo (tipo mazo). La nueva tarjeta llega por debajo y queda encima. Efecto 3D sutil.</p>
+    <div class="mini-demo demo-a">
+      <div class="mini-card c1">Proyecto 1 (atrás)</div>
+      <div class="mini-card c2">Proyecto 2</div>
+      <div class="mini-card c3">Proyecto 3 (frente)</div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">Opción B</div>
+    <h3>Cobertura total</h3>
+    <p>Cada tarjeta sube desde abajo y cubre completamente la anterior. Solo una tarjeta visible a la vez. Más limpio, menos visual del mazo.</p>
+    <div class="mini-demo demo-b" style="background:transparent;">
+      <div class="step"><div class="mini-card-b" style="background:#002f6c;border-radius:4px;"></div><span>→ scroll ↓</span><div class="mini-card-b" style="background:#0052a3;border-radius:4px;"></div><span style="color:#00c8ff">cubre</span></div>
+      <div class="step"><div class="mini-card-b" style="background:#0052a3;border-radius:4px;"></div><span>→ scroll ↓</span><div class="mini-card-b" style="background:#00a8d6;border-radius:4px;"></div><span style="color:#00c8ff">cubre</span></div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.35);margin-top:8px;">Solo la tarjeta actual es visible</div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">Opción C</div>
+    <h3>Superposición parcial</h3>
+    <p>La nueva tarjeta sube y se superpone dejando ver el borde superior de las anteriores. Da sensación de "tarjetero" apilado.</p>
+    <div class="mini-demo demo-c">
+      <div class="mini-card c1" style="width:calc(100% - 24px);left:12px;height:78px;z-index:1;background:#002f6c;top:6px;">Proyecto 1</div>
+      <div class="mini-card c2" style="width:calc(100% - 24px);left:12px;height:78px;z-index:2;background:#0052a3;top:22px;">Proyecto 2</div>
+      <div class="mini-card c3" style="width:calc(100% - 24px);left:12px;height:78px;z-index:3;background:#00a8d6;top:38px;">Proyecto 3</div>
+    </div>
+  </div>
+</div>

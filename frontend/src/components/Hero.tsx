@@ -26,7 +26,23 @@ export const Hero = () => {
           arquitecturas modernas y un equipo que domina cada línea de código.
         </p>
         <div className="hero-actions he">
-          <a href="#" className="btn-primary">
+          <a
+            href="#portfolio"
+            className="btn-primary"
+            onClick={(e) => {
+              e.preventDefault();
+              const el = document.getElementById('portfolio');
+              if (!el) return;
+              // Use offsetTop chain — ignores CSS transforms on ancestors
+              let top = 0;
+              let node: HTMLElement | null = el;
+              while (node) {
+                top += node.offsetTop;
+                node = node.offsetParent as HTMLElement | null;
+              }
+              window.scrollTo({ top, behavior: 'smooth' });
+            }}
+          >
             Ver casos de éxito <span>→</span>
           </a>
         </div>
