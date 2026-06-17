@@ -25,8 +25,7 @@ export const Header = () => {
       <div className="nav-links">
         <Link to="/sobre-nosotros">Sobre nosotros</Link>
         <a href="#services" onClick={goToSection('services')}>Servicios</a>
-        <a href="#stack" onClick={goToSection('stack')}>Stack</a>
-        <a href="#">Trabaja con nosotros</a>
+<a href="#">Trabaja con nosotros</a>
         <button className="btn-cta" onClick={openModal}>
           CONTACTO
         </button>

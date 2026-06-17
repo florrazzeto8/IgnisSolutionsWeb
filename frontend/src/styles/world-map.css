@@ -1,0 +1,171 @@
+.wm-section {
+  padding: 100px 64px;
+  background: transparent;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.wm-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* ── TEXT ── */
+.wm-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 20px;
+  padding: 6px 14px;
+  border: 1px solid rgba(0, 200, 255, 0.25);
+  border-radius: 20px;
+}
+
+.wm-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--white);
+  margin: 0 0 20px;
+}
+
+.wm-accent {
+  color: var(--cyan);
+}
+
+.wm-sub {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--gray);
+  margin: 0 0 36px;
+  max-width: 420px;
+}
+
+.wm-countries {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wm-country {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+  cursor: default;
+  max-width: 280px;
+}
+
+.wm-country:hover {
+  border-color: rgba(0, 200, 255, 0.3);
+  background: rgba(0, 200, 255, 0.06);
+  transform: translateX(6px);
+}
+
+.wm-flag-img {
+  width: 28px;
+  height: 19px;
+  object-fit: cover;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.wm-cname {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+/* ── MAP ── */
+.wm-map-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wm-map-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -10%;
+  background: radial-gradient(ellipse at 60% 50%, rgba(0, 200, 255, 0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.wm-svg {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  overflow: visible;
+}
+
+/* Country fills */
+.wm-bg {
+  fill: rgba(255, 255, 255, 0.06);
+  stroke: rgba(255, 255, 255, 0.14);
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+}
+
+.wm-hi {
+  fill: rgba(0, 200, 255, 0.16);
+  stroke: rgba(0, 200, 255, 0.4);
+  stroke-width: 0.6;
+  stroke-linejoin: round;
+  transition: fill 0.3s;
+  cursor: default;
+}
+
+.wm-hi:hover {
+  fill: rgba(0, 200, 255, 0.28);
+}
+
+/* Flag labels on SVG */
+.wm-flag-label {
+  font-size: 14px;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .wm-section {
+    padding: 80px 32px;
+  }
+
+  .wm-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .wm-map-wrap {
+    order: -1;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .wm-country {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .wm-section {
+    padding: 60px 20px;
+  }
+}

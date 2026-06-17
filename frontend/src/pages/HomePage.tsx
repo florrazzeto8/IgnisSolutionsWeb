@@ -10,7 +10,7 @@ import { Services } from '../components/Services';
 import { LogoCarousel } from '../components/LogoCarousel';
 import { CTAReveal } from '../components/CTAReveal';
 import { Portfolio } from '../components/Portfolio';
-import { Skills } from '../components/Skills';
+import { WorldMap } from '../components/WorldMap';
 import { CTA } from '../components/CTA';
 import { Footer } from '../components/Footer';
 
@@ -72,7 +72,7 @@ export const HomePage = () => {
 
       <LogoCarousel />
 
-      <Skills />
+      <WorldMap />
 
       <CTA />
 
