@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useMouseTracker } from '../hooks/useMouseTracker';
 import { Header } from '../components/Header';
 import '../styles/trabaja-con-nosotros.css';
-import '../styles/sobre-nosotros.css';
 
 interface Job {
   id: number;
@@ -45,6 +44,7 @@ export const TrabajaConNosotros = () => {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     document.querySelectorAll<HTMLElement>('.he').forEach((el) => el.classList.add('in'));
 
     const observer = new IntersectionObserver(
