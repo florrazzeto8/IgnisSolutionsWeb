@@ -92,22 +92,22 @@ export const TrabajaConNosotros = () => {
           <div className="tcn-hero-orb-1" />
           <div className="tcn-hero-orb-2" />
           <div className="tcn-hero-inner">
-            <span className="sn-tag">Trabaja con nosotros</span>
-            <h1 className="tcn-heading fu">
+            <span className="sn-tag fu">Trabaja con nosotros</span>
+            <h1 className="tcn-heading fu d1">
               Unite a nuestro <em>equipo!</em>
             </h1>
-            <p className="tcn-subtitle fu d1">
+            <p className="tcn-subtitle fu d2">
               Explorá las vacantes abiertas y postulate desde un flujo simple, claro y preparado para crecer.
             </p>
-            <Link to="/" className="tcn-back-link fu d2">
+            <Link to="/" className="tcn-back-link fu d3">
               ← Volver al inicio
             </Link>
           </div>
         </section>
 
-        {/* ── JOBS GRID ── */}
-        <section className="tcn-jobs">
-          <div className="tcn-jobs-inner">
+        {/* ── SLIDING PANEL ── */}
+        <section className="tcn-panel">
+          <div className="tcn-panel-inner">
             <div className="tcn-jobs-grid">
               {JOBS.map((job, i) => (
                 <div key={job.id} className={`tcn-job-card fu d${i + 1}`}>
