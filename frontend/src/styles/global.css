@@ -144,6 +144,10 @@ body:has(button:hover) .cursor-ring {
   transition-delay: 0.3s;
 }
 
+.fu.d4 {
+  transition-delay: 0.4s;
+}
+
 .fu.vis {
   opacity: 1;
   transform: translateY(0);
