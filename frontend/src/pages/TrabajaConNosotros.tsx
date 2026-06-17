@@ -58,6 +58,15 @@ export const TrabajaConNosotros = () => {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (!selectedJob) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeModal();
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [selectedJob]);
+
   const openModal = (job: Job) => {
     setSelectedJob(job);
     setSubmitted(false);
