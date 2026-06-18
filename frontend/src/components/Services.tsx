@@ -72,128 +72,7 @@ const PANEL_ARTS = [
     <circle cx="370" cy="315" r="2" fill="#00c8ff" fillOpacity=".15"/>
   </svg>,
 
-  // Panel 2: Desarrollo Web — monitor 3D + UI elements flotando
-  <svg viewBox="0 0 500 380" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <radialGradient id="sg2" cx="50%" cy="40%" r="50%">
-        <stop offset="0%" stopColor="#00c8ff" stopOpacity="0.15"/>
-        <stop offset="100%" stopColor="#00c8ff" stopOpacity="0"/>
-      </radialGradient>
-      <linearGradient id="screen2" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#0a1628"/>
-        <stop offset="100%" stopColor="#040c18"/>
-      </linearGradient>
-    </defs>
-    <ellipse cx="250" cy="180" rx="210" ry="150" fill="url(#sg2)"/>
-    {/* Monitor body */}
-    <rect x="80" y="50" width="300" height="200" rx="10" fill="#060e1e" stroke="#00c8ff" strokeOpacity=".3" strokeWidth="1.5"/>
-    {/* Screen */}
-    <rect x="92" y="62" width="276" height="176" rx="6" fill="url(#screen2)"/>
-    {/* Browser chrome */}
-    <rect x="92" y="62" width="276" height="22" rx="6" fill="#00c8ff" fillOpacity=".07"/>
-    <circle cx="106" cy="73" r="4" fill="#ff5f57" fillOpacity=".6"/>
-    <circle cx="118" cy="73" r="4" fill="#ffbd2e" fillOpacity=".6"/>
-    <circle cx="130" cy="73" r="4" fill="#28ca41" fillOpacity=".6"/>
-    <rect x="145" y="68" width="170" height="10" rx="5" fill="#00c8ff" fillOpacity=".08"/>
-    <text x="180" y="77" fontFamily="monospace" fontSize="7" fill="#00c8ff" fillOpacity=".5">ignis.dev</text>
-    {/* Webpage content */}
-    <rect x="100" y="88" width="260" height="30" rx="4" fill="#00c8ff" fillOpacity=".05"/>
-    <rect x="108" y="94" width="80" height="8" rx="3" fill="#00c8ff" fillOpacity=".4"/>
-    <rect x="108" y="106" width="50" height="6" rx="2" fill="#00c8ff" fillOpacity=".15"/>
-    {/* Hero image placeholder */}
-    <rect x="100" y="124" width="150" height="80" rx="5" fill="#00c8ff" fillOpacity=".04" stroke="#00c8ff" strokeOpacity=".12" strokeWidth=".8"/>
-    <circle cx="175" cy="164" r="20" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1" fill="#00c8ff" fillOpacity=".03"/>
-    <text x="162" y="168" fontSize="14" fill="#00c8ff" fillOpacity=".35">▶</text>
-    {/* Sidebar cards */}
-    <rect x="258" y="124" width="92" height="36" rx="5" fill="#00c8ff" fillOpacity=".06" stroke="#00c8ff" strokeOpacity=".15" strokeWidth=".8"/>
-    <rect x="265" y="131" width="40" height="5" rx="2" fill="#00c8ff" fillOpacity=".3"/>
-    <rect x="265" y="140" width="60" height="4" rx="2" fill="#00c8ff" fillOpacity=".12"/>
-    <rect x="258" y="166" width="92" height="36" rx="5" fill="#00c8ff" fillOpacity=".04" stroke="#00c8ff" strokeOpacity=".12" strokeWidth=".8"/>
-    <rect x="265" y="173" width="35" height="5" rx="2" fill="#00c8ff" fillOpacity=".2"/>
-    <rect x="265" y="182" width="55" height="4" rx="2" fill="#00c8ff" fillOpacity=".1"/>
-    {/* Monitor stand */}
-    <rect x="215" y="250" width="30" height="20" rx="3" fill="#060e1e" stroke="#00c8ff" strokeOpacity=".15" strokeWidth="1"/>
-    <rect x="195" y="268" width="70" height="8" rx="4" fill="#060e1e" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1"/>
-    {/* Floating UI cards */}
-    <rect x="30" y="130" width="80" height="50" rx="8" fill="#020d18" stroke="#00c8ff" strokeOpacity=".25" strokeWidth="1" transform="rotate(-8 30 130)"/>
-    <rect x="38" y="140" width="45" height="6" rx="2" fill="#00c8ff" fillOpacity=".3" transform="rotate(-8 30 130)"/>
-    <rect x="38" y="150" width="55" height="4" rx="2" fill="#00c8ff" fillOpacity=".12" transform="rotate(-8 30 130)"/>
-    <rect x="38" y="158" width="35" height="4" rx="2" fill="#00c8ff" fillOpacity=".08" transform="rotate(-8 30 130)"/>
-    <rect x="390" y="100" width="80" height="50" rx="8" fill="#020d18" stroke="#00c8ff" strokeOpacity=".2" strokeWidth="1" transform="rotate(6 390 100)"/>
-    <rect x="398" y="110" width="30" height="6" rx="2" fill="#00c8ff" fillOpacity=".25" transform="rotate(6 390 100)"/>
-    <rect x="398" y="120" width="50" height="4" rx="2" fill="#00c8ff" fillOpacity=".1" transform="rotate(6 390 100)"/>
-    <rect x="398" y="128" width="40" height="4" rx="2" fill="#00c8ff" fillOpacity=".07" transform="rotate(6 390 100)"/>
-    {/* Floating button */}
-    <rect x="380" y="220" width="90" height="28" rx="14" fill="#00c8ff" fillOpacity=".15" stroke="#00c8ff" strokeOpacity=".5" strokeWidth="1"/>
-    <text x="400" y="239" fontSize="10" fontFamily="sans-serif" fill="#00c8ff" fillOpacity=".9">Ver sitio →</text>
-    {/* Dots */}
-    <circle cx="250" cy="320" r="2" fill="#00c8ff" fillOpacity=".3"/>
-    <circle cx="270" cy="330" r="1.5" fill="#00c8ff" fillOpacity=".15"/>
-    <circle cx="220" cy="325" r="2" fill="#00c8ff" fillOpacity=".2"/>
-  </svg>,
-
-  // Panel 3: Desarrollo Mobile — smartphone 3D + app UI
-  <svg viewBox="0 0 500 380" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <radialGradient id="sg3" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#00c8ff" stopOpacity="0.16"/>
-        <stop offset="100%" stopColor="#00c8ff" stopOpacity="0"/>
-      </radialGradient>
-      <linearGradient id="phone3" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stopColor="#0a1628"/>
-        <stop offset="100%" stopColor="#060e1e"/>
-      </linearGradient>
-    </defs>
-    <ellipse cx="250" cy="200" rx="180" ry="160" fill="url(#sg3)"/>
-    {/* Phone body */}
-    <rect x="155" y="30" width="150" height="290" rx="24" fill="url(#phone3)" stroke="#00c8ff" strokeOpacity=".35" strokeWidth="1.8"/>
-    {/* Inner screen area */}
-    <rect x="163" y="50" width="134" height="252" rx="16" fill="#030b14"/>
-    {/* Notch */}
-    <rect x="208" y="50" width="44" height="14" rx="7" fill="#030b14"/>
-    <circle cx="230" cy="57" r="3" fill="#00c8ff" fillOpacity=".2"/>
-    {/* Status bar */}
-    <text x="170" y="75" fontSize="7" fontFamily="monospace" fill="#00c8ff" fillOpacity=".5">9:41</text>
-    <rect x="286" y="69" width="8" height="5" rx="1" stroke="#00c8ff" strokeOpacity=".4" strokeWidth=".8"/>
-    {/* App header */}
-    <rect x="163" y="78" width="134" height="36" fill="#00c8ff" fillOpacity=".07"/>
-    <text x="175" y="101" fontSize="12" fontFamily="sans-serif" fontWeight="bold" fill="#00c8ff" fillOpacity=".9">Dashboard</text>
-    {/* Stats cards */}
-    <rect x="169" y="122" width="57" height="50" rx="8" fill="#00c8ff" fillOpacity=".08" stroke="#00c8ff" strokeOpacity=".2" strokeWidth=".8"/>
-    <text x="178" y="142" fontSize="9" fill="#00c8ff" fillOpacity=".5">Ventas</text>
-    <text x="175" y="158" fontSize="14" fontWeight="bold" fill="#00c8ff" fillOpacity=".9">$24k</text>
-    <text x="175" y="168" fontSize="8" fill="#28ca41" fillOpacity=".8">↑ 12%</text>
-    <rect x="234" y="122" width="57" height="50" rx="8" fill="#00c8ff" fillOpacity=".06" stroke="#00c8ff" strokeOpacity=".15" strokeWidth=".8"/>
-    <text x="242" y="142" fontSize="9" fill="#00c8ff" fillOpacity=".45">Usuarios</text>
-    <text x="240" y="158" fontSize="14" fontWeight="bold" fill="#00c8ff" fillOpacity=".85">1.2k</text>
-    <text x="240" y="168" fontSize="8" fill="#28ca41" fillOpacity=".8">↑ 8%</text>
-    {/* Chart */}
-    <rect x="169" y="180" width="122" height="60" rx="6" fill="#00c8ff" fillOpacity=".04" stroke="#00c8ff" strokeOpacity=".1" strokeWidth=".8"/>
-    <polyline points="175,230 190,215 210,222 228,205 248,210 268,198 285,204" stroke="#00c8ff" strokeOpacity=".7" strokeWidth="1.5" fill="none"/>
-    <circle cx="285" cy="204" r="3" fill="#00c8ff" fillOpacity=".9"/>
-    {/* List items */}
-    <rect x="169" y="250" width="122" height="10" rx="3" fill="#00c8ff" fillOpacity=".06"/>
-    <rect x="169" y="267" width="95" height="10" rx="3" fill="#00c8ff" fillOpacity=".04"/>
-    <rect x="169" y="284" width="110" height="10" rx="3" fill="#00c8ff" fillOpacity=".05"/>
-    {/* Side buttons */}
-    <rect x="150" y="100" width="5" height="30" rx="2.5" fill="#00c8ff" fillOpacity=".15" stroke="#00c8ff" strokeOpacity=".25" strokeWidth=".8"/>
-    <rect x="150" y="140" width="5" height="30" rx="2.5" fill="#00c8ff" fillOpacity=".15" stroke="#00c8ff" strokeOpacity=".25" strokeWidth=".8"/>
-    <rect x="305" y="120" width="5" height="50" rx="2.5" fill="#00c8ff" fillOpacity=".15" stroke="#00c8ff" strokeOpacity=".25" strokeWidth=".8"/>
-    {/* Floating notification */}
-    <rect x="30" y="140" width="120" height="50" rx="10" fill="#020d18" stroke="#00c8ff" strokeOpacity=".3" strokeWidth="1" transform="rotate(-5 30 140)"/>
-    <circle cx="50" cy="158" r="8" fill="#00c8ff" fillOpacity=".15" stroke="#00c8ff" strokeOpacity=".3" strokeWidth=".8" transform="rotate(-5 30 140)"/>
-    <text x="64" y="152" fontSize="9" fill="#00c8ff" fillOpacity=".8" transform="rotate(-5 30 140)">Nuevo pedido</text>
-    <text x="64" y="164" fontSize="8" fill="#00c8ff" fillOpacity=".4" transform="rotate(-5 30 140)">Hace 2 min</text>
-    {/* Floating second notification */}
-    <rect x="355" y="150" width="110" height="46" rx="10" fill="#020d18" stroke="#00c8ff" strokeOpacity=".22" strokeWidth="1" transform="rotate(4 355 150)"/>
-    <text x="368" y="170" fontSize="9" fill="#00c8ff" fillOpacity=".6" transform="rotate(4 355 150)">Pago recibido</text>
-    <text x="368" y="182" fontSize="8" fill="#28ca41" fillOpacity=".8" transform="rotate(4 355 150)">+$450.00</text>
-    {/* Glow dots */}
-    <circle cx="250" cy="340" r="2.5" fill="#00c8ff" fillOpacity=".3"/>
-    <circle cx="300" cy="350" r="2" fill="#00c8ff" fillOpacity=".15"/>
-  </svg>,
-
-  // Panel 4: Soluciones Empresariales — nodos conectados + workflow
+  // Panel 1 (was 3): Soluciones Empresariales — nodos conectados + workflow
   <svg viewBox="0 0 500 380" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <radialGradient id="sg4" cx="50%" cy="50%" r="55%">
@@ -258,7 +137,7 @@ const PANEL_ARTS = [
     </circle>
   </svg>,
 
-  // Panel 5: I+D — átomo + curvas de datos + laboratorio futurista
+  // Panel 2 (was 4): I+D — átomo + curvas de datos + laboratorio futurista
   <svg viewBox="0 0 500 380" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <radialGradient id="sg5" cx="50%" cy="50%" r="50%">
@@ -331,7 +210,7 @@ const PANEL_ARTS = [
     <line x1="410" y1="280" x2="428" y2="298" stroke="#00c8ff" strokeOpacity=".18" strokeWidth=".8"/>
   </svg>,
 
-  // Panel 6: Consultoría — gráfico ascendente + red de personas + flecha estrategia
+  // Panel 3 (was 5): Consultoría — gráfico ascendente + red de personas + flecha estrategia
   <svg viewBox="0 0 500 380" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <radialGradient id="sg6" cx="50%" cy="50%" r="50%">
