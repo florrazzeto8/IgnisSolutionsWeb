@@ -13,12 +13,9 @@ export const CTA = () => {
         Contanos tu idea. Te respondemos en menos de 24 horas con un plan de
         acción concreto.
       </p>
-      <div className="cta-btns fu d2">
+      <div className="cta-btns fu d2" style={{ justifyContent: 'center' }}>
         <a href="#" className="btn-primary">
           Empezar mi proyecto →
-        </a>
-        <a href="#" className="btn-outline">
-          Ver portfolio
         </a>
       </div>
     </section>

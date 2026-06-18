@@ -59,25 +59,68 @@ export const ServicesIntro = () => {
       const obr = origBtn.getBoundingClientRect();
       const vw = window.innerWidth;
       const endX = vw - 210;
-      const endY = 90;
+      const endY = 28;
 
-      // Once landed, lock position and stop recalculating
+      // Once landed, fly toward CTA button at bottom of page
       if (landed) {
         origBtn.style.opacity = '0';
         fBtn.style.display = 'flex';
-        fBtn.style.left = endX + 'px';
-        fBtn.style.top = endY + 'px';
-        fBtn.style.fontSize = '18px';
-        fBtn.style.padding = '10px 20px';
-        // Hide when services-zone starts exiting (all panels shown)
-        const zb = servicesZone ? servicesZone.getBoundingClientRect().bottom : window.innerHeight;
-        const hidden = zb < window.innerHeight;
-        fBtn.style.opacity = hidden ? '0' : '1';
-        fBtn.style.pointerEvents = hidden ? 'none' : 'all';
-        // Un-land only if user scrolls clearly back up
+
+        const ctaBtnEl = document.querySelector('.cta-btns .btn-primary') as HTMLElement | null;
+        const fW = fBtn.offsetWidth;
+        const fH = fBtn.offsetHeight;
+
+        if (ctaBtnEl) {
+          const cbr = ctaBtnEl.getBoundingClientRect();
+
+          if (cbr.bottom < 0) {
+            // Scrolled past CTA — hide
+            fBtn.style.opacity = '0';
+            fBtn.style.pointerEvents = 'none';
+          } else if (cbr.top > vh) {
+            // CTA not yet in view — stay at top-right
+            fBtn.style.left = endX + 'px';
+            fBtn.style.top = endY + 'px';
+            fBtn.style.fontSize = '18px';
+            fBtn.style.padding = '10px 20px';
+            fBtn.style.borderRadius = '100px';
+            fBtn.style.opacity = '1';
+            fBtn.style.pointerEvents = 'all';
+            ctaBtnEl.style.opacity = '1';
+          } else {
+            // CTA entering view — fly toward it
+            const targetX = cbr.left + cbr.width / 2 - fW / 2;
+            const targetY = cbr.top + cbr.height / 2 - fH / 2;
+            const distTraveled = vh - cbr.top;
+            const ctaP = Math.max(0, Math.min(1, distTraveled / (vh * 0.5)));
+            const ease = 1 - Math.pow(1 - ctaP, 3);
+
+            fBtn.style.left = endX + (targetX - endX) * ease + 'px';
+            fBtn.style.top = endY + (targetY - endY) * ease + 'px';
+            fBtn.style.fontSize = 18 + (14.5 - 18) * ease + 'px';
+            fBtn.style.padding = `${(10 + (14 - 10) * ease).toFixed(1)}px ${(20 + (30 - 20) * ease).toFixed(1)}px`;
+            fBtn.style.borderRadius = 100 + (10 - 100) * ease + 'px';
+            fBtn.style.opacity = '1';
+            fBtn.style.pointerEvents = 'all';
+            ctaBtnEl.style.opacity = String(Math.max(0, 1 - ease * 2));
+          }
+        } else {
+          // Fallback: old behavior
+          fBtn.style.left = endX + 'px';
+          fBtn.style.top = endY + 'px';
+          fBtn.style.fontSize = '18px';
+          fBtn.style.padding = '10px 20px';
+          const zb = servicesZone ? servicesZone.getBoundingClientRect().bottom : window.innerHeight;
+          const hidden = zb < window.innerHeight;
+          fBtn.style.opacity = hidden ? '0' : '1';
+          fBtn.style.pointerEvents = hidden ? 'none' : 'all';
+        }
+
         if (pr.top > 8 && raw < 0.5) {
           landed = false;
           fBtn.classList.remove('landed');
+          fBtn.style.borderRadius = '';
+          if (ctaBtnEl) ctaBtnEl.style.opacity = '';
         }
         return;
       }
