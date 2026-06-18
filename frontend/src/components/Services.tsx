@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react';
 import { SERVICES } from '../utils/constants';
 import '../styles/services.css';
 
@@ -290,98 +289,46 @@ const PANEL_ARTS = [
   </svg>,
 ];
 
-interface ServicePanelProps {
-  title: string;
-  desc: string;
-  tags: string[];
-  artIndex: number;
-}
-
-const ServicePanel: React.FC<ServicePanelProps> = ({ title, desc, tags, artIndex }) => {
-  const panelRef = useRef<HTMLDivElement | null>(null);
-  return (
-    <div className="service-panel" ref={panelRef}>
-      <div className="panel-left">
-        <h2 className="panel-title">{title}</h2>
-        <p className="panel-desc">{desc}</p>
-        <div className="tags">
-          {tags.map((tag, idx) => (
-            <span key={idx} className="t">{tag}</span>
-          ))}
-        </div>
-      </div>
-      <div className="panel-right">
-        <div className="panel-art">{PANEL_ARTS[artIndex]}</div>
-      </div>
-    </div>
-  );
-};
+const BAND_COLORS = [
+  { bg: '#060d1f', accent: '#00c8ff' },
+  { bg: '#0b1528', accent: '#00a8d6' },
+  { bg: '#0f1d36', accent: '#0052a3' },
+  { bg: '#060d1f', accent: '#002f6c' },
+];
 
 export const Services = () => {
-  const zoneRef = useRef<HTMLDivElement | null>(null);
-  const gridRef = useRef<HTMLDivElement | null>(null);
-  const dotsRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const panels = gridRef.current?.querySelectorAll('.service-panel') || [];
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => e.target.classList.toggle('visible', e.isIntersecting));
-      },
-      { threshold: 0.1 }
-    );
-    panels.forEach((p) => observer.observe(p));
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const zone = zoneRef.current;
-    const grid = gridRef.current;
-    const dotsWrap = dotsRef.current;
-    if (!zone || !grid || !dotsWrap) return;
-
-    const dots = Array.from(dotsWrap.children) as HTMLElement[];
-
-    function setHeight() {
-      const slideW = Math.max(0, grid!.scrollWidth - window.innerWidth + 180);
-      zone!.style.height = window.innerHeight + slideW * 1.4 + 'px';
-    }
-
-    function tick() {
-      const zr = zone!.getBoundingClientRect();
-      const p = Math.max(0, Math.min(1, -zr.top / (zone!.offsetHeight - window.innerHeight)));
-      const maxSlide = Math.max(0, grid!.scrollWidth - window.innerWidth + 180);
-      grid!.style.transform = `translateX(${-p * maxSlide}px)`;
-      const active = Math.min(dots.length - 1, Math.round(p * (dots.length - 1)));
-      dots.forEach((d, i) => d.classList.toggle('active', i === active));
-    }
-
-    setHeight();
-    const onResize = () => { setHeight(); tick(); };
-    window.addEventListener('resize', onResize);
-    window.addEventListener('scroll', tick, { passive: true });
-    tick();
-    return () => {
-      window.removeEventListener('resize', onResize);
-      window.removeEventListener('scroll', tick);
-    };
-  }, []);
-
   return (
-    <div className="services-zone" ref={zoneRef}>
-      <section className="services" id="services">
+    <section className="services-reveal" id="services">
+      <div className="services-header">
         <div className="sec-tag">Servicios</div>
-        <div className="cards-grid" ref={gridRef}>
-          {SERVICES.map((service, idx) => (
-            <ServicePanel key={idx} {...service} artIndex={idx} />
-          ))}
-        </div>
-        <div id="hscroll-dots" ref={dotsRef}>
-          {SERVICES.map((_, idx) => (
-            <div key={idx} className="hscroll-dot" />
-          ))}
-        </div>
-      </section>
-    </div>
+      </div>
+      {SERVICES.map((service, idx) => {
+        const dir = idx % 2 === 0 ? 'left' : 'right';
+        const { bg, accent } = BAND_COLORS[idx];
+        return (
+          <div
+            key={idx}
+            className="sr-band"
+            data-dir={dir}
+            style={{ '--band-bg': bg, '--band-accent': accent } as React.CSSProperties}
+          >
+            <div className="sr-inner">
+              <div className="sr-text">
+                <h2 className="panel-title">{service.title}</h2>
+                <p className="panel-desc">{service.desc}</p>
+                <div className="tags">
+                  {service.tags.map((tag, ti) => (
+                    <span key={ti} className="t">{tag}</span>
+                  ))}
+                </div>
+              </div>
+              <div className="sr-art panel-art">
+                {PANEL_ARTS[idx]}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </section>
   );
 };
