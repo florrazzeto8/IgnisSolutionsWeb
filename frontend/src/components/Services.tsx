@@ -1,5 +1,11 @@
+import { useRef } from 'react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SERVICES } from '../utils/constants';
 import '../styles/services.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const PANEL_ARTS = [
   // Panel 1: Desarrollo de Software — terminal isométrico + engranajes
@@ -297,8 +303,27 @@ const BAND_COLORS = [
 ];
 
 export const Services = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    const bands = sectionRef.current?.querySelectorAll<HTMLElement>('.sr-band') ?? [];
+    bands.forEach((band) => {
+      const isLeft = band.dataset.dir === 'left';
+      gsap.from(band, {
+        x: isLeft ? -window.innerWidth * 1.1 : window.innerWidth * 1.1,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: band,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+    });
+  }, { scope: sectionRef });
+
   return (
-    <section className="services-reveal" id="services">
+    <section className="services-reveal" id="services" ref={sectionRef}>
       <div className="services-header">
         <div className="sec-tag">Servicios</div>
       </div>
