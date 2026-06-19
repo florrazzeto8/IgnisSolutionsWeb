@@ -296,10 +296,10 @@ const PANEL_ARTS = [
 ];
 
 const BAND_COLORS = [
-  { bg: '#0a3d78', accent: '#00c8ff' },
-  { bg: '#0c4488', accent: '#00c8ff' },
-  { bg: '#0a3d78', accent: '#00c8ff' },
-  { bg: '#0c4488', accent: '#00c8ff' },
+  { bg: 'rgba(10, 61, 120, 0.72)', accent: '#00c8ff' },
+  { bg: 'rgba(12, 68, 136, 0.72)', accent: '#00c8ff' },
+  { bg: 'rgba(10, 61, 120, 0.72)', accent: '#00c8ff' },
+  { bg: 'rgba(12, 68, 136, 0.72)', accent: '#00c8ff' },
 ];
 
 export const Services = () => {
@@ -310,12 +310,40 @@ export const Services = () => {
     bands.forEach((band) => {
       const isLeft = band.dataset.dir === 'left';
       const offscreen = isLeft ? -window.innerWidth * 1.1 : window.innerWidth * 1.1;
-      gsap.set(band, { x: offscreen });
+      const getContent = () => Array.from(
+        band.querySelectorAll<HTMLElement>('.panel-title, .panel-desc, .tags, .sr-art')
+      );
+
+      gsap.set(band, { x: offscreen, opacity: 0 });
+      gsap.set(getContent(), { opacity: 0, y: 20 });
+
       ScrollTrigger.create({
         trigger: band,
         start: 'top 60%',
-        onEnter: () => gsap.fromTo(band, { x: offscreen }, { x: 0, duration: 1.4, ease: 'power3.out', overwrite: true }),
-        onLeaveBack: () => gsap.fromTo(band, { x: 0 }, { x: offscreen, duration: 1.4, ease: 'power3.out', overwrite: true }),
+        onEnter: () => {
+          const els = getContent();
+          gsap.killTweensOf([band, ...els]);
+          const tl = gsap.timeline();
+          tl.fromTo(band,
+            { x: offscreen, opacity: 0 },
+            { x: 0, opacity: 1, duration: 1.4, ease: 'power3.out' }
+          );
+          tl.fromTo(els,
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.55, ease: 'power2.out', stagger: 0.1 },
+            '-=0.7'
+          );
+        },
+        onLeaveBack: () => {
+          const els = getContent();
+          gsap.killTweensOf([band, ...els]);
+          const tl = gsap.timeline();
+          tl.fromTo(band,
+            { x: 0, opacity: 1 },
+            { x: offscreen, opacity: 0, duration: 1.4, ease: 'power3.out' }
+          );
+          tl.set(els, { opacity: 0, y: 20 });
+        },
       });
     });
   }, { scope: sectionRef });
