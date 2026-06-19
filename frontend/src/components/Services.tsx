@@ -296,10 +296,10 @@ const PANEL_ARTS = [
 ];
 
 const BAND_COLORS = [
-  { bg: '#060d1f', accent: '#00c8ff' },
-  { bg: '#0b1528', accent: '#00a8d6' },
-  { bg: '#0f1d36', accent: '#0052a3' },
-  { bg: '#060d1f', accent: '#002f6c' },
+  { bg: '#0a3d78', accent: '#00c8ff' },
+  { bg: '#0c4488', accent: '#00c8ff' },
+  { bg: '#0a3d78', accent: '#00c8ff' },
+  { bg: '#0c4488', accent: '#00c8ff' },
 ];
 
 export const Services = () => {
@@ -309,15 +309,13 @@ export const Services = () => {
     const bands = sectionRef.current?.querySelectorAll<HTMLElement>('.sr-band') ?? [];
     bands.forEach((band) => {
       const isLeft = band.dataset.dir === 'left';
-      gsap.from(band, {
-        x: isLeft ? -window.innerWidth * 1.1 : window.innerWidth * 1.1,
-        duration: 0.9,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: band,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
-        },
+      const offscreen = isLeft ? -window.innerWidth * 1.1 : window.innerWidth * 1.1;
+      gsap.set(band, { x: offscreen });
+      ScrollTrigger.create({
+        trigger: band,
+        start: 'top 60%',
+        onEnter: () => gsap.fromTo(band, { x: offscreen }, { x: 0, duration: 1.4, ease: 'power3.out', overwrite: true }),
+        onLeaveBack: () => gsap.fromTo(band, { x: 0 }, { x: offscreen, duration: 1.4, ease: 'power3.out', overwrite: true }),
       });
     });
   }, { scope: sectionRef });
@@ -325,7 +323,7 @@ export const Services = () => {
   return (
     <section className="services-reveal" id="services" ref={sectionRef}>
       <div className="services-header">
-        <div className="sec-tag">Servicios</div>
+        <h2 className="sr-main-title">Servicios</h2>
       </div>
       {SERVICES.map((service, idx) => {
         const dir = idx % 2 === 0 ? 'left' : 'right';
@@ -347,8 +345,10 @@ export const Services = () => {
                   ))}
                 </div>
               </div>
-              <div className="sr-art panel-art">
-                {PANEL_ARTS[idx]}
+              <div className="sr-art">
+                <div className="panel-art">
+                  {PANEL_ARTS[idx]}
+                </div>
               </div>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+﻿import { useEffect, useRef } from 'react';
 import { ContactModal } from './ContactModal';
 import '../styles/services-intro.css';
 
@@ -25,7 +25,7 @@ export const ServicesIntro = () => {
     const fBtn = floatBtnRef.current;
     if (!zone || !card || !phrase || !origBtn || !fBtn) return;
 
-    const servicesZone = document.querySelector('.services-zone') as HTMLElement | null;
+    const servicesZone = document.querySelector('.services-reveal') as HTMLElement | null;
 
     const updateAll = () => {
       const rect = zone.getBoundingClientRect();
@@ -34,27 +34,27 @@ export const ServicesIntro = () => {
       const vh = window.innerHeight;
       const phraseH = phrase.offsetHeight;
 
-      // ── Phase 1 (raw 0→0.35): card reveals bottom→top ──
+      // â”€â”€ Phase 1 (raw 0â†’0.35): card reveals bottomâ†’top â”€â”€
       const p1 = Math.min(1, raw / 0.35);
       const e1 = 1 - Math.pow(1 - p1, 2); // quadratic: card at ~65% when raw=0.15
-      card.style.clipPath = `inset(${(1 - e1) * 100}% 0 0 0 round 28px)`;
+      card.style.clipPath = `inset(${(1 - e1) * 100}% 0 -100vh 0 round 28px 28px 0px 0px)`;
 
-      // ── Phase 2 (raw 0.15→0.45): phrase enters from below to center ──
+      // â”€â”€ Phase 2 (raw 0.15â†’0.45): phrase enters from below to center â”€â”€
       // starts when card is ~65% revealed (screenshot height)
       const p2 = Math.max(0, Math.min(1, (raw - 0.15) / 0.3));
       const e2 = 1 - Math.pow(1 - p2, 2);
       const enterStart = (vh + phraseH) / 2;
       const enterOffset = enterStart * (1 - e2);
 
-      // ── Phase 3 (raw 0.45→0.75): phrase center → near-top ──
+      // â”€â”€ Phase 3 (raw 0.45â†’0.75): phrase center â†’ near-top â”€â”€
       const p3 = Math.max(0, Math.min(1, (raw - 0.45) / 0.3));
       const e3 = 1 - Math.pow(1 - p3, 2);
-      const deltaY = -(vh - phraseH) / 2; // phrase top → 0 = viewport top
+      const deltaY = -(vh - phraseH) / 2; // phrase top â†’ 0 = viewport top
       const exitOffset = deltaY * e3;
 
       phrase.style.transform = `translateY(${enterOffset + exitOffset}px)`;
 
-      // ── Floating button ──
+      // â”€â”€ Floating button â”€â”€
       const pr = phrase.getBoundingClientRect();
       const obr = origBtn.getBoundingClientRect();
       const vw = window.innerWidth;
@@ -74,11 +74,11 @@ export const ServicesIntro = () => {
           const cbr = ctaBtnEl.getBoundingClientRect();
 
           if (cbr.bottom < 0) {
-            // Scrolled past CTA — hide
+            // Scrolled past CTA â€” hide
             fBtn.style.opacity = '0';
             fBtn.style.pointerEvents = 'none';
           } else if (cbr.top > vh) {
-            // CTA not yet in view — stay at top-right
+            // CTA not yet in view â€” stay at top-right
             fBtn.style.left = endX + 'px';
             fBtn.style.top = endY + 'px';
             fBtn.style.fontSize = '18px';
@@ -88,7 +88,7 @@ export const ServicesIntro = () => {
             fBtn.style.pointerEvents = 'all';
             ctaBtnEl.style.opacity = '1';
           } else {
-            // CTA entering view — fly toward it
+            // CTA entering view â€” fly toward it
             const targetX = cbr.left + cbr.width / 2 - fW / 2;
             const targetY = cbr.top + cbr.height / 2 - fH / 2;
             const distTraveled = vh - cbr.top;
@@ -177,7 +177,7 @@ export const ServicesIntro = () => {
               <div className="intro-phrase" ref={phraseRef}>
                 <span className="line">Lo que construimos</span>{' '}
                 <button className="escribinos-btn" ref={origBtnRef} onClick={openModal}>
-                  Escribinos ↗
+                  Escribinos â†—
                 </button>{' '}
                 <span className="line">para vos</span>
               </div>
@@ -187,7 +187,7 @@ export const ServicesIntro = () => {
       </div>
 
       <button className="escribinos-float" ref={floatBtnRef} onClick={openModal}>
-        Escribinos ↗
+        Escribinos â†—
       </button>
 
       <ContactModal />

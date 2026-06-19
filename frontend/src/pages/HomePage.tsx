@@ -61,7 +61,6 @@ export const HomePage = () => {
       <About />
 
       <ServicesIntro />
-
       <Services />
 
       <div className="cta-portfolio-zone">

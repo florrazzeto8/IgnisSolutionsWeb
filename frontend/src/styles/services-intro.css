@@ -11,23 +11,22 @@
   position: sticky;
   top: 0;
   height: 100vh;
-  overflow: hidden;
+  overflow: visible;
   pointer-events: none;
   background: transparent;
 }
 
 .si-card {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(160deg, #0e5a88 0%, #073460 60%);
+  right: 0;
+  bottom: -8px;
+  background: #073460;
   border-radius: 28px 28px 0 0;
   pointer-events: all;
-  clip-path: inset(100% 0 0 0 round 28px 28px 0 0);
+  clip-path: inset(100% 0 -100vh 0 round 28px 28px 0px 0px);
   will-change: clip-path;
-  box-shadow: 0 -12px 60px rgba(0, 0, 0, 0.4);
 }
 
 
