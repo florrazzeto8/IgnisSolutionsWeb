@@ -173,7 +173,7 @@ body:has(button:hover) .cursor-ring {
   pointer-events: none;
 }
 
-/* ── CTAReveal + Portfolio zone (above fixed particles) ── */
+/* ── Portfolio zone (above fixed particles) ── */
 .cta-portfolio-zone {
   position: relative;
   z-index: 2;

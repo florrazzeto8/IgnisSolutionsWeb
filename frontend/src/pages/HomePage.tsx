@@ -64,9 +64,8 @@ export const HomePage = () => {
       <Services />
 
       <div className="cta-portfolio-zone">
-        <CTAReveal>
-          <Portfolio />
-        </CTAReveal>
+        <CTAReveal />
+        <Portfolio />
       </div>
 
       <LogoCarousel />

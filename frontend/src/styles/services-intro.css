@@ -5,6 +5,7 @@
   height: 300vh;
   margin-top: -180vh;
   background: transparent;
+  pointer-events: none;
 }
 
 .si-sticky {

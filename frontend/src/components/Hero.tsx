@@ -32,15 +32,7 @@ export const Hero = () => {
             onClick={(e) => {
               e.preventDefault();
               const el = document.getElementById('portfolio');
-              if (!el) return;
-              // Use offsetTop chain — ignores CSS transforms on ancestors
-              let top = 0;
-              let node: HTMLElement | null = el;
-              while (node) {
-                top += node.offsetTop;
-                node = node.offsetParent as HTMLElement | null;
-              }
-              window.scrollTo({ top, behavior: 'smooth' });
+              el?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
             Ver casos de éxito <span>→</span>

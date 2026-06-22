@@ -177,7 +177,7 @@ export const ServicesIntro = () => {
               <div className="intro-phrase" ref={phraseRef}>
                 <span className="line">Lo que construimos</span>{' '}
                 <button className="escribinos-btn" ref={origBtnRef} onClick={openModal}>
-                  Escribinos â†—
+                  Escribinos ↗
                 </button>{' '}
                 <span className="line">para vos</span>
               </div>
@@ -187,7 +187,7 @@ export const ServicesIntro = () => {
       </div>
 
       <button className="escribinos-float" ref={floatBtnRef} onClick={openModal}>
-        Escribinos â†—
+        Escribinos ↗
       </button>
 
       <ContactModal />
