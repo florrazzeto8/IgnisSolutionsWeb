@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../styles/cta-reveal.css';
@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 export const CTAReveal = () => {
   const cardRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const card = cardRef.current;
     const services = document.querySelector<HTMLElement>('.services-reveal');
     if (!card || !services) return;
@@ -32,8 +32,6 @@ export const CTAReveal = () => {
           trigger: services,
           start: 'bottom bottom',
           end: '+=100%',
-          pin: services,
-          pinSpacing: true,
           scrub: 0.6,
           onLeave: () => {
             // Rise complete — card enters normal flow as first block of cta-portfolio-zone

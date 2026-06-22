@@ -20,7 +20,7 @@ export const About = () => {
       const e = 1 - Math.pow(1 - p, 2);
 
       const w = 44 + 56 * e;
-      const h = 40 + (window.innerHeight - 40) * e;
+      const h = window.innerHeight * e;
       const br = Math.round(16 * (1 - e));
       const shadowAlpha = e * 0.5;
 
