@@ -1,9 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 import { useMouseTracker } from '../hooks/useMouseTracker';
 import { Header } from '../components/Header';
 import { ContactModal } from '../components/ContactModal';
+import { ParticleSystem } from '../components/ParticleSystem';
 import { ABOUT_STATS } from '../utils/constants';
 import '../styles/sobre-nosotros.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const VALUES = [
   {
@@ -23,17 +29,14 @@ const VALUES = [
   },
 ];
 
-const SUBTITLE_WORDS =
-  'Somos una software factory argentina con ADN tecnológico. Combinamos metodologías ágiles, arquitecturas modernas y un equipo apasionado para entregar soluciones que generan impacto real.'.split(' ');
-
-const HEADING_WORD_COUNT = 7;
-const TOTAL_WORDS = HEADING_WORD_COUNT + SUBTITLE_WORDS.length;
+const ALL_WORDS =
+  'Somos el equipo tecnológico que convierte tus desafíos digitales en soluciones que hacen crecer tu negocio.'.split(' ');
 
 export const SobreNosotros = () => {
   useMouseTracker();
 
-  const boxRef = useRef<HTMLDivElement>(null);
-  const [litCount, setLitCount] = useState(0);
+  const heroPanelRef = useRef<HTMLDivElement>(null);
+  const storyPanelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     document.querySelectorAll<HTMLElement>('.he').forEach((el) => el.classList.add('in'));
@@ -45,105 +48,112 @@ export const SobreNosotros = () => {
       { threshold: 0.15 }
     );
     document.querySelectorAll('.fu').forEach((el) => observer.observe(el));
-
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    const onScroll = () => {
-      if (!boxRef.current) return;
-      const rect = boxRef.current.getBoundingClientRect();
-      const viewH = window.innerHeight;
-      const boxCenter = rect.top + rect.height / 2;
-      const progress = (viewH - boxCenter) / (viewH / 2);
-      const clamped = Math.max(0, Math.min(1, progress));
-      setLitCount(Math.round(clamped * TOTAL_WORDS));
-    };
+  useGSAP(() => {
+    // Panel historia: arranca a la derecha
+    gsap.set(storyPanelRef.current, { xPercent: 100 });
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.sn-transition-wrapper',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 1,
+      }
+    });
 
-  const w = (index: number) =>
-    `sn-word${litCount > index ? ' lit' : ''}`;
+    // Fase 1: Iluminar palabras (GSAP se encarga del color directo)
+    tl.to('.sn-word', {
+      color: '#ffffff',
+      stagger: 0.1,
+      duration: 1
+    });
+
+    // Fase 2: Slide horizontal
+    tl.to(heroPanelRef.current, {
+      xPercent: -100,
+      duration: 1,
+      ease: "none"
+    }, "+=0.2");
+
+    tl.to(storyPanelRef.current, {
+      xPercent: 0,
+      duration: 1,
+      ease: "none"
+    }, "<");
+  });
 
   const openModal = () => document.querySelector('.modal-overlay')?.classList.add('open');
 
   return (
     <div className="sn-page">
+      <ParticleSystem />
       <div className="cursor visible" id="cur" />
       <div className="cursor-ring visible" id="ring" />
 
       <Header />
 
       <main>
-        {/* ── HERO ── */}
-        <section className="sn-hero">
-          <div className="sn-hero-orb-1" />
-          <div className="sn-hero-orb-2" />
-          <div className="sn-hero-inner">
-            <div className="sn-reveal-box" ref={boxRef}>
-              <h1 className="sn-heading">
-                <span className={w(0)}>Construimos </span>
-                <span className={w(1)}>el </span>
-                <span className={`${w(2)} sn-em`}>futuro</span>
-                <br />
-                <span className={w(3)}>digital </span>
-                <span className={w(4)}>de </span>
-                <span className={w(5)}>tu </span>
-                <span className={w(6)}>empresa</span>
-              </h1>
-              <p className="sn-subtitle">
-                {SUBTITLE_WORDS.map((word, i) => (
-                  <span key={i} className={w(HEADING_WORD_COUNT + i)}>
-                    {word}{' '}
-                  </span>
-                ))}
-              </p>
-            </div>
-          </div>
-        </section>
+        <div className="sn-transition-wrapper">
+          <div className="sn-pin">
+          <div className="sn-pin-clip">
+            <div className="sn-hero-orb-1" />
+            <div className="sn-hero-orb-2" />
 
-        {/* ── STORY ── */}
-        <section className="sn-story">
-          <div className="sn-story-inner">
-            <div className="sn-story-photo fu">
-              <img
-                src="/Gemini_Generated_Image_5l340c5l340c5l34 (1).png"
-                alt="Equipo IGNIS"
-              />
+            <div className="sn-hero-panel" ref={heroPanelRef}>
+              <div className="sn-hero-inner">
+                <div className="sn-reveal-box">
+                  <h1 className="sn-heading">
+                    {ALL_WORDS.map((word, i) => (
+                      <span key={i} className="sn-word" style={{ color: 'rgba(15, 25, 80, 0.7)' }}>
+                        {word}{' '}
+                      </span>
+                    ))}
+                  </h1>
+                </div>
+              </div>
             </div>
-            <div className="sn-story-text">
-              <span className="sn-section-label">Nuestra historia</span>
-              <h2 className="sn-story-title fu">
-                De la ideación al escalamiento
-              </h2>
-              <p className="fu d1">
-                Nacimos con el propósito de cerrar la brecha entre las empresas
-                y la tecnología de punta. Desde startups en etapa temprana hasta
-                corporaciones establecidas, acompañamos cada etapa del ciclo de
-                vida del producto.
-              </p>
-              <p className="fu d2">
-                Nuestro equipo combina expertise técnico profundo con una visión
-                de negocio clara. No solo escribimos código, entendemos el
-                problema, diseñamos la solución y la llevamos a producción con
-                cero sorpresas.
-              </p>
-              <div className="sn-stats">
-                {ABOUT_STATS.map((stat, i) => (
-                  <div key={i} className="sn-stat fu">
-                    <span className="sn-stat-num">{stat.number}+</span>
-                    <span className="sn-stat-lbl">{stat.label}</span>
+
+            <div className="sn-story-panel" ref={storyPanelRef}>
+              <div className="sn-story-inner">
+                <div className="sn-story-photo">
+                  <img
+                    src="/Gemini_Generated_Image_5l340c5l340c5l34 (1).png"
+                    alt="Equipo IGNIS"
+                  />
+                </div>
+                <div className="sn-story-text">
+                  <span className="sn-section-label">Nuestra historia</span>
+                  <h2 className="sn-story-title">De la ideación al escalamiento</h2>
+                  <p>
+                    Nacimos con el propósito de cerrar la brecha entre las empresas
+                    y la tecnología de punta. Desde startups en etapa temprana hasta
+                    corporaciones establecidas, acompañamos cada etapa del ciclo de
+                    vida del producto.
+                  </p>
+                  <p>
+                    Nuestro equipo combina expertise técnico profundo con una visión
+                    de negocio clara. No solo escribimos código, entendemos el
+                    problema, diseñamos la solución y la llevamos a producción con
+                    cero sorpresas.
+                  </p>
+                  <div className="sn-stats">
+                    {ABOUT_STATS.map((stat, i) => (
+                      <div key={i} className="sn-stat">
+                        <span className="sn-stat-num">{stat.number}+</span>
+                        <span className="sn-stat-lbl">{stat.label}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           </div>
-        </section>
+          </div>
+        </div>
 
-        {/* ── VALUES ── */}
         <section className="sn-values">
           <div className="sn-values-inner">
             <div className="sn-values-header">
@@ -162,7 +172,6 @@ export const SobreNosotros = () => {
           </div>
         </section>
 
-        {/* ── CTA ── */}
         <section className="sn-cta">
           <h2 className="fu">
             ¿Listo para construir

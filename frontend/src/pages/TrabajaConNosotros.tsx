@@ -149,7 +149,6 @@ export const TrabajaConNosotros = () => {
                 </div>
               ) : (
                 <>
-                  <span className="tcn-modal-label">POSTULACIÓN</span>
                   <h2 className="tcn-modal-title">Postulate al <em>equipo</em></h2>
                   <form
                     ref={formRef}
