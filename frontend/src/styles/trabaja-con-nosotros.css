@@ -140,11 +140,14 @@
   padding: 80px 64px 120px;
   min-height: 100vh;
   box-shadow: 0 -32px 80px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tcn-panel-inner {
-  max-width: 1280px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 520px;
 }
 
 .tcn-jobs-grid {
@@ -232,24 +235,7 @@
 }
 
 .tcn-modal-box {
-  background: var(--navy-2);
-  border: 1px solid rgba(0, 200, 255, 0.15);
-  border-radius: 28px;
-  padding: 48px 44px;
   width: 100%;
-  max-width: 520px;
-  position: relative;
-  animation: tcn-scale-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  max-height: 90vh;
-  overflow-y: auto;
-  scrollbar-width: none;
-}
-
-.tcn-modal-box::-webkit-scrollbar { display: none; }
-
-@keyframes tcn-scale-in {
-  from { opacity: 0; transform: scale(0.92) translateY(20px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 .tcn-modal-close {
@@ -470,5 +456,4 @@
   .tcn-hero { padding: 120px 24px 48px; }
   .tcn-heading { letter-spacing: -2px; }
   .tcn-panel { padding: 48px 24px 60px; border-radius: 20px 20px 0 0; }
-  .tcn-modal-box { padding: 36px 28px; }
 }

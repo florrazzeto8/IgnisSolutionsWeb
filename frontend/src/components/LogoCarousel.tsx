@@ -1,4 +1,4 @@
-import React from 'react';
+
 import '../styles/logoCarousel.css';
 
 // Define tus logos en un array. Esto hace que el código sea mucho más limpio.
