@@ -126,7 +126,7 @@ export const TrabajaConNosotros = () => {
               Unite a nuestro <em>equipo!</em>
             </h1>
             <p className="tcn-subtitle fu d2">
-              Explorá las vacantes abiertas y postulate desde un flujo simple, claro y preparado para crecer.
+              Siempre estamos buscando sumar grandes profesionales. Dejanos tu CV y conectemos para futuros proyectos.
             </p>
             <Link to="/" className="tcn-back-link fu d3">
               ← Volver al inicio

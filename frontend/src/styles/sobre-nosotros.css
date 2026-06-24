@@ -11,7 +11,7 @@
 ────────────────────────────────────────────── */
 
 .sn-transition-wrapper {
-  height: 300vh;
+  height: 400vh;
   position: relative;
 }
 
@@ -74,7 +74,7 @@
   align-items: center;
   justify-content: center;
   padding: 80px 64px;
-  background: var(--navy);
+  background: transparent;
   z-index: 2;
   will-change: transform;
 }
@@ -168,6 +168,11 @@
   color: var(--white);
 }
 
+.sn-story-title em {
+  color: var(--cyan);
+  font-style: normal;
+}
+
 .sn-story-text p {
   color: rgba(255, 255, 255, 0.6);
   font-size: 15px;
@@ -180,7 +185,6 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   padding-top: 24px;
-  border-top: 1px solid rgba(0, 200, 255, 0.1);
 }
 
 .sn-stat {
@@ -285,7 +289,6 @@
 .sn-cta {
   padding: 120px 64px;
   text-align: center;
-  border-top: 1px solid rgba(0, 200, 255, 0.08);
 }
 
 .sn-cta h2 {

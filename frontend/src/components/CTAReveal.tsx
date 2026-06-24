@@ -13,7 +13,6 @@ export const CTAReveal = () => {
     const services = document.querySelector<HTMLElement>('.services-reveal');
     if (!card || !services) return;
 
-    // Card starts fixed below the viewport
     gsap.set(card, {
       position: 'fixed',
       left: 0,
@@ -25,31 +24,23 @@ export const CTAReveal = () => {
     });
 
     const ctx = gsap.context(() => {
-      gsap.to(card, {
-        yPercent: 0,
-        ease: 'none',
+      // Single timeline: rise (100vh) → hold (100vh) → exit (100vh)
+      // pinSpacing: true pushes the portfolio zone below the 300vh pin range
+      // so the card is fully gone before portfolio enters the viewport
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: services,
           start: 'bottom bottom',
-          end: '+=100%',
-          scrub: 0.6,
-          onLeave: () => {
-            // Rise complete — card enters normal flow as first block of cta-portfolio-zone
-            gsap.set(card, { clearProps: 'all' });
-          },
-          onEnterBack: () => {
-            // User scrolled back — restore fixed position
-            gsap.set(card, {
-              position: 'fixed',
-              left: 0,
-              bottom: 0,
-              width: '100%',
-              height: '100vh',
-              zIndex: 20,
-            });
-          },
+          end: '+=300%',
+          pin: true,
+          pinSpacing: true,
+          scrub: true,
         },
       });
+
+      tl.fromTo(card, { yPercent: 100 }, { yPercent: 0, ease: 'none', duration: 1 });
+      tl.to(card, { yPercent: 0, ease: 'none', duration: 1 });
+      tl.to(card, { yPercent: -100, ease: 'none', duration: 1 });
     });
 
     return () => ctx.revert();

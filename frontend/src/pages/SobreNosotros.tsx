@@ -1,4 +1,6 @@
 import { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ABOUT_STATS } from '../utils/constants';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -6,28 +8,10 @@ import { useMouseTracker } from '../hooks/useMouseTracker';
 import { Header } from '../components/Header';
 import { ContactModal } from '../components/ContactModal';
 import { ParticleSystem } from '../components/ParticleSystem';
-import { ABOUT_STATS } from '../utils/constants';
 import '../styles/sobre-nosotros.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const VALUES = [
-  {
-    icon: '⚡',
-    title: 'Agilidad real',
-    desc: 'Sprints de 2 semanas con entregables concretos. Ajustamos en tiempo real sin burocracia.',
-  },
-  {
-    icon: '🏗️',
-    title: 'Arquitectura que escala',
-    desc: 'Diseñamos sistemas que crecen con tu negocio, no que necesitan ser reescritos cuando tenés éxito.',
-  },
-  {
-    icon: '🤝',
-    title: 'Equipo extendido',
-    desc: 'No somos proveedores, somos el equipo tech que tu empresa necesita. Con ownership real del producto.',
-  },
-];
 
 const ALL_WORDS =
   'Somos el equipo tecnológico que convierte tus desafíos digitales en soluciones que hacen crecer tu negocio.'.split(' ');
@@ -83,9 +67,12 @@ export const SobreNosotros = () => {
       duration: 1,
       ease: "none"
     }, "<");
+
+    // Pausa: historia visible ~100vh de scroll sin cambios
+    tl.to({}, { duration: 2 });
   });
 
-  const openModal = () => document.querySelector('.modal-overlay')?.classList.add('open');
+  const navigate = useNavigate();
 
   return (
     <div className="sn-page">
@@ -125,19 +112,25 @@ export const SobreNosotros = () => {
                   />
                 </div>
                 <div className="sn-story-text">
-                  <span className="sn-section-label">Nuestra historia</span>
-                  <h2 className="sn-story-title">De la ideación al escalamiento</h2>
+                  <h2 className="sn-story-title">
+                    IGNIS Solutions:<br />
+                    <em>Software Factory</em>
+                  </h2>
                   <p>
-                    Nacimos con el propósito de cerrar la brecha entre las empresas
-                    y la tecnología de punta. Desde startups en etapa temprana hasta
-                    corporaciones establecidas, acompañamos cada etapa del ciclo de
-                    vida del producto.
+                    Somos una empresa Argentina de tecnología enfocada en apoyar a Start-Ups y a otras
+                    empresas a impulsar su transformación digital brindando servicios de desarrollo de
+                    software, ampliación de equipos, consultorías en temas tecnológicos e Investigación
+                    y Desarrollo (I+D).
                   </p>
                   <p>
-                    Nuestro equipo combina expertise técnico profundo con una visión
-                    de negocio clara. No solo escribimos código, entendemos el
-                    problema, diseñamos la solución y la llevamos a producción con
-                    cero sorpresas.
+                    Nuestro equipo formado por diversos perfiles profesionales nos permite implementar
+                    diversas tecnologías para apoyarlo en cualquier fase del ciclo de vida del
+                    desarrollo de software.
+                  </p>
+                  <p>
+                    Nuestras metodologías ágiles, nos permite construir rápidamente aplicaciones, web y
+                    software adaptado a las necesidades de su negocio manteniendo un alto estándar de
+                    calidad a través de un riguroso proceso de control y testing.
                   </p>
                   <div className="sn-stats">
                     {ABOUT_STATS.map((stat, i) => (
@@ -154,33 +147,10 @@ export const SobreNosotros = () => {
           </div>
         </div>
 
-        <section className="sn-values">
-          <div className="sn-values-inner">
-            <div className="sn-values-header">
-              <span className="sn-section-label">Nuestros valores</span>
-              <h2 className="sn-values-title fu">Cómo trabajamos</h2>
-            </div>
-            <div className="sn-values-grid">
-              {VALUES.map((v, i) => (
-                <div key={i} className={`sn-value-card fu d${i + 1}`}>
-                  <span className="sn-value-icon">{v.icon}</span>
-                  <h3>{v.title}</h3>
-                  <p>{v.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="sn-cta">
-          <h2 className="fu">
-            ¿Listo para construir
-            <br />
-            algo <em>extraordinario</em>?
-          </h2>
-          <p className="fu d1">Contanos tu proyecto y arrancamos.</p>
-          <button className="sn-cta-btn" onClick={openModal}>
-            Escribinos →
+<section className="sn-cta">
+          <h2 className="fu">¿Querés unirte a nuestro equipo?</h2>
+          <button className="sn-cta-btn" onClick={() => navigate('/trabaja-con-nosotros')}>
+            Postularme →
           </button>
         </section>
       </main>

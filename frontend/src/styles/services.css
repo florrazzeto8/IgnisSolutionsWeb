@@ -32,30 +32,7 @@
   position: relative;
   display: flex;
   align-items: stretch;
-}
-
-/* franja on the LEFT edge for left-entry bands */
-.sr-band[data-dir="left"]::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 6px;
-  height: 100%;
-  background: var(--band-accent, #00c8ff);
-  z-index: 1;
-}
-
-/* franja on the RIGHT edge for right-entry bands */
-.sr-band[data-dir="right"]::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 6px;
-  height: 100%;
-  background: var(--band-accent, #00c8ff);
-  z-index: 1;
+  border-radius: 20px;
 }
 
 .sr-inner {
