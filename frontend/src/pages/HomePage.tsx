@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useMouseTracker } from '../hooks/useMouseTracker';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Loader } from '../components/Loader';
 import { Header } from '../components/Header';
 import { ParticleSystem } from '../components/ParticleSystem';
@@ -19,6 +20,14 @@ export const HomePage = () => {
   const [cursorVisible, setCursorVisible] = useState(false);
 
   useMouseTracker();
+
+  // Kill all ScrollTriggers before React unmounts DOM — prevents 'removeChild' error
+  // caused by GSAP pin spacers changing element parents during navigation.
+  useLayoutEffect(() => {
+    return () => {
+      ScrollTrigger.getAll().forEach(st => st.kill(true));
+    };
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(

@@ -173,19 +173,11 @@ body:has(button:hover) .cursor-ring {
   pointer-events: none;
 }
 
-/* ── Portfolio zone (above fixed particles) ── */
+/* ── CTA + Portfolio zone ── */
 .cta-portfolio-zone {
   position: relative;
   z-index: 15;
-  background: #002f6c;
-}
-
-.cta-portfolio-zone::after {
-  content: '';
-  display: block;
-  height: 140px;
-  background: linear-gradient(to bottom, #002f6c, #060d1f);
-  pointer-events: none;
+  background: #060d1f;
 }
 
 /* ── ORBS ── */

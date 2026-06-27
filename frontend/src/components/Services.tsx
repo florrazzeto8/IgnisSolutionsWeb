@@ -346,6 +346,7 @@ export const Services = () => {
         },
       });
     });
+
   }, { scope: sectionRef });
 
   return (

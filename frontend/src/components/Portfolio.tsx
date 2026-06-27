@@ -27,13 +27,13 @@ const projects: Project[] = [
     device: 'laptop',
     link: null,
     linkLabel: 'PROYECTO PRIVADO',
-    accentColor: '#00a8d6',
-    leftGradient: 'linear-gradient(135deg, #001f4d 0%, #0b1528 100%)',
+    accentColor: '#00c8ff',
+    leftGradient: 'linear-gradient(135deg, #020d18 0%, #062240 100%)',
   },
   {
     id: 2,
     category: 'AUTOMATIZACIÓN',
-    categoryColor: '#22c55e',
+    categoryColor: '#00aad4',
     title: 'Tienda Marista',
     description:
       'Tienda unificada que automatiza la gestión de pagos externos directamente a Google Sheets.',
@@ -41,13 +41,13 @@ const projects: Project[] = [
     device: 'laptop',
     link: '#',
     linkLabel: 'VER PROYECTO →',
-    accentColor: '#22c55e',
-    leftGradient: 'linear-gradient(135deg, #001a0f 0%, #0b1528 100%)',
+    accentColor: '#00aad4',
+    leftGradient: 'linear-gradient(135deg, #030d22 0%, #071e3e 100%)',
   },
   {
     id: 3,
     category: 'APP MÓVIL',
-    categoryColor: '#a855f7',
+    categoryColor: '#0099cc',
     title: 'The Winemakers',
     description:
       'Digitalización de evaluaciones enológicas. Puntuación en tiempo real y trazabilidad total para eventos de cata.',
@@ -55,13 +55,13 @@ const projects: Project[] = [
     device: 'phones',
     link: '#',
     linkLabel: 'APP STORE →',
-    accentColor: '#a855f7',
-    leftGradient: 'linear-gradient(135deg, #1a0030 0%, #0b1528 100%)',
+    accentColor: '#0099cc',
+    leftGradient: 'linear-gradient(135deg, #020b1c 0%, #051c38 100%)',
   },
   {
     id: 4,
     category: 'WEB APP',
-    categoryColor: '#f59e0b',
+    categoryColor: '#00b4e0',
     title: 'Dashboard Analítico',
     description:
       'Plataforma centralizada de métricas y KPIs. Reportes automáticos, alertas inteligentes y visualización en tiempo real.',
@@ -69,8 +69,8 @@ const projects: Project[] = [
     device: 'laptop',
     link: '#',
     linkLabel: 'VER PROYECTO →',
-    accentColor: '#f59e0b',
-    leftGradient: 'linear-gradient(135deg, #1a0f00 0%, #0b1528 100%)',
+    accentColor: '#00b4e0',
+    leftGradient: 'linear-gradient(135deg, #030c20 0%, #06203c 100%)',
   },
 ];
 
