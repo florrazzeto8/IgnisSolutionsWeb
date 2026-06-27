@@ -1,91 +1,100 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../styles/cta-reveal.css';
 
-export const CTAReveal = ({ children }: { children?: React.ReactNode }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
+gsap.registerPlugin(ScrollTrigger);
 
-  useEffect(() => {
-    const card = cardRef.current;
-    if (!card) return;
+const CardContent = () => (
+  <div className="cr-slide">
+    <div className="cr-content">
+      <h1>
+        Lo que hacemos habla<br />
+        <em>por nosotros</em>
+      </h1>
+      <span className="scroll-arrow">↓</span>
+    </div>
+  </div>
+);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            card.classList.add('risen');
-            observer.disconnect();
-          }
-        });
+export const CTAReveal = () => {
+  const fixedRef = useRef<HTMLDivElement>(null);
+  const flowRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const fixed = fixedRef.current;
+    const flow = flowRef.current;
+    const services = document.querySelector<HTMLElement>('.services-reveal');
+    if (!fixed || !flow || !services) return;
+
+    gsap.set(fixed, { y: '100%' });
+    gsap.set(flow, { visibility: 'hidden' });
+
+    // PHASE 1 — pin Services for 50vh while CTA rises from bottom to viewport center.
+    // end uses a function — GSAP doesn't parse CSS vh units in strings (treats '+=50vh' as 50px).
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: services,
+        start: 'bottom bottom',
+        end: () => '+=' + window.innerHeight * 0.85,
+        pin: true,
+        pinSpacing: true,
+        scrub: true,
+        invalidateOnRefresh: true,
       },
-      { threshold: 0.05 }
+    });
+    tl.to(fixed, { y: '15%', ease: 'none' });
+
+    // PHASE 2 — Services now in normal flow scrolling up.
+    // CTA finishes covering (y:15% → y:0%) while Services scrolls away.
+    // immediateRender:false → don't apply FROM (y:15%) at creation time, which would override
+    // gsap.set(fixed, { y:'100%' }). invalidateOnRefresh:true → re-measure flow position after
+    // Phase 1 pin spacer is inserted so Phase 2 starts exactly where Phase 1 ends.
+    gsap.fromTo(fixed,
+      { y: '15%' },
+      {
+        y: '0%',
+        ease: 'none',
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: flow,
+          start: 'top bottom',
+          end: 'top top',
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      }
     );
-    observer.observe(card);
 
-    const slides = Array.from(card.querySelectorAll<HTMLElement>('.cr-slide'));
-
-    const tick = () => {
-      const vh = window.innerHeight;
-      const cardTop = card.getBoundingClientRect().top;
-
-      // Slide 1: completes when card top reaches viewport top
-      const s1 = Math.max(0, Math.min(1, (vh * 1.5 - cardTop) / (vh * 1.5)));
-      slides[0]?.style.setProperty('--slide-scroll', String(s1));
-      slides[0]?.classList.toggle('done', s1 >= 0.95);
-
-      // Slide 2: starts when card top = 0, ends when slide center = viewport center
-      const s2top = slides[1]?.getBoundingClientRect().top ?? 0;
-      const s2 = Math.max(0, Math.min(1, (vh * 0.65 - s2top) / (vh * 0.475)));
-      slides[1]?.style.setProperty('--slide-scroll', String(s2));
-      slides[1]?.classList.toggle('done', s2 >= 0.95);
-
-      // Slide 3: starts when slide top is at 65% of viewport
-      const s3top = slides[2]?.getBoundingClientRect().top ?? 0;
-      const s3 = Math.max(0, Math.min(1, (vh * 0.65 - s3top) / (vh * 0.57)));
-      slides[2]?.style.setProperty('--slide-scroll', String(s3));
-      slides[2]?.classList.toggle('done', s3 >= 0.95);
+    // Hand-off: when cta-flow.top = 0 (viewport top), swap fixed→flow seamlessly.
+    let settled = false;
+    const onScroll = () => {
+      const flowTop = flow.getBoundingClientRect().top;
+      if (flowTop <= 0 && !settled) {
+        settled = true;
+        gsap.set(fixed, { display: 'none' });
+        gsap.set(flow, { visibility: 'visible' });
+      } else if (flowTop > 0 && settled) {
+        settled = false;
+        gsap.set(fixed, { display: '' });
+        gsap.set(flow, { visibility: 'hidden' });
+      }
     };
 
-    window.addEventListener('scroll', tick, { passive: true });
-    tick();
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener('scroll', tick);
-    };
-  }, []);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  });
 
   return (
-    <div className="cta-reveal-card" ref={cardRef}>
-      <div className="cr-slide cr-slide-1 cr-anim-bg">
-        <div className="cr-content cr-anim-txt">
-          <h1>
-            No solo creamos código,<br />
-            diseñamos tu <em>futuro</em>
-          </h1>
-          <span className="scroll-arrow">↓</span>
-        </div>
+    <>
+      <div className="cta-card cta-fixed" ref={fixedRef}>
+        <CardContent />
       </div>
-
-      <div className="cr-slide cr-slide-2 cr-anim-bg">
-        <div className="cr-content cr-anim-txt">
-          <h1>
-            ¿Listo para escalar<br />
-            tu negocio?
-          </h1>
-          <span className="scroll-arrow">↓</span>
-        </div>
+      <div className="cta-card cta-flow" ref={flowRef}>
+        <CardContent />
       </div>
-
-      <div className="cr-slide cr-slide-3 cr-anim-bg">
-        <div className="cr-content cr-anim-txt">
-          <h1>
-            Lo que hacemos habla<br />
-            <em>por nosotros</em>
-          </h1>
-          <span className="scroll-arrow">↓</span>
-        </div>
-      </div>
-      {children}
-    </div>
+    </>
   );
 };

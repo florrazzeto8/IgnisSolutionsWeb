@@ -6,7 +6,7 @@ import '../styles/about.css';
 export const About = () => {
   const aboutZoneRef = useRef<HTMLDivElement | null>(null);
   const aboutCardRef = useRef<HTMLDivElement | null>(null);
-  const heroInnerRef = useRef<HTMLDivElement | null>(null);
+
   const aboutInnerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export const About = () => {
       const e = 1 - Math.pow(1 - p, 2);
 
       const w = 44 + 56 * e;
-      const h = 40 + (window.innerHeight - 40) * e;
+      const h = window.innerHeight * e;
       const br = Math.round(16 * (1 - e));
       const shadowAlpha = e * 0.5;
 

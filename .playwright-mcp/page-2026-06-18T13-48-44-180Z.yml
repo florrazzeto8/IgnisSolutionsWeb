@@ -1,0 +1,114 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - link "IGNIS Solutions." [ref=e5]:
+      - /url: /
+    - generic [ref=e6]:
+      - link "Sobre nosotros" [ref=e7] [cursor=pointer]:
+        - /url: /sobre-nosotros
+      - link "Servicios" [ref=e8] [cursor=pointer]:
+        - /url: "#services"
+      - link "Trabaja con nosotros" [ref=e9] [cursor=pointer]:
+        - /url: /trabaja-con-nosotros
+      - button "CONTACTO" [ref=e10] [cursor=pointer]
+  - main [ref=e11]:
+    - generic [ref=e14]:
+      - heading "Construimos el futuro digital de tu empresa" [level=1] [ref=e15]:
+        - text: Construimos el futuro
+        - text: digital de tu empresa
+      - paragraph [ref=e16]:
+        - generic [ref=e17]: Somos
+        - generic [ref=e18]: una
+        - generic [ref=e19]: software
+        - generic [ref=e20]: factory
+        - generic [ref=e21]: argentina
+        - generic [ref=e22]: con
+        - generic [ref=e23]: ADN
+        - generic [ref=e24]: tecnológico.
+        - generic [ref=e25]: Combinamos
+        - generic [ref=e26]: metodologías
+        - generic [ref=e27]: ágiles,
+        - generic [ref=e28]: arquitecturas
+        - generic [ref=e29]: modernas
+        - generic [ref=e30]: "y"
+        - generic [ref=e31]: un
+        - generic [ref=e32]: equipo
+        - generic [ref=e33]: apasionado
+        - generic [ref=e34]: para
+        - generic [ref=e35]: entregar
+        - generic [ref=e36]: soluciones
+        - generic [ref=e37]: que
+        - generic [ref=e38]: generan
+        - generic [ref=e39]: impacto
+        - generic [ref=e40]: real.
+    - generic [ref=e42]:
+      - img "Equipo IGNIS" [ref=e44]
+      - generic [ref=e45]:
+        - generic [ref=e46]: Nuestra historia
+        - heading "De la ideación al escalamiento" [level=2] [ref=e47]
+        - paragraph [ref=e48]: Nacimos con el propósito de cerrar la brecha entre las empresas y la tecnología de punta. Desde startups en etapa temprana hasta corporaciones establecidas, acompañamos cada etapa del ciclo de vida del producto.
+        - paragraph [ref=e49]: Nuestro equipo combina expertise técnico profundo con una visión de negocio clara. No solo escribimos código, entendemos el problema, diseñamos la solución y la llevamos a producción con cero sorpresas.
+        - generic [ref=e50]:
+          - generic [ref=e51]:
+            - generic [ref=e52]: 8+
+            - generic [ref=e53]: Años de experiencia
+          - generic [ref=e54]:
+            - generic [ref=e55]: 120+
+            - generic [ref=e56]: Proyectos entregados
+          - generic [ref=e57]:
+            - generic [ref=e58]: 40+
+            - generic [ref=e59]: Clientes activos
+    - generic [ref=e61]:
+      - generic [ref=e62]:
+        - generic [ref=e63]: Nuestros valores
+        - heading "Cómo trabajamos" [level=2] [ref=e64]
+      - generic [ref=e65]:
+        - generic [ref=e66]:
+          - generic [ref=e67]: ⚡
+          - heading "Agilidad real" [level=3] [ref=e68]
+          - paragraph [ref=e69]: Sprints de 2 semanas con entregables concretos. Ajustamos en tiempo real sin burocracia.
+        - generic [ref=e70]:
+          - generic [ref=e71]: 🏗️
+          - heading "Arquitectura que escala" [level=3] [ref=e72]
+          - paragraph [ref=e73]: Diseñamos sistemas que crecen con tu negocio, no que necesitan ser reescritos cuando tenés éxito.
+        - generic [ref=e74]:
+          - generic [ref=e75]: 🤝
+          - heading "Equipo extendido" [level=3] [ref=e76]
+          - paragraph [ref=e77]: No somos proveedores, somos el equipo tech que tu empresa necesita. Con ownership real del producto.
+    - generic [ref=e78]:
+      - heading "¿Listo para construir algo extraordinario?" [level=2] [ref=e79]:
+        - text: ¿Listo para construir
+        - text: algo
+        - emphasis [ref=e80]: extraordinario
+        - text: "?"
+      - paragraph [ref=e81]: Contanos tu proyecto y arrancamos.
+      - button "Escribinos →" [ref=e82] [cursor=pointer]
+  - generic:
+    - generic:
+      - button "✕"
+      - generic:
+        - generic:
+          - heading "Hablemos de tu proyecto" [level=3]
+          - paragraph: Completá el formulario y te respondemos en menos de 24hs.
+          - generic:
+            - generic:
+              - textbox "Tu nombre completo"
+            - generic:
+              - textbox "Email de contacto"
+            - generic:
+              - textbox "Empresa / Proyecto"
+            - generic:
+              - textbox "Contanos sobre tu idea..."
+            - button "Enviar mensaje →"
+        - generic:
+          - heading "Tambien podes contactarte a través de nuestras redes sociales" [level=4]
+          - list:
+            - listitem:
+              - link:
+                - /url: https://wa.me/5493512397098
+                - generic:
+                  - img
+            - listitem:
+              - link:
+                - /url: https://www.linkedin.com/company/ignis-solutions-ia/?originalSubdomain=ar
+                - generic:
+                  - img

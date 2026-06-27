@@ -91,7 +91,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 48px 44px;
-  background: #0b1528;
+  background: rgba(10, 61, 120, 0.72);
 }
 
 .pf-category {

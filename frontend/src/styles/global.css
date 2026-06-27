@@ -144,6 +144,10 @@ body:has(button:hover) .cursor-ring {
   transition-delay: 0.3s;
 }
 
+.fu.d4 {
+  transition-delay: 0.4s;
+}
+
 .fu.vis {
   opacity: 1;
   transform: translateY(0);
@@ -169,19 +173,11 @@ body:has(button:hover) .cursor-ring {
   pointer-events: none;
 }
 
-/* ── CTAReveal + Portfolio zone (above fixed particles) ── */
+/* ── CTA + Portfolio zone ── */
 .cta-portfolio-zone {
   position: relative;
-  z-index: 2;
-  background: #002f6c;
-}
-
-.cta-portfolio-zone::after {
-  content: '';
-  display: block;
-  height: 140px;
-  background: linear-gradient(to bottom, #002f6c, #060d1f);
-  pointer-events: none;
+  z-index: 15;
+  background: #060d1f;
 }
 
 /* ── ORBS ── */

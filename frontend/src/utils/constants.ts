@@ -5,18 +5,8 @@ export const WORDS_TYPEWRITER = ['expertos.', 'nosotros.', 'IGNIS.'];
 export const SERVICES = [
   {
     title: 'Desarrollo de Software',
-    desc: 'Soluciones a medida basadas en las necesidades particulares de tu empresa que buscan optimizar y automatizar aquellos procesos clave para tu negocio.',
-    tags: ['Backend', 'Frontend', 'API REST', 'Cloud'],
-  },
-  {
-    title: 'Desarrollo Web',
-    desc: 'Desarrollamos aplicaciones web según tus necesidades y sitios web dinámicos para proyectos corporativos y emprendimientos centrados en Internet.',
-    tags: ['React', 'Next.js', 'Vue', 'TypeScript'],
-  },
-  {
-    title: 'Desarrollo Mobile',
-    desc: 'Creamos aplicaciones móviles nativas, híbridas y web apps de alta calidad que permiten llevar tu información segura y consolidada en tiempo real.',
-    tags: ['iOS', 'Android', 'React Native', 'Flutter'],
+    desc: 'Desarrollamos soluciones a medida para tu empresa: desde aplicaciones web y móviles hasta sistemas backend y APIs. Cubrimos todo el stack para optimizar y automatizar los procesos clave de tu negocio.',
+    tags: ['Web', 'Mobile', 'Backend', 'API REST', 'React', 'React Native', 'iOS', 'Android', 'Cloud'],
   },
   {
     title: 'Soluciones Empresariales',

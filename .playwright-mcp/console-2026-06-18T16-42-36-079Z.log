@@ -1,0 +1,6 @@
+[     141ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5176/node_modules/.vite/deps/react-dom_client.js?v=e3705378:14336
+[     438ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIkAAABQCAIAAACid8F5...:0
+[     438ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABQCAIAAAASpCUO...:0
+[     438ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGIAAABQCAIAAABtdTf/...:0
+[     438ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAIAAAABc2X6...:0
+[     438ms] [ERROR] Failed to load resource: net::ERR_INVALID_URL @ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABQCAIAAAB6V6c2...:0
