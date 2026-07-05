@@ -177,7 +177,6 @@ body:has(button:hover) .cursor-ring {
 .cta-portfolio-zone {
   position: relative;
   z-index: 15;
-  background: #060d1f;
 }
 
 /* ── ORBS ── */

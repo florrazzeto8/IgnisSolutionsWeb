@@ -10,8 +10,8 @@ const CardContent = () => (
   <div className="cr-slide">
     <div className="cr-content">
       <h1>
-        Lo que hacemos habla<br />
-        <em>por nosotros</em>
+        Resultados que hablan<br />
+        <em>por sí solos</em>
       </h1>
       <span className="scroll-arrow">↓</span>
     </div>

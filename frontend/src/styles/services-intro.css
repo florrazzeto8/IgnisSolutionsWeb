@@ -337,6 +337,47 @@
 .social-icons-list .whatsapp-link::before { background: #25d366; }
 .social-icons-list .linkedin-link::before { background: #0077b5; }
 
+/* ── FORM SUCCESS STATE ── */
+.form-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  gap: 16px;
+  height: 100%;
+  min-height: 260px;
+}
+
+.form-success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(0, 200, 255, 0.12);
+  border: 2px solid rgba(0, 200, 255, 0.4);
+  color: var(--cyan);
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-success h3 {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  color: #fff;
+  margin: 0;
+}
+
+.form-success p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  line-height: 1.6;
+}
+
 /* ── HIDE CURSOR RING ON ESCRIBINOS BUTTONS ── */
 body:has(.escribinos-btn:hover) .cursor,
 body:has(.escribinos-btn:hover) .cursor-ring,

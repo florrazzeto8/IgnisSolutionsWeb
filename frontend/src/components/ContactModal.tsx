@@ -1,9 +1,13 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export const ContactModal = () => {
   const modalRef = useRef<HTMLDivElement>(null);
+  const [sent, setSent] = useState(false);
 
-  const close = () => modalRef.current?.classList.remove('open');
+  const close = () => {
+    modalRef.current?.classList.remove('open');
+    setTimeout(() => setSent(false), 400);
+  };
 
   useEffect(() => {
     const modal = modalRef.current;
@@ -24,23 +28,33 @@ export const ContactModal = () => {
         <button className="modal-close" onClick={close}>✕</button>
         <div className="modal-columns">
           <div className="modal-form-col">
-            <h3>Hablemos de tu proyecto</h3>
-            <p className="modal-sub">Completá el formulario y te respondemos en menos de 24hs.</p>
-            <form onSubmit={(e) => e.preventDefault()}>
-              <div className="form-group">
-                <input type="text" placeholder="Tu nombre completo" required />
+            {sent ? (
+              <div className="form-success">
+                <span className="form-success-icon">✓</span>
+                <h3>¡Mensaje enviado!</h3>
+                <p>Gracias por escribirnos. Te respondemos en menos de 24hs.</p>
               </div>
-              <div className="form-group">
-                <input type="email" placeholder="Email de contacto" required />
-              </div>
-              <div className="form-group">
-                <input type="text" placeholder="Empresa / Proyecto" />
-              </div>
-              <div className="form-group">
-                <textarea placeholder="Contanos sobre tu idea..." rows={4}></textarea>
-              </div>
-              <button type="submit" className="submit-btn">Enviar mensaje →</button>
-            </form>
+            ) : (
+              <>
+                <h3>Hablemos de tu proyecto</h3>
+                <p className="modal-sub">Completá el formulario y te respondemos en menos de 24hs.</p>
+                <form onSubmit={(e) => { e.preventDefault(); setSent(true); }}>
+                  <div className="form-group">
+                    <input type="text" placeholder="Tu nombre completo" required />
+                  </div>
+                  <div className="form-group">
+                    <input type="email" placeholder="Email de contacto" required />
+                  </div>
+                  <div className="form-group">
+                    <input type="text" placeholder="Empresa / Proyecto" />
+                  </div>
+                  <div className="form-group">
+                    <textarea placeholder="Contanos sobre tu idea..." rows={4}></textarea>
+                  </div>
+                  <button type="submit" className="submit-btn">Enviar mensaje →</button>
+                </form>
+              </>
+            )}
           </div>
 
           <div className="modal-social-col">
